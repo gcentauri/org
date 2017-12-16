@@ -1,0 +1,1766 @@
+[[./notes.org]]
+[[./organizer.org]]
+
+* Emacs Config file
+** backup of kraid .emacs
+#+BEGIN_SRC elisp
+(require 'package) ;; You might already have this line
+(let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
+                    (not (gnutls-available-p))))
+       (url (concat (if no-ssl "http" "https") "://melpa.org/packages/")))
+  (add-to-list 'package-archives (cons "melpa" url) t))
+(when (< emacs-major-version 24)
+  ;; For important compatibility libraries like cl-lib
+  (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
+(package-initialize) ;; You might already have this line
+
+(scroll-bar-mode 0)
+(tool-bar-mode 0)
+
+(require 'xah-fly-keys)
+(xah-fly-keys-set-layout "qwerty") ; required if you use qwerty
+(setq xah-fly-use-control-key nil)
+(xah-fly-keys 1)
+#+END_SRC
+
+[[~/.emacs]] - the result of the tangle
+
+** Tangle
+Using org-babel-tangle I can organize various parts of my emacs configuration 
+in this org-mode file 
+
+#+name: .emacs-tangle
+#+BEGIN_SRC emacs-lisp :tangle ~/.emacs :noweb yes
+  (require 'cl-lib) ;; common lisp primitives added to emacs-lisp
+  (setq initial-buffer-choice "~/org/home.org")
+  (global-set-key (kbd "C-c h")
+                  (lambda () (interactive) (find-file "~/org/home.org")))
+  <<packages>>
+  <<custom-set>>
+  <<style>>
+  <<modeline>>
+  ;;<<flykeys>>
+  <<org>>
+  <<magit>>
+  ;;<<osx>>
+  <<w3m>>
+  <<eshell>>
+  <<elscreen>>
+  <<lakota-input>>
+  <<company-mode>>
+  <<ido>>
+
+  <<lisp-perks>>
+  ;;<<ruby>>
+  <<pico8>>
+  ;;<<haxe>>
+ 
+  <<plantuml>>
+
+#+END_SRC
+
+** Packages
+
+Following code adapted from [[https://github.com/bbatsov/prelude][emacs-prelude]] - [[http://batsov.com/articles/2012/02/19/package-management-in-emacs-the-good-the-bad-and-the-ugly/][package-management-in-emacs]] (The Good, the Bad and the Ugly).
+
+*** Activate all the package manager.
+
+ #+name: packages
+ #+BEGIN_SRC emacs-lisp
+ ;; PACKAGES ---------------------------
+ (require 'package)
+ (package-initialize)
+ #+END_SRC
+
+*** List of package repos 
+
+1. [[http://melpa.milkbox.net/#/][melpa]] repo - contains packages updated daily.
+
+#+name: packages
+#+BEGIN_SRC emacs-lisp
+  (add-to-list 'package-archives
+               '("melpa" . "http://melpa.org/packages/"))
+#+END_SRC
+
+*** COMMENT List of packages used in this configuration
+
+#+name: packages
+#+BEGIN_SRC emacs-lisp
+  (setq required-packages
+        (list
+         'ac-geiser          ;; Auto-complete backend for geiser
+         'afternoon-theme    ;; Dark color theme with a deep blue background
+         'ample-theme        ;; Calm Dark Theme for Emacs
+         'ample-zen-theme    ;; AmpleZen Theme for Emacs 24
+         'arjen-grey-theme   ;; A soothing dark grey theme
+         'auto-complete      ;; Auto Completion for GNU Emacs
+         'autopair           ;; automagically pair braces and quotes.
+         'autumn-light-theme ;; A light color theme with muted, autumnal colors.
+         'badger-theme       ;; A dark theme for Emacs 24.
+         'badwolf-theme      ;; Bad Wolf color theme
+         'birds-of-paradise-plus-theme ;; A brown/orange light-on-dark theme for Emacs 24 (deftheme).
+         'bliss-theme        ;; an Emacs 24 theme based on Bliss (tmTheme)
+         'charmap            ;; Unicode table for Emacs
+         'company            ;; complete anything, auto complete system
+         'deft               ;; mode for quickly browsing, filtering, and editing directories of plain text notes.
+         'elscreen           ;; screen like functionality for emasc
+         'faceup             ;; Regression test system for font-lock
+         'fsm                ;; state machine library
+         'geiser             ;; GNU Emacs and Scheme talk to each other
+         'haxe-mode          ;; An Emacs major mode for Haxe
+         'hc-zenburn-theme   ;; An higher contrast version of the Zenburn theme.
+         'jabber             ;; A Jabber client for Emacs.
+         'jinja2-mode        ;; A major mode for jinja2
+         'labburn-theme      ;; A lab color space zenburn theme.
+         'list-unicode-display ;; Search for and list unicode characters by name
+         'lua-mode           ;; lua editing mode for emacs
+         'markdown-mode      ;; Major mode for Markdown-formatted text
+         'melancholy-theme   ;; A dark theme for dark minds
+         'paredit            ;; minor mode for editing parentheses.
+         'popup              ;; Visual Popup User Interface
+         'racket-mode        ;; Major mode for Racket language.
+         'rainbow-blocks     ;; Block syntax highlighting for lisp code
+         'rainbow-mode       ;; Colorize color names in buffers.
+         'rainbow-delimiters ;; Highlight brackets according to their depth
+         's                  ;; The long lost Emacs string manipulation library.
+         'slime              ;; Emacs mode for Common Lisp development.
+         'w3m                ;; an Emacs interface to w3m
+         'zenburn-theme      ;; A low contrast color theme for Emacs.
+         'zerodark-theme     ;; A dark, medium contrast theme for Emacs
+         ))
+
+
+#+END_SRC
+*** Check if all packages are installed.
+
+if not all packages are installed, check one by one and install the missing ones.
+
+#+name: packages
+#+BEGIN_SRC emacs-lisp 
+(defun packages-installed-p ()
+  (cl-loop for p in required-packages
+        when (not (package-installed-p p)) do (cl-return nil)
+        finally (return t)))
+
+;; if not all packages are installed, check one by one and install the missing ones.
+(unless (packages-installed-p)
+  ;; check for new packages (package versions)
+  (message "%s" "Emacs is now refreshing its package database...")
+  (package-refresh-contents)
+  (message "%s" " done.")
+  ;; install the missing packages
+  (dolist (p required-packages)
+    (when (not (package-installed-p p))
+      (package-install p))))
+#+END_SRC
+
+** Style
+   
+  So important, right?
+
+*** Initializing
+**** Disable toolbars
+#+name: style
+#+BEGIN_SRC elisp
+(tool-bar-mode 0)
+(menu-bar-mode 0)
+(scroll-bar-mode 0)
+#+END_SRC
+**** Set fringe mode
+basically, fringe-mode takes a cons cell with integers representing
+the width in pixels like '(LEFT . RIGHT).  it can also be called
+interactively takes arguments like no-fringe, right-only etc... [[help:fringe-mode][Fringe mode help]]
+#+name: style
+#+BEGIN_SRC elisp
+(fringe-mode '(6 . 0))
+#+END_SRC
+**** Maximize the Frame to the whole screen OSX
+have to call it twice for osx
+
+# on linux box - not currently being used 
+#+BEGIN_SRC emacs-lisp
+(toggle-frame-maximize)
+(toggle-frame-maximize)
+#+END_SRC
+
+**** toggle Fullscreen on launch  
+#+name: style
+#+BEGIN_SRC emacs-lisp
+(toggle-frame-fullscreen)
+#+END_SRC
+
+**** Set a random theme using the rand-theme package
+
+[[https://github.com/gopar/rand-theme][GitHub - gopar/rand-theme: Random Emacs theme at start-up!]]
+
+This takes a whitelist and/or a blacklist of unwanted themes.
+
+#+name: style
+#+BEGIN_SRC elisp
+  (require 'rand-theme)
+  (setq rand-theme-wanted 
+        '(base16-nord base16-eighties base16-3024
+          base16-rebecca base16-flat base16-apathy))
+  (rand-theme)
+#+END_SRC
+  
+** Org-mode
+i lost my notes in a emacs key combo mistake somehow without noticing
+
+#+name: org
+#+BEGIN_SRC elisp
+(setq org-return-follows-link t) ;; return key will follow links in org mode
+(define-key global-map "\C-cl" 'org-store-link) ;; use C-c C-l to paste stored links
+(define-key global-map "\C-ca" 'org-agenda)
+(setq org-log-done t) ;; timestamps when a task is marked DONE
+(global-set-key (kbd "C-c o")
+                (lambda () (interactive) (find-file "~/org/organizer.org")))
+(global-set-key (kbd "C-c c") 'org-capture)
+(setq org-default-notes-file "~/org/organizer.org")
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((ruby . t)
+   (plantuml . t)
+   (python . t)))
+#+END_SRC
+
+** w3m
+#+name: w3m
+#+BEGIN_SRC elisp
+(require 'w3m)
+
+(setq w3m-use-cookies t) ;; enable cookies
+(setq w3m-use-tab t) ;; allow tabs
+
+(setq browse-url-browser-function 'w3m-browse-url
+      browse-url-new-window-flag t)
+
+(autoload 'w3m-browse-url "w3m" "Ask a WWW browser to show a URL." t)
+
+(global-set-key "\C-xm" 'browse-url-at-point) ;; optional keyboard short-cut
+
+(w3m)
+(define-key w3m-mode-map (kbd "i") 'w3m-previous-buffer)
+(define-key w3m-mode-map (kbd "o") 'w3m-next-buffer)
+#+END_SRC
+
+** Magit
+gotta love magit.  seriously has helped me master parts of git i may never have
+even tried without it.  finally adding this to my .emacs, after 8 straight months
+of =M-x magit-status=
+#+name: magit
+#+BEGIN_SRC emacs-lisp
+(global-set-key (kbd "C-x g") 'magit-status)
+#+END_SRC
+
+now what i really want is to map it to Xah-fly-keys... 
+
+** Eshell
+#+name: eshell
+#+BEGIN_SRC elisp
+(cd "~")
+(eshell)
+
+#+END_SRC
+** Elscreen
+#+name: elscreen
+#+BEGIN_SRC elisp
+  (elscreen-start)
+#+END_SRC
+
+** Xah Fly Keys
+#+name: flykeys
+#+BEGIN_SRC elisp
+  (setq xah-fly-use-control-key nil)
+  (require 'xah-fly-keys)
+  (xah-fly-keys-set-layout "qwerty") ; required if you use qwerty
+  (xah-fly-keys 1)
+#+END_SRC
+** Lakota Input
+
+Haú, mitákuyepi.  Grant Shoshín Shangreaux emáčiyapi.  Blóketu k'uŋ héhaŋ,
+Lakota Summer Institute ektá waí.
+
+Pispíza waŋ wayáwa iyáye. Wamákȟaška waŋzí waŋbláke.
+
+I have created a keyboard input for the Lakota Language Consortium's
+Standard Lakota Orthography (SLO) using the quail package.  
+This uses the emacs input mode system [[/usr/share/emacs/24.4/lisp/leim]]
+
+#+name: lakota-input
+#+BEGIN_SRC emacs-lisp
+;; Lakota keyboard input, invoke with C-\
+
+(quail-define-package
+ "lakota-slo" "Standard Lakota Orthography" "Lak " t
+ "Grant's simple rules to type SLO Lakota"
+ nil t nil nil nil nil nil nil nil nil t)
+
+(quail-define-rules
+ ;; accented vowels
+ ("a'" ?á) ("A'" ?Á) 
+ ("e'" ?é) ("E'" ?É)
+ ("i'" ?í) ("I'" ?Í)
+ ("o'" ?ó) ("O'" ?Ó)
+ ("u'" ?ú) ("U'" ?Ú)
+ ;; consonants with hacek (wedges)
+ ("c" ?č) ("C" ?Č)
+ ("j" ?ȟ) ("J" ?Ȟ)
+ ("q" ?ǧ) ("Q" ?Ǧ)
+ ("x" ?ž) ("X" ?Ž)
+ ("r" ?š) ("R" ?Š)
+ ;; nasal vowel n i.e. velar nasal
+ ("f" ?ŋ)
+ )
+#+END_SRC
+** TODO Company Mode (complete anything)
+
+Learn more
+
+#+name: company-mode
+#+BEGIN_SRC emacs-lisp
+  (add-hook 'after-init-hook 'global-company-mode)
+#+END_SRC
+
+** TODO Ido
+
+learn more about Ido
+
+#+name: ido
+#+BEGIN_SRC emacs-lisp
+(ido-mode 1)
+#+END_SRC   
+
+** Languages
+*** Lisp editing perks
+
+paredit hooks from my old emacs configuration
+
+#+name: lisp-perks
+#+BEGIN_SRC emacs-lisp
+  (add-hook 'emacs-lisp-mode-hook       (lambda () (paredit-mode +1) (rainbow-delimiters-mode +1)))
+  (add-hook 'lisp-mode-hook             (lambda () (paredit-mode +1) (rainbow-delimiters-mode +1)))
+  (add-hook 'lisp-interaction-mode-hook (lambda () (paredit-mode +1) (rainbow-delimiters-mode +1)))
+  (add-hook 'scheme-mode-hook           (lambda () (paredit-mode +1) (rainbow-delimiters-mode +1)))
+#+END_SRC
+
+*** Ruby
+
+#+name: ruby
+#+BEGIN_SRC emacs-lisp
+  (add-hook 'ruby-mode-hook 'robe-mode)
+  (add-hook 'ruby-mode-hook 'smartparens-mode)
+  (eval-after-load 'company
+    '(push 'company-robe company-backends))
+#+END_SRC
+
+I had to install packages rvm and bundler for emacs in order to call things like
+rspec from eshell.  I still don't understand exactly how its all working but if
+i evaluate this at the beginning of an emacs session, things seem to work:
+
+#+name: ruby
+#+BEGIN_SRC elisp
+  (rvm-use-default)
+#+END_SRC
+
+I did choose some a specific ruby and gem set, at some point so... just gotta be
+aware of this one
+
+This allows rspec-mode to use rvm, which was necessary to be able to use rspec mode
+for spec validation.  Rspec mode is great by the way!
+#+name: ruby
+#+BEGIN_SRC elisp
+  (setq rspec-use-rvm t)
+#+END_SRC
+
+*** Haxe
+
+  i have a very basic haxe mode from github cloned:
+  
+  #+name: haxe
+  #+BEGIN_SRC emacs-lisp
+  (require 'funda-haxe-mode "~/.emacs.d/funda-haxe-mode/funda-haxe-mode.el")
+  (setq funda-haxe-indent-offset 2)
+  #+END_SRC
+
+** Pico-8
+
+Pico8 is a virtual console for expressive 2d pixel games, with
+lua syntax.  This makes emacs load the cartridge files (.p8) in
+lua-mode automatically
+
+#+name: pico8
+#+BEGIN_SRC emacs-lisp
+  (setq auto-mode-alist (append '(("\\.p8?$" . lua-mode)) 
+                                auto-mode-alist))
+#+END_SRC
+
+** PlantUML
+  this is a language for generating UML documents, works with org babel
+  
+  #+name: plantuml
+  #+BEGIN_SRC emacs-lisp
+  (setq org-plantuml-jar-path (expand-file-name "~/bin/plantuml.jar"))
+  #+END_SRC
+
+** OSX tweaks
+
+#+name: osx
+#+BEGIN_SRC emacs-lisp
+  ;; override osx default opening directories in finder
+  (add-to-list 'org-file-apps '(directory . emacs))
+  ;; sample file-type specific override
+  (add-to-list 'org-file-apps '("\\.md\\'" . emacs))
+  (setq w3m-command "/usr/local/bin/w3m")
+#+END_SRC
+
+There is a package that handles setting environment variables to match what your
+shell environment will be on OSX.  This way things set in .profile will also 
+be available in emacs.
+
+#+name: osx
+#+BEGIN_SRC emacs-lisp
+(exec-path-from-shell-initialize)
+#+END_SRC
+
+** Custom Set in separate file
+
+#+name: custom-set
+#+BEGIN_SRC emacs-lisp
+(setq custom-file "~/.emacs.d/custom.el")
+(load custom-file 'noerror)
+#+END_SRC
+   
+   
+* TODO My TODO List (even though i dont like them)
+** DONE Make Lakota standard orthography input mode for emacs
+   CLOSED: [2016-10-12 Wed 14:02]
+** TODO Write article about making a Lakota input mode in emacs
+** TODO Decide if the learning-to-write project is something with which to go ahead
+   
+** TODO make dotfiles git repo
+   - maybe this home.org file can be in it and kinda generate dotfiles and keep my
+     personal notes, etc. 
+   - dotfiles can be tangled out and a script to symlink them to proper places
+   - home.org + dotfiles should help me get a working portable granty environment 
+
+** DONE update .emacs for 24.4 ie cl-lib
+   CLOSED: [2017-04-24 Mon 09:09]
+
+
+* tlog (grant-log) 
+  
+
+** Wed Oct 12 13:29:27 CDT 2016 	   :lakota:lisp:emacs:zine:education:
+
+I'd rather be working on Python code right now, but once again I've been called
+into work at Prairie Hill early.  
+
+Feeling like if i am going to spend all kinds of time using the computer for 
+computer work, I should also leverage its power to work in the 'real world'.
+Already I have used my esoteric knowledge of lisp and emacs (could just say
+emacs i guess... it is lisp after all) to give myself the power to enter Lakȟóta
+text into my documents.  (see todo list)
+
+I am once again feeling like I want to try and make a 'reachout' series of 
+documents and articles to try and entice non-tech, non-coder folks into the 
+land of emacs, free software, and alternative digital media.  The power offered
+by working with text in a lisp environment is so wonderful.  If (as seems to be
+the case) emacs configuration flavors are being designed to be setup and 
+executed more and more easily, I can imagine this lisp environment being 
+presented in a more friendly way to 'non-computery' folks.  Perhaps it still
+needs the extra helping hand of a friendly human encouraging them to be brave 
+and learn something new and esoteric, BUT there is something strongly resonant
+in me about trying to teach this stuff in the same manner as literacy.  Which
+it truly is about.
+
+Lisp, to me, is the clearest path to computer literacy in terms of getting an
+intuitive understanding of how software environments work.  The fact that emacs
+is a live hunk of code that can be modified, while running, by the emacs
+user is kind of incredible.  If we are spending time teaching kids how to type
+and use computers and shit... why teach them proprietary software like word?
+Why not empower them to see that all of their computing needs can be met with
+a text editor?  To empower them to see text as not just a means of communication
+with other humans, but that the same document can also control things about their
+digital environment itself.  
+
+For example, I can just type:
+
+  (set-cursor-color "orange")
+  (set-cursor-color "blue")
+
+And a user can execute it within the living org document I am writing in.  All
+you have to know is the proper key combo, kinda like playing a video game.
+
+But why do i even write this, and who is going to read it....
+
+* Emacs package info
+
+** undo-tree help
+
+Emacs has a powerful undo system. Unlike the standard undo/redo system in
+most software, it allows you to recover *any* past state of a buffer
+(whereas the standard undo/redo system can lose past states as soon as you
+redo). However, this power comes at a price: many people find Emacs' undo
+system confusing and difficult to use, spawning a number of packages that
+replace it with the less powerful but more intuitive undo/redo system.
+
+Both the loss of data with standard undo/redo, and the confusion of Emacs'
+undo, stem from trying to treat undo history as a linear sequence of
+changes. It's not. The `undo-tree-mode' provided by this package replaces
+Emacs' undo system with a system that treats undo history as what it is: a
+branching tree of changes. This simple idea allows the more intuitive
+behaviour of the standard undo/redo system to be combined with the power of
+never losing any history. An added side bonus is that undo history can in
+some cases be stored more efficiently, allowing more changes to accumulate
+before Emacs starts discarding history.
+
+The only downside to this more advanced yet simpler undo system is that it
+was inspired by Vim. But, after all, most successful religions steal the
+best ideas from their competitors!
+
+
+Installation
+============
+
+This package has only been tested with Emacs versions 24 and CVS. It should
+work in Emacs versions 22 and 23 too, but will not work without
+modifications in earlier versions of Emacs.
+
+To install `undo-tree-mode', make sure this file is saved in a directory in
+your `load-path', and add the line:
+
+  (require 'undo-tree)
+
+to your .emacs file. Byte-compiling undo-tree.el is recommended (e.g. using
+"M-x byte-compile-file" from within emacs).
+
+If you want to replace the standard Emacs' undo system with the
+`undo-tree-mode' system in all buffers, you can enable it globally by
+adding:
+
+  (global-undo-tree-mode)
+
+to your .emacs file.
+
+
+Quick-Start
+===========
+
+If you're the kind of person who likes to jump in the car and drive,
+without bothering to first figure out whether the button on the left dips
+the headlights or operates the ejector seat (after all, you'll soon figure
+it out when you push it), then here's the minimum you need to know:
+
+`undo-tree-mode' and `global-undo-tree-mode'
+  Enable undo-tree mode (either in the current buffer or globally).
+
+C-_  C-/  (`undo-tree-undo')
+  Undo changes.
+
+M-_  C-?  (`undo-tree-redo')
+  Redo changes.
+
+`undo-tree-switch-branch'
+  Switch undo-tree branch.
+  (What does this mean? Better press the button and see!)
+
+C-x u  (`undo-tree-visualize')
+  Visualize the undo tree.
+  (Better try pressing this button too!)
+
+C-x r u  (`undo-tree-save-state-to-register')
+  Save current buffer state to register.
+
+C-x r U  (`undo-tree-restore-state-from-register')
+  Restore buffer state from register.
+
+
+
+In the undo-tree visualizer:
+
+<up>  p  C-p  (`undo-tree-visualize-undo')
+  Undo changes.
+
+<down>  n  C-n  (`undo-tree-visualize-redo')
+  Redo changes.
+
+<left>  b  C-b  (`undo-tree-visualize-switch-branch-left')
+  Switch to previous undo-tree branch.
+
+<right>  f  C-f  (`undo-tree-visualize-switch-branch-right')
+  Switch to next undo-tree branch.
+
+C-<up>  M-{  (`undo-tree-visualize-undo-to-x')
+  Undo changes up to last branch point.
+
+C-<down>  M-}  (`undo-tree-visualize-redo-to-x')
+  Redo changes down to next branch point.
+
+<down>  n  C-n  (`undo-tree-visualize-redo')
+  Redo changes.
+
+<mouse-1>  (`undo-tree-visualizer-mouse-set')
+  Set state to node at mouse click.
+
+t  (`undo-tree-visualizer-toggle-timestamps')
+  Toggle display of time-stamps.
+
+d  (`undo-tree-visualizer-toggle-diff')
+  Toggle diff display.
+
+s  (`undo-tree-visualizer-selection-mode')
+  Toggle keyboard selection mode.
+
+q  (`undo-tree-visualizer-quit')
+  Quit undo-tree-visualizer.
+
+C-q  (`undo-tree-visualizer-abort')
+  Abort undo-tree-visualizer.
+
+,  <
+  Scroll left.
+
+.  >
+  Scroll right.
+
+<pgup>  M-v
+  Scroll up.
+
+<pgdown>  C-v
+  Scroll down.
+
+
+
+In visualizer selection mode:
+
+<up>  p  C-p  (`undo-tree-visualizer-select-previous')
+  Select previous node.
+
+<down>  n  C-n  (`undo-tree-visualizer-select-next')
+  Select next node.
+
+<left>  b  C-b  (`undo-tree-visualizer-select-left')
+  Select left sibling node.
+
+<right>  f  C-f  (`undo-tree-visualizer-select-right')
+  Select right sibling node.
+
+<pgup>  M-v
+  Select node 10 above.
+
+<pgdown>  C-v
+  Select node 10 below.
+
+<enter>  (`undo-tree-visualizer-set')
+  Set state to selected node and exit selection mode.
+
+s  (`undo-tree-visualizer-mode')
+  Exit selection mode.
+
+t  (`undo-tree-visualizer-toggle-timestamps')
+  Toggle display of time-stamps.
+
+d  (`undo-tree-visualizer-toggle-diff')
+  Toggle diff display.
+
+q  (`undo-tree-visualizer-quit')
+  Quit undo-tree-visualizer.
+
+C-q  (`undo-tree-visualizer-abort')
+  Abort undo-tree-visualizer.
+
+,  <
+  Scroll left.
+
+.  >
+  Scroll right.
+
+
+
+Persistent undo history:
+
+Note: Requires Emacs version 24.3 or higher.
+
+`undo-tree-auto-save-history' (variable)
+   automatically save and restore undo-tree history along with buffer
+   (disabled by default)
+
+`undo-tree-save-history' (command)
+   manually save undo history to file
+
+`undo-tree-load-history' (command)
+   manually load undo history from file
+
+
+
+Compressing undo history:
+
+  Undo history files cannot grow beyond the maximum undo tree size, which
+  is limited by `undo-limit', `undo-strong-limit' and
+  `undo-outer-limit'. Nevertheless, undo history files can grow quite
+  large. If you want to automatically compress undo history, add the
+  following advice to your .emacs file (replacing ".gz" with the filename
+  extension of your favourite compression algorithm):
+
+  (defadvice undo-tree-make-history-save-file-name
+    (after undo-tree activate)
+    (setq ad-return-value (concat ad-return-value ".gz")))
+
+
+
+
+Undo Systems
+============
+
+To understand the different undo systems, it's easiest to consider an
+example. Imagine you make a few edits in a buffer. As you edit, you
+accumulate a history of changes, which we might visualize as a string of
+past buffer states, growing downwards:
+
+                               o  (initial buffer state)
+                               |
+                               |
+                               o  (first edit)
+                               |
+                               |
+                               o  (second edit)
+                               |
+                               |
+                               x  (current buffer state)
+
+
+Now imagine that you undo the last two changes. We can visualize this as
+rewinding the current state back two steps:
+
+                               o  (initial buffer state)
+                               |
+                               |
+                               x  (current buffer state)
+                               |
+                               |
+                               o
+                               |
+                               |
+                               o
+
+
+However, this isn't a good representation of what Emacs' undo system
+does. Instead, it treats the undos as *new* changes to the buffer, and adds
+them to the history:
+
+                               o  (initial buffer state)
+                               |
+                               |
+                               o  (first edit)
+                               |
+                               |
+                               o  (second edit)
+                               |
+                               |
+                               x  (buffer state before undo)
+                               |
+                               |
+                               o  (first undo)
+                               |
+                               |
+                               x  (second undo)
+
+
+Actually, since the buffer returns to a previous state after an undo,
+perhaps a better way to visualize it is to imagine the string of changes
+turning back on itself:
+
+       (initial buffer state)  o
+                               |
+                               |
+                 (first edit)  o  x  (second undo)
+                               |  |
+                               |  |
+                (second edit)  o  o  (first undo)
+                               | /
+                               |/
+                               o  (buffer state before undo)
+
+Treating undos as new changes might seem a strange thing to do. But the
+advantage becomes clear as soon as we imagine what happens when you edit
+the buffer again. Since you've undone a couple of changes, new edits will
+branch off from the buffer state that you've rewound to. Conceptually, it
+looks like this:
+
+                               o  (initial buffer state)
+                               |
+                               |
+                               o
+                               |\
+                               | \
+                               o  x  (new edit)
+                               |
+                               |
+                               o
+
+The standard undo/redo system only lets you go backwards and forwards
+linearly. So as soon as you make that new edit, it discards the old
+branch. Emacs' undo just keeps adding changes to the end of the string. So
+the undo history in the two systems now looks like this:
+
+           Undo/Redo:                      Emacs' undo
+
+              o                                o
+              |                                |
+              |                                |
+              o                                o  o
+              .\                               |  |\
+              . \                              |  | \
+              .  x  (new edit)                 o  o  |
+  (discarded  .                                | /   |
+    branch)   .                                |/    |
+              .                                o     |
+                                                     |
+                                                     |
+                                                     x  (new edit)
+
+Now, what if you change your mind about those undos, and decide you did
+like those other changes you'd made after all? With the standard undo/redo
+system, you're lost. There's no way to recover them, because that branch
+was discarded when you made the new edit.
+
+However, in Emacs' undo system, those old buffer states are still there in
+the undo history. You just have to rewind back through the new edit, and
+back through the changes made by the undos, until you reach them. Of
+course, since Emacs treats undos (even undos of undos!) as new changes,
+you're really weaving backwards and forwards through the history, all the
+time adding new changes to the end of the string as you go:
+
+                      o
+                      |
+                      |
+                      o  o     o  (undo new edit)
+                      |  |\    |\
+                      |  | \   | \
+                      o  o  |  |  o  (undo the undo)
+                      | /   |  |  |
+                      |/    |  |  |
+     (trying to get   o     |  |  x  (undo the undo)
+      to this state)        | /
+                            |/
+                            o
+
+So far, this is still reasonably intuitive to use. It doesn't behave so
+differently to standard undo/redo, except that by going back far enough you
+can access changes that would be lost in standard undo/redo.
+
+However, imagine that after undoing as just described, you decide you
+actually want to rewind right back to the initial state. If you're lucky,
+and haven't invoked any command since the last undo, you can just keep on
+undoing until you get back to the start:
+
+     (trying to get   o              x  (got there!)
+      to this state)  |              |
+                      |              |
+                      o  o     o     o  (keep undoing)
+                      |  |\    |\    |
+                      |  | \   | \   |
+                      o  o  |  |  o  o  (keep undoing)
+                      | /   |  |  | /
+                      |/    |  |  |/
+     (already undid   o     |  |  o  (got this far)
+      to this state)        | /
+                            |/
+                            o
+
+But if you're unlucky, and you happen to have moved the point (say) after
+getting to the state labelled "got this far", then you've "broken the undo
+chain". Hold on to something solid, because things are about to get
+hairy. If you try to undo now, Emacs thinks you're trying to undo the
+undos! So to get back to the initial state you now have to rewind through
+*all* the changes, including the undos you just did:
+
+     (trying to get   o                          x  (finally got there!)
+      to this state)  |                          |
+                      |                          |
+                      o  o     o     o     o     o
+                      |  |\    |\    |\    |\    |
+                      |  | \   | \   | \   | \   |
+                      o  o  |  |  o  o  o  |  o  o
+                      | /   |  |  | /   |  |  | /
+                      |/    |  |  |/    |  |  |/
+     (already undid   o     |  |  o<.   |  |  o
+      to this state)        | /     :   | /
+                            |/      :   |/
+                            o       :   o
+                                    :
+                            (got this far, but
+                             broke the undo chain)
+
+Confused?
+
+In practice you can just hold down the undo key until you reach the buffer
+state that you want. But whatever you do, don't move around in the buffer
+to *check* that you've got back to where you want! Because you'll break the
+undo chain, and then you'll have to traverse the entire string of undos
+again, just to get back to the point at which you broke the
+chain. Undo-in-region and commands such as `undo-only' help to make using
+Emacs' undo a little easier, but nonetheless it remains confusing for many
+people.
+
+
+So what does `undo-tree-mode' do? Remember the diagram we drew to represent
+the history we've been discussing (make a few edits, undo a couple of them,
+and edit again)? The diagram that conceptually represented our undo
+history, before we started discussing specific undo systems? It looked like
+this:
+
+                               o  (initial buffer state)
+                               |
+                               |
+                               o
+                               |\
+                               | \
+                               o  x  (current state)
+                               |
+                               |
+                               o
+
+Well, that's *exactly* what the undo history looks like to
+`undo-tree-mode'.  It doesn't discard the old branch (as standard undo/redo
+does), nor does it treat undos as new changes to be added to the end of a
+linear string of buffer states (as Emacs' undo does). It just keeps track
+of the tree of branching changes that make up the entire undo history.
+
+If you undo from this point, you'll rewind back up the tree to the previous
+state:
+
+                               o
+                               |
+                               |
+                               x  (undo)
+                               |\
+                               | \
+                               o  o
+                               |
+                               |
+                               o
+
+If you were to undo again, you'd rewind back to the initial state. If on
+the other hand you redo the change, you'll end up back at the bottom of the
+most recent branch:
+
+                               o  (undo takes you here)
+                               |
+                               |
+                               o  (start here)
+                               |\
+                               | \
+                               o  x  (redo takes you here)
+                               |
+                               |
+                               o
+
+So far, this is just like the standard undo/redo system. But what if you
+want to return to a buffer state located on a previous branch of the
+history? Since `undo-tree-mode' keeps the entire history, you simply need
+to tell it to switch to a different branch, and then redo the changes you
+want:
+
+                               o
+                               |
+                               |
+                               o  (start here, but switch
+                               |\  to the other branch)
+                               | \
+                       (redo)  o  o
+                               |
+                               |
+                       (redo)  x
+
+Now you're on the other branch, if you undo and redo changes you'll stay on
+that branch, moving up and down through the buffer states located on that
+branch. Until you decide to switch branches again, of course.
+
+Real undo trees might have multiple branches and sub-branches:
+
+                               o
+                           ____|______
+                          /           \
+                         o             o
+                     ____|__         __|
+                    /    |  \       /   \
+                   o     o   o     o     x
+                   |               |
+                  / \             / \
+                 o   o           o   o
+
+Trying to imagine what Emacs' undo would do as you move about such a tree
+will likely frazzle your brain circuits! But in `undo-tree-mode', you're
+just moving around this undo history tree. Most of the time, you'll
+probably only need to stay on the most recent branch, in which case it
+behaves like standard undo/redo, and is just as simple to understand. But
+if you ever need to recover a buffer state on a different branch, the
+possibility of switching between branches and accessing the full undo
+history is still there.
+
+
+
+The Undo-Tree Visualizer
+========================
+
+Actually, it gets better. You don't have to imagine all these tree
+diagrams, because `undo-tree-mode' includes an undo-tree visualizer which
+draws them for you! In fact, it draws even better diagrams: it highlights
+the node representing the current buffer state, it highlights the current
+branch, and you can toggle the display of time-stamps (by hitting "t") and
+a diff of the undo changes (by hitting "d"). (There's one other tiny
+difference: the visualizer puts the most recent branch on the left rather
+than the right.)
+
+Bring up the undo tree visualizer whenever you want by hitting "C-x u".
+
+In the visualizer, the usual keys for moving up and down a buffer instead
+move up and down the undo history tree (e.g. the up and down arrow keys, or
+"C-n" and "C-p"). The state of the "parent" buffer (the buffer whose undo
+history you are visualizing) is updated as you move around the undo tree in
+the visualizer. If you reach a branch point in the visualizer, the usual
+keys for moving forward and backward in a buffer instead switch branch
+(e.g. the left and right arrow keys, or "C-f" and "C-b").
+
+Clicking with the mouse on any node in the visualizer will take you
+directly to that node, resetting the state of the parent buffer to the
+state represented by that node.
+
+You can also select nodes directly using the keyboard, by hitting "s" to
+toggle selection mode. The usual motion keys now allow you to move around
+the tree without changing the parent buffer. Hitting <enter> will reset the
+state of the parent buffer to the state represented by the currently
+selected node.
+
+It can be useful to see how long ago the parent buffer was in the state
+represented by a particular node in the visualizer. Hitting "t" in the
+visualizer toggles the display of time-stamps for all the nodes. (Note
+that, because of the way `undo-tree-mode' works, these time-stamps may be
+somewhat later than the true times, especially if it's been a long time
+since you last undid any changes.)
+
+To get some idea of what changes are represented by a given node in the
+tree, it can be useful to see a diff of the changes. Hit "d" in the
+visualizer to toggle a diff display. This normally displays a diff between
+the current state and the previous one, i.e. it shows you the changes that
+will be applied if you undo (move up the tree). However, the diff display
+really comes into its own in the visualizer's selection mode (see above),
+where it instead shows a diff between the current state and the currently
+selected state, i.e. it shows you the changes that will be applied if you
+reset to the selected state.
+
+(Note that the diff is generated by the Emacs `diff' command, and is
+displayed using `diff-mode'. See the corresponding customization groups if
+you want to customize the diff display.)
+
+Finally, hitting "q" will quit the visualizer, leaving the parent buffer in
+whatever state you ended at. Hitting "C-q" will abort the visualizer,
+returning the parent buffer to whatever state it was originally in when the
+visualizer was .
+
+
+
+Undo-in-Region
+==============
+
+Emacs allows a very useful and powerful method of undoing only selected
+changes: when a region is active, only changes that affect the text within
+that region will be undone. With the standard Emacs undo system, changes
+produced by undoing-in-region naturally get added onto the end of the
+linear undo history:
+
+                      o
+                      |
+                      |  x  (second undo-in-region)
+                      o  |
+                      |  |
+                      |  o  (first undo-in-region)
+                      o  |
+                      | /
+                      |/
+                      o
+
+You can of course redo these undos-in-region as usual, by undoing the
+undos:
+
+                      o
+                      |
+                      |  o_
+                      o  | \
+                      |  |  |
+                      |  o  o  (undo the undo-in-region)
+                      o  |  |
+                      | /   |
+                      |/    |
+                      o     x  (undo the undo-in-region)
+
+
+In `undo-tree-mode', undo-in-region works similarly: when there's an active
+region, undoing only undoes changes that affect that region. However, the
+way these undos-in-region are recorded in the undo history is quite
+different. In `undo-tree-mode', undo-in-region creates a new branch in the
+undo history. The new branch consists of an undo step that undoes some of
+the changes that affect the current region, and another step that undoes
+the remaining changes needed to rejoin the previous undo history.
+
+     Previous undo history                Undo-in-region
+
+              o                                o
+              |                                |
+              |                                |
+              o                                o
+              |                                |\
+              |                                | \
+              o                                o  x  (undo-in-region)
+              |                                |  |
+              |                                |  |
+              x                                o  o
+
+As long as you don't change the active region after undoing-in-region,
+continuing to undo-in-region extends the new branch, pulling more changes
+that affect the current region into an undo step immediately above your
+current location in the undo tree, and pushing the point at which the new
+branch is attached further up the tree:
+
+     First undo-in-region                 Second undo-in-region
+
+              o                                o
+              |                                |\
+              |                                | \
+              o                                o  x  (undo-in-region)
+              |\                               |  |
+              | \                              |  |
+              o  x                             o  o
+              |  |                             |  |
+              |  |                             |  |
+              o  o                             o  o
+
+Redoing takes you back down the undo tree, as usual (as long as you haven't
+changed the active region after undoing-in-region, it doesn't matter if it
+is still active):
+
+                      o
+			 |\
+			 | \
+			 o  o
+			 |  |
+			 |  |
+			 o  o  (redo)
+			 |  |
+			 |  |
+			 o  x  (redo)
+
+
+What about redo-in-region? Obviously, this only makes sense if you have
+already undone some changes, so that there are some changes to redo!
+Redoing-in-region splits off a new branch of the undo history below your
+current location in the undo tree. This time, the new branch consists of a
+redo step that redoes some of the redo changes that affect the current
+region, followed by all the remaining redo changes.
+
+     Previous undo history                Redo-in-region
+
+              o                                o
+              |                                |
+              |                                |
+              x                                o
+              |                                |\
+              |                                | \
+              o                                o  x  (redo-in-region)
+              |                                |  |
+              |                                |  |
+              o                                o  o
+
+As long as you don't change the active region after redoing-in-region,
+continuing to redo-in-region extends the new branch, pulling more redo
+changes into a redo step immediately below your current location in the
+undo tree.
+
+     First redo-in-region                 Second redo-in-region
+
+         o                                     o
+         |                                     |
+         |                                     |
+         o                                     o
+         |\                                    |\
+         | \                                   | \
+         o  x  (redo-in-region)                o  o
+         |  |                                  |  |
+         |  |                                  |  |
+         o  o                                  o  x  (redo-in-region)
+                                                  |
+                                                  |
+                                                  o
+
+Note that undo-in-region and redo-in-region only ever add new changes to
+the undo tree, they *never* modify existing undo history. So you can always
+return to previous buffer states by switching to a previous branch of the
+tree.
+** pdf-tools
+
+  - install pdf-tools package
+  - brew install ghostscript
+  - brew install poppler
+  https://emacs.stackexchange.com/questions/13314/install-pdf-tools-on-emacs-macosx
+
+;;; Install epdfinfo via 'brew install pdf-tools' and then install the
+;;; pdf-tools elisp via the use-package below. To upgrade the epdfinfo
+;;; server, just do 'brew upgrade pdf-tools' prior to upgrading to newest
+;;; pdf-tools package using Emacs package system. If things get messed
+;;; up, just do 'brew uninstall pdf-tools', wipe out the elpa
+;;; pdf-tools package and reinstall both as at the start.
+(use-package pdf-tools
+  :ensure t
+  :config
+  (custom-set-variables
+    '(pdf-tools-handle-upgrades nil)) ; Use brew upgrade pdf-tools instead.
+  (setq pdf-info-epdfinfo-program "/usr/local/bin/epdfinfo")
+)
+(pdf-tools-install)
+
+* git tricks
+
+** every file a user has touched in a directory
+
+given directory =  src
+
+git log --stat --committer=asciiascetic@gmail.com |  awk '/^ src/ {print $1}' | uniq
+
+* Emacs
+** Registers
+
+Emacs registers are compartmets for saving all kinds of things:
+text, rectangles, positions, numbers, window configurations, etc.
+
+I believe registers are cleared at the end of an emacs session, so
+/bookmarks/ are used for persistent storage
+
+[[https://www.gnu.org/software/emacs/manual/html_node/emacs/Registers.html][GNU Emacs Manual: Registers]]
+** PlantUML
+
+  #+BEGIN_SRC plantuml :file tryout.png
+  Alice -> Bob: synchonous call
+  Alice ->> Bob: asynchronous call
+  Grant -> Ande: foo 
+  #+END_SRC
+
+  #+RESULTS:
+  [[file:tryout.png]]
+
+** Org Mode
+*** TODO Use Ruby to put payload into a table
+
+**** Fun with Org Tables and Source Blocks
+
+I believe if you execute code that returns a list in an org buffer
+it will produce a table row.  Let's see (press C-c C-c with the 
+cursor in the source block to execute):
+
+#+BEGIN_SRC emacs-lisp :results value
+'(Name Age Profession)
+#+END_SRC
+
+#+RESULTS:
+| Name | Age | Profession |
+
+By the way, when we evaluate that Lisp code, we read the quote
+and say "the following is a chunk of data".  so we dont evaluate
+the following code, but the quote is removed and we return the
+expression (which is everything in between the parens).  The final
+part of REP Loop is Print, so that value is printed.  In this case
+we're actually doing a shorthand for =(list 'Name 'Age 'Profession)=,
+a list of symbols which is another use of the quote syntax.
+You could also do =(quote (Name Age Profession))=
+
+**** a table is just a list of lists. 
+
+Lisp is all about lists, so its easy to make a list of lists 
+Remember, C-c C-c with the cursor in the source block below
+
+#+BEGIN_SRC emacs-lisp :results value
+'((Name Age Profession) (grant 34 code_adept))
+#+END_SRC
+
+**** what about Ruby?
+
+Again, do the C-c C-c thing:
+
+#+BEGIN_SRC ruby
+[["Name", "Age", "Profession"], ["Bryan", "should I ask?", "pro coder"]]
+#+END_SRC
+
+**** You Can Also Pass a Table as an Argument to a Source Block
+
+Add your name to the table.  Position the cursor in the final row's
+"Profession" column, and hit TAB.  Enter strings for the Ruby block
+following.  TAB goes to the next column, SHIFT-TAB goes back.
+
+#+name: people
+| "Name"    | "Age" | "Profession"     |
+| "Grant"   | "34"  | "code adept"     |
+| "Frances" | "1/2" | "world absorber" |
+
+
+Now, position the cursor in the following block and press C-c C-c
+It will pass the table named =people= as an argument to the ruby
+source block named =reverser= which is designed to return a list
+of lists, i.e 2d matrix, or... an org table.
+
+#+name: reverser
+#+BEGIN_SRC ruby :var people=people
+  table = []
+
+  people.each do |person| 
+    row = []
+
+    if person == people.first
+      row = person
+    else
+      row = person.map { |str| str.reverse }
+    end
+
+    table << row
+  end
+
+  return table
+#+END_SRC
+
+#+RESULTS: reverser
+| Name    | Age | Profession     |
+| tnarG   | 43  | tpeda edoc     |
+| secnarF | 2/1 | rebrosba dlrow |
+
+If you position the cursor in that table and do M-x org-table-export
+you can export it to a CSV file. 
+
+#+BEGIN_SRC ruby :results value
+  require 'csv'
+
+  CSV.read("path/to/file.csv")
+#+END_SRC
+
+#+RESULTS:
+| Name    | Age | Profession     |
+| tnarG   | 43  | tpeda edoc     |
+| secnarF | 2/1 | rebrosba dlrow |
+** Copy Lines Matching Regex
+
+(defun copy-lines-matching-re (re)
+  "find all lines matching the regexp RE in the current buffer
+putting the matching lines in a buffer named *matching*"
+  (interactive "sRegexp to match: ")
+  (let ((result-buffer (get-buffer-create "*matching*")))
+    (with-current-buffer result-buffer 
+      (erase-buffer))
+    (save-match-data 
+      (save-excursion
+        (goto-char (point-min))
+        (while (re-search-forward re nil t)
+          (princ (buffer-substring-no-properties (line-beginning-position) 
+                                                 (line-beginning-position 2))
+                 result-buffer))))
+    (pop-to-buffer result-buffer)))
+
+[[file:~/org/fdo.org::(defun%20copy-lines-matching-re%20(re)%0A%20"find%20all%20lines%20matching%20the%20regexp%20RE%20in%20the%20current%20buffer%0Aputting%20the%20matching%20lines%20in%20a%20buffer%20named%20*matching*"%0A%20(interactive%20"sRegexp%20to%20match:%20")%0A%20(let%20((result-buffer%20(get-buffer-create%20"*matching*")))%0A%20(with-current-buffer%20result-buffer%20%0A%20(erase-buffer))%0A%20(save-match-data%20%0A%20(save-excursion%0A%20(goto-char%20(point-min))%0A%20(while%20(re-search-forward%20re%20nil%20t)%0A%20(princ%20(buffer-substring-no-properties%20(line-beginning-position)%20%0A%20(line-beginning-position%202))%0A%20result-buffer))))%0A%20(pop-to-buffer%20result-buffer)))][Payloads and debug info]]
+** Awesome Regex Capture Using Occur 
+
+from [[http://stackoverflow.com/questions/2289883/emacs-copy-matching-lines][stack overflow]]: 
+
+C-u M-s o pattern will grab each chunk of a buffer that matches the pattern
+
+[[file:~/org/fdo.org::*Payloads%20and%20debug%20info][Payloads and debug info]]
+** Org swap paragraphs  
+
+In Org mode when i pressed M-up it swapped the paragraph that the cursor was on
+with the one above it. It won't drag beyond heading boundaries, but i can freely
+move paragraph like chunks around easily
+** OSX eshell PATH env package 
+
+[[help:exec-path-from-shell]]
+** watch-buffer package 
+
+run rspec, make, copy, whatev.  could be nice if when tangling files i 
+want them all copied into a working place or something
+[[help:watch-buffer]]
+** open-junk-file - alternate scratch buffer 
+
+[[help:open-junk-file]]
+** Org file system tree package 
+
+looks like this does something i've been wanting for a while.
+[[help:org-fstree]]
+Install and check it out !!
+** Perspective - xmonad like frame management			       :ande:
+Ande might appreciate this one
+
+[[help:perspective]]
+** perspeen - combo of perspective and elscreen 
+
+
+[[help:perspeen]]
+** REST client 
+
+maybe this can be used instead of postman?
+[[help:restclient]]
+** rspec mode 
+
+some stuff in a readme that might be useful
+[[help:rspec-mode]]
+** Dired Hints 
+
+Xah Lee's tips for better dired use.  Specifically I would like to enable hide-details,
+make dired use same buffer, and the dired jump features.
+[[http://ergoemacs.org/emacs/emacs_dired_tips.html][Emacs: Dired Customization]]
+** Eshell
+
+[[https://github.com/howardabrams/dot-files/blob/master/emacs-eshell.org][nice documentation of some eshell stuff]]
+
+* Churls
+** Boyfriend
+
+
+ 1   2   3   4
+Oh whoa whoa little F 
+baby............ 
+                  Bb 1 2
+..treating me so mean 
+G
+...............making me feel so lonely 
+even when you're with me 
+and when my friends ask me 
+why do you look so sad 
+I have to tell them 
+because my boyfriend is always smoking 
+cuz my boyfriend is always smoking weed
+
+Oh whoa whoa Little Darlin 
+you know I understand 
+trying not to feel so lonely 
+but you could hold my hand
+and when my friends ask me 
+why do you look so sad
+I have to tell them 
+because my boyfriend is always smoking
+ cuz my boyfriend is always smoking weed
+
+** On The Beach
+On The Beach
+
+Are you going to the beach
+You can buy suntan lotion, you can buy some treats
+You can buy bermuda shorts, put them on my feet for you
+
+Swimming, surfing, playing frisbee
+We can build sand castles to the sound of the sea
+You can make your mind up to go with me to the beach
+
+M: And when we get there I’ll take you by the hand
+W: It’s a churlish moment on the sand
+M: The waves are crashing up against your legs
+W: The summer sun can give a golden tan
+
+We’ll stay there till the sun goes down
+Then we’ll hop in El Coache and we’ll drive into town
+All the people we pass wear a funny frown, yes they do.
+
+Parked outside of your 10th street flat
+I take a look in your eyes, I see you’re looking back
+And I really wanna kiss you baby if you weren’t so blue
+
+Churlin around and around this town, people really get you down
+Churlin around and around this town, people really get you down
+
+W: Shoobop Shoobop
+M: There was a lover who once hurt you bad
+W: (echo) There was a lover who once hurt you bad
+M: Stole away all the joy you ever had
+W: (echo) Stole away the joy you ever had
+M: I long to tell you, you are the only one
+W: (echo) I long to tell you you’re the only one
+
+So let’s go back to the beach, and we’ll have some fun
+
+Instruments cut out
+
+Are you going to the beach?
+All the people you love will be there to see
+I can bring a guitar and sing real sweetly to you (guitar comes back in)
+
+“Oh my baby!”
+Sit by the fire as the moon goes past
+We can stay up late docking till there’s dents in our ass
+Finally get up the nerve to kiss you at last
+
+On the beach
+On the beach
+On the beach
+On the beach.
+
+** Pacific Unknown
+D
+holes in my toes, and holes in my heels
+G
+holes in my heart, and holes in the boxcar 
+D                               G           D
+ceiling…….
+
+
+stars are bright an’ my mind’s alight
+holdin’ back my tears with the thoughts of 
+leaving….                          ‘cause I’m
+
+A                        G
+ fliyin’ out on the high line, 
+            D                              G
+where silver falls between evergreens
+A                               G
+Givin’ up my home for pacific unknown(org: rollin’ like a stone into)
+ E                               G
+way out beyond Grand Couleeeeeeeeee
+
+            Bm?      A
+    Whooo-ooo a train whistle is all                  Almost had a progression and melody here/\
+    it takes to remind me who i am             
+    i remember my friends like an old
+    favorite coat that needs a mend.
+
+    an as I look out onto the trees below
+            I see my face in the falling snow.
+
+
+I’ve got two cans of beans, one of sardines,
+and one paperback written by Dostoevsky.
+Suns comin’ up the ocean’s in view
+Time to snuggle up with the great ol’ greysea.
+
+buddies are far between, and smiles yet farther (example of text being worked on) colors
+____________________________________
+
+‘cause i’m flyin’ out on the high line,
+where silver falls between evergreens
+rollin’ like a stone into pacific unknown
+way out beyond Grand Couleeeeeeeeee.
+
+** People I Love
+People I Love
+
+I know you couldn’t understand
+Why I watched your shows and gave up mine
+But really you actually loved that I did that
+But I hated your shows so why did I do that?
+
+I overdid it so you didn’t have to, I guess?
+
+I do nice things for the people I love
+I do nice things for the people I love
+
+I said you were a handsome man 
+“I know you think that,” is what you said.
+But all of my other friends just say thank you
+and sometimes they tell me that I’m lookin nice too.
+
+I guess I thought you loved me because of all those times that you said you loved me
+
+I say nice things to the people I love
+I say nice things to the people I love
+
+You couldn’t even live up to 
+the time I wolfed my teamster sub for you
+it takes a devotion to do something like that
+the kind of devotion that you never had
+
+You think I’m weird? WELL…..I THINK YOU’RE WEIRD.
+
+I do weird things for the people I love
+I do weird things TO the people I love
+
+You’re always thinking of yourself 
+I could really give and you could take
+You’re all that you see, you think that’s true for me
+You probably think that this song is about you
+
+Spoken: “WELL IT IS!”
+
+I’ll just be happy with the 7 other people I’m devoting my life to
+
+I give myself to the people I love
+I give myself to the people I looooooooOOOOOOVE
+
+
+** Pizza Store
+
+Pizza store
+He was working at the pizza store jeans were so tight just want to fun him all night 
+are those jeggings or a dream 
+so insanely beautiful banana between two columns from Greece
+ I undressed him with my eyes 
+said hey boy now don't be shy 
+Then I asked him how much would you charge for extra sausage 
+excuse me ma'am the pizzas Burnin big boss man said you'll never be returning 
+what?
+guys do it too 
+guys do it too 
+guys do it too and they so dumb
+
+I was scoping out the laundromat when I saw him stripped down to tighties so white
+ it's like he stepped out of the screen of the movie of my fantasy
+ laundry day boy three 
+squeezed his tushy and said hi 
+said hey boy you can't deny 
+I know you want me 
+he threw a fit said you better quit it 
+I still testify he was asking for it 
+guys do it too 
+guys do it too 
+guys do it too and they so dumb
+
+Went downtown to see the corner of feminist 
+what's wrong with these guys 
+why don't they want me 
+I'm a nice girl with lots of hobbies 
+she said slow down grabby Gabby's doing it wrong 
+you can't run around trying to ring all their Ding-A-Ling dongs 
+then I asked her 
+but what do I do about total hotties 
+she turned away shaking her head I don't get it was It Something I Said
+Boys- yes it was
+
+ guys do it too guys do it too guys do it to ya and they so dumb dumb dumb they so dumb dumb dumb
+
+** That Horse
+
+That Horse
+
+Out on the Range
+Good Ole’ Jerry by my side
+The Sunset in our eyes
+He told me he loved me, I was about to reciprocate
+When I heard the most beautiful Whinny
+
+Jerry said “Hey man, What’s up? You thinkin about them whores again?”
+I said “Jerry! You can leave them whores behind, it’s that horse that’s on my mind.
+That horse, I would have married that horse.”
+
+When I was a boy just yay high to the sage brush
+I saw her in the prairie 
+her coat was white as snow
+her main was full of fire
+and I knew I would love her forever
+
+Back at school teacher caught me dreamin 
+and she made me speak my shame
+“Teacher there are housewives, why can’t I be a horsewife? If that’s wrong I don’t want to be right.”
+
+Teacher said, “Hey boy! Listen up! The devil himself’s gonna snatch you up.” 
+I said, “Teacher! You can leave your morals unsaid, it’s that horse I’m gonna wed.
+That horse, I’m gonna marry that horse.”
+
+From that day forth I’d go to see that horse 
+And I’d tell her my hopes and my dreams
+She never said a word, but I could tell she’d heard
+Cause she’d make the most beautiful whinny
+
+Word back in town
+Was they were gonna put her down
+So I took that horse and ran
+
+I said “Hey Girl! Giddyup! If you give into fear it’ll eat you up. Ride on!”
+She shook her pretty head, I never took her to my bed
+And I’ll never see that horse again.
+
+No one could be blamed
+That horse should not be tamed
+That horse
+I’m still in love with that horse
+
+That horse
+I would have married that horse.
+
+** Oh Honey
+
+That Horse
+
+Out on the Range
+Good Ole’ Jerry by my side
+The Sunset in our eyes
+He told me he loved me, I was about to reciprocate
+When I heard the most beautiful Whinny
+
+Jerry said “Hey man, What’s up? You thinkin about them whores again?”
+I said “Jerry! You can leave them whores behind, it’s that horse that’s on my mind.
+That horse, I would have married that horse.”
+
+When I was a boy just yay high to the sage brush
+I saw her in the prairie 
+her coat was white as snow
+her main was full of fire
+and I knew I would love her forever
+
+Back at school teacher caught me dreamin 
+and she made me speak my shame
+“Teacher there are housewives, why can’t I be a horsewife? If that’s wrong I don’t want to be right.”
+
+Teacher said, “Hey boy! Listen up! The devil himself’s gonna snatch you up.” 
+I said, “Teacher! You can leave your morals unsaid, it’s that horse I’m gonna wed.
+That horse, I’m gonna marry that horse.”
+
+From that day forth I’d go to see that horse 
+And I’d tell her my hopes and my dreams
+She never said a word, but I could tell she’d heard
+Cause she’d make the most beautiful whinny
+
+Word back in town
+Was they were gonna put her down
+So I took that horse and ran
+
+I said “Hey Girl! Giddyup! If you give into fear it’ll eat you up. Ride on!”
+She shook her pretty head, I never took her to my bed
+And I’ll never see that horse again.
+
+No one could be blamed
+That horse should not be tamed
+That horse
+I’m still in love with that horse
+
+That horse
+I would have married that horse.
+
+
+
+* Notes
+** Alda - music programming language
+
+[[http://blog.djy.io/alda-a-manifesto-and-gentle-introduction/][dave yarwood · Alda: A Manifesto and Gentle Introduction]]
+
+seems like a promising new project that might be fun to learn.  inspired by
+things like LilyPond which I always wanted to learn, and a language for writing
+NES style chiptunes.  Perhaps a good option for me to produce both electronic and
+traditional music with notation.
+
+** learning to use xah-fly-keys
+is not easy, but also not too hard.  so far, my main issue is forgetting i'm 
+in command mode.  trying to press C-x a ends up selecting a big region to the top,
+so i'll just need to be careful about the keys i press.  also, the backspace key
+on the mac is labeled delete, and i think sends delete.  this is a little 'dangerous'
+because hitting delete in command mode sends the kill buffer command 
+
+*** Stuff to integrate with xfk
+  - hook so w3m keymap overrides xah
+  - figure out how to map home to caps on mac?
+  - org mode stuff?
+
+
+* Scratch
+(progn (setq xah-fly-use-control-key nil)
+       (require 'xah-fly-keys)
+       (xah-fly-keys-set-layout "qwerty")
+       (xah-fly-keys 1))
+       
+(fset 'five-prev "\C-u5\C-p")
+(fset 'five-next "\C-u5\C-n")
+(global-set-key (kbd "<up>") 'five-prev)
+
+(global-set-key (kbd "<down>") 'five-next)
+

@@ -1,0 +1,100 @@
+* Programming
+
+** ruby default hash value 					       :ruby:
+
+The first nice thing that jumped out to me about Ruby hashes while doing the
+koans.
+
+notnil = Hash.new("there's nothing here")
+
+notnil[:first] = "something is here"
+
+notnil[:first] #=> "something is here"
+notnil[:second] #=> "there's nothing here"
+
+I can imagine many places where this type of thing could be useful.  It almost
+gives us a sort of Optional data type?
+
+[[file:~/Desktop/koans/about_hashes.rb::def%20test_default_value][file:~/Desktop/koans/about_hashes.rb::def test_default_value]]
+** more ruby default hash behavior 				       :ruby:
+
+strange little trick using an empty array as a default hash value
+#+BEGIN_SRC ruby
+    hash = Hash.new([])
+
+    hash[:one] << "uno"
+    hash[:two] << "dos"
+
+    assert_equal ["uno", "dos"], hash[:one]
+    assert_equal ["uno", "dos"], hash[:two]
+    assert_equal ["uno", "dos"], hash[:three]
+#+END_SRC
+
+you could accumulate stuff trying to get added to a hash and do something with it?
+
+[[file:~/Desktop/koans/about_hashes.rb::hash%20%3D%20Hash.new(%5B%5D)][file:~/Desktop/koans/about_hashes.rb::hash = Hash.new([])]]
+** ruby hashes can take a block for default values too		       :ruby:
+
+#+BEGIN_SRC ruby
+  hash = Hash.new {|hash, key| hash[key] = [] }
+
+  hash[:one] << "uno"
+  hash[:two] << "dos"
+
+  assert_equal ["uno"], hash[:one]
+  assert_equal ["dos"], hash[:two]
+  assert_equal [], hash[:three]
+#+END_SRC
+[[file:~/Desktop/koans/about_hashes.rb::hash%20%3D%20Hash.new%20{|hash,%20key|%20hash%5Bkey%5D%20%3D%20%5B%5D%20}][file:~/Desktop/koans/about_hashes.rb::hash = Hash.new {|hash, key| hash[key] = [] }]]
+** building up strings with += or <<				       :ruby:
+
+A string can get built up using the += operator which doesn't modify the original
+string, or the << (shovel) operator which does.  If all you need is a single shot
+string build, << is preferred as it won't make a new string object each time.
+However, there may be cases where += is preferred, like if the original string
+needed to be prepended in a bunch of different ways
+
+[[file:~/Desktop/koans/about_strings.rb::#%20Ruby%20programmers%20tend%20to%20favor%20the%20shovel%20operator%20(<<)%20over%20the][file:~/Desktop/koans/about_strings.rb::# Ruby programmers tend to favor the shovel operator (<<) over the]]
+** using Prepend when including a module 			       :ruby:
+I found this snippet of code which made for some interesting thoughts:
+
+#+BEGIN_SRC ruby
+module ServiceDebugger
+  def run(args)
+    puts "Service run start: #{args.inspect}"
+    result = super
+    puts "Service run finished: #{result}"
+  end
+end
+
+class Service
+  prepend ServiceDebugger
+
+  # perform some real work
+  def run(args)
+    args.each do |arg|
+      sleep 1
+    end
+    {result: "ok"}
+  end
+end
+#+END_SRC
+
+=prepend= inserts the =ServiceDebugger= module at the very bottom of the ancestor chain in Ruby.
+
+ServiceDebugger#run() -> Service#run() -> Object
+
+So here with =prepend= we can get the debugger action going on since the =#run= method is being
+called on the ServiceDebugger module first.  I could see this pattern being used conditionally,
+like
+
+#+BEGIN_SRC ruby
+  class MyClass
+    if Config.debug_on
+      prepend MyClassDebugger
+    end
+  end
+#+END_SRC
+
+then we can turn debug info on and off, by writing wrappers in the prepended module and then 
+calling =super=

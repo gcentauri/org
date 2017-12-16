@@ -1,0 +1,2 @@
+* Org
+A collection of Emacs .org files including source for my .emacs configuraton.
