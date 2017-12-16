@@ -287,6 +287,9 @@ I have created a keyboard input for the Lakota Language Consortium's
 Standard Lakota Orthography (SLO) using the quail package.  
 This uses the emacs input mode system [[/usr/share/emacs/24.4/lisp/leim]]
 
+Honestly, i don't remember what documentation I read when I created this,
+but here's a link to a good article about it: [[https://www.bysatish.in/1/][Custom input method for Emacs]]
+
 #+name: lakota-input
 #+BEGIN_SRC emacs-lisp
 ;; Lakota keyboard input, invoke with C-\
@@ -1229,7 +1232,13 @@ given directory =  src
 git log --stat --committer=asciiascetic@gmail.com |  awk '/^ src/ {print $1}' | uniq
 
 * Emacs
-** Registers
+** list current theme
+To know which theme is active ATM one could look in =custom-enabled-themes=,
+which is a list containing the theme name as a symbol.
+
+i.e - evaluate the following line (C-x C-e, or SPC-,-m in fly-keys)
+custom-enabled-themes
+** Registers 
 
 Emacs registers are compartmets for saving all kinds of things:
 text, rectangles, positions, numbers, window configurations, etc.

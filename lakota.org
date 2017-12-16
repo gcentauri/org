@@ -1,0 +1,40 @@
+** Lakota Input
+
+Haú, mitákuyepi.  Grant Shoshín Shangreaux emáčiyapi.  Blóketu k'uŋ héhaŋ,
+Lakota Summer Institute ektá waí.
+
+Pispíza waŋ wayáwa iyáye. Wamákȟaška waŋzí waŋbláke.
+
+I have created a keyboard input for the Lakota Language Consortium's
+Standard Lakota Orthography (SLO) using the quail package.
+This uses the emacs input mode system [[/usr/share/emacs/24.4/lisp/leim]]
+
+Honestly, i don't remember what documentation I read when I created this,
+but here's a link to a good article about it: [[https://www.bysatish.in/1/][Custom input method for Emacs]]
+
+#+name: lakota-input
+#+BEGIN_SRC emacs-lisp
+;; Lakota keyboard input, invoke with C-\
+
+(quail-define-package
+ "lakota-slo" "Standard Lakota Orthography" "Lak " t
+ "Grant's simple rules to type SLO Lakota"
+ nil t nil nil nil nil nil nil nil nil t)
+
+(quail-define-rules
+ ;; accented vowels
+ ("a'" ?á) ("A'" ?Á)
+ ("e'" ?é) ("E'" ?É)
+ ("i'" ?í) ("I'" ?Í)
+ ("o'" ?ó) ("O'" ?Ó)
+ ("u'" ?ú) ("U'" ?Ú)
+ ;; consonants with hacek (wedges)
+ ("c" ?č) ("C" ?Č)
+ ("j" ?ȟ) ("J" ?Ȟ)
+ ("q" ?ǧ) ("Q" ?Ǧ)
+ ("x" ?ž) ("X" ?Ž)
+ ("r" ?š) ("R" ?Š)
+ ;; nasal vowel n i.e. velar nasal
+ ("f" ?ŋ)
+ )
+#+END_SRC
