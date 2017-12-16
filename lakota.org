@@ -1,40 +1,48 @@
-** Lakota Input
-
 Haú, mitákuyepi.  Grant Shoshín Shangreaux emáčiyapi.  Blóketu k'uŋ héhaŋ,
 Lakota Summer Institute ektá waí.
 
 Pispíza waŋ wayáwa iyáye. Wamákȟaška waŋzí waŋbláke.
 
+* Lakota Input Mode for Emacs
+
 I have created a keyboard input for the Lakota Language Consortium's
 Standard Lakota Orthography (SLO) using the quail package.
 This uses the emacs input mode system [[/usr/share/emacs/24.4/lisp/leim]]
 
-Honestly, i don't remember what documentation I read when I created this,
-but here's a link to a good article about it: [[https://www.bysatish.in/1/][Custom input method for Emacs]]
+To make a custom input method with quail, there are two functions provided
+to do that: =quail-define-package= and =quail-define-rules=.
+Here's a link to an article describing how to use these functions to define
+a postfix input for Indic languages: [[https://www.bysatish.in/1/][Custom input method for Emacs]]
 
 #+name: lakota-input
-#+BEGIN_SRC emacs-lisp
-;; Lakota keyboard input, invoke with C-\
+#+BEGIN_SRC emacs-lisp :tangle elisp/lakota-input.el
+  ;; Lakota keyboard input, invoke with C-\
 
-(quail-define-package
- "lakota-slo" "Standard Lakota Orthography" "Lak " t
- "Grant's simple rules to type SLO Lakota"
- nil t nil nil nil nil nil nil nil nil t)
+  (quail-define-package
+   "lakota-slo" "Lakota" "Lak " t
+   "Input method for the Standard Lakota Orthography with postfix modifier
+    key for adding accent diacritics.  To add stress to a vowel, simply type
+    the single quote ' after the vowel.  All other characters are bound to 
+    a single key.  Mitákuyepi philámayaye ló.
+   "
+    nil t nil nil nil nil nil nil nil nil t)
 
-(quail-define-rules
- ;; accented vowels
- ("a'" ?á) ("A'" ?Á)
- ("e'" ?é) ("E'" ?É)
- ("i'" ?í) ("I'" ?Í)
- ("o'" ?ó) ("O'" ?Ó)
- ("u'" ?ú) ("U'" ?Ú)
- ;; consonants with hacek (wedges)
- ("c" ?č) ("C" ?Č)
- ("j" ?ȟ) ("J" ?Ȟ)
- ("q" ?ǧ) ("Q" ?Ǧ)
- ("x" ?ž) ("X" ?Ž)
- ("r" ?š) ("R" ?Š)
- ;; nasal vowel n i.e. velar nasal
- ("f" ?ŋ)
- )
+  (quail-define-rules
+   ;; accented vowels
+   ("a'" ?á) ("A'" ?Á)
+   ("e'" ?é) ("E'" ?É)
+   ("i'" ?í) ("I'" ?Í)
+   ("o'" ?ó) ("O'" ?Ó)
+   ("u'" ?ú) ("U'" ?Ú)
+   ;; consonants with hacek (wedges)
+   ("c" ?č) ("C" ?Č)
+   ("j" ?ȟ) ("J" ?Ȟ)
+   ("q" ?ǧ) ("Q" ?Ǧ)
+   ("x" ?ž) ("X" ?Ž)
+   ("r" ?š) ("R" ?Š)
+   ;; nasal vowel n i.e. velar nasal
+   ("f" ?ŋ)
+   )
+
+  (provide 'lakota-input)
 #+END_SRC

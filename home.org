@@ -1,8 +1,13 @@
+local navigation
 [[./notes.org]]
 [[./organizer.org]]
+[[./lakota.org]]
 
 * Emacs Config file
+[[~/.emacs]] - the result of the tangle
+
 ** backup of kraid .emacs
+
 #+BEGIN_SRC elisp
 (require 'package) ;; You might already have this line
 (let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
@@ -23,7 +28,6 @@
 (xah-fly-keys 1)
 #+END_SRC
 
-[[~/.emacs]] - the result of the tangle
 
 ** Tangle
 Using org-babel-tangle I can organize various parts of my emacs configuration 
@@ -35,6 +39,9 @@ in this org-mode file
   (setq initial-buffer-choice "~/org/home.org")
   (global-set-key (kbd "C-c h")
                   (lambda () (interactive) (find-file "~/org/home.org")))
+
+  ;; my own custom elisp
+  (add-to-list 'load-path "~/.emacs.d/elisp")
   <<packages>>
   <<custom-set>>
   <<style>>
@@ -277,45 +284,12 @@ now what i really want is to map it to Xah-fly-keys...
   (xah-fly-keys 1)
 #+END_SRC
 ** Lakota Input
-
-Haú, mitákuyepi.  Grant Shoshín Shangreaux emáčiyapi.  Blóketu k'uŋ héhaŋ,
-Lakota Summer Institute ektá waí.
-
-Pispíza waŋ wayáwa iyáye. Wamákȟaška waŋzí waŋbláke.
-
-I have created a keyboard input for the Lakota Language Consortium's
-Standard Lakota Orthography (SLO) using the quail package.  
-This uses the emacs input mode system [[/usr/share/emacs/24.4/lisp/leim]]
-
-Honestly, i don't remember what documentation I read when I created this,
-but here's a link to a good article about it: [[https://www.bysatish.in/1/][Custom input method for Emacs]]
-
+[[file:lakota.org::*Lakota%20Input%20Mode%20for%20Emacs][Lakota Input Mode for Emacs]] <-see this file for the definition
 #+name: lakota-input
 #+BEGIN_SRC emacs-lisp
-;; Lakota keyboard input, invoke with C-\
-
-(quail-define-package
- "lakota-slo" "Standard Lakota Orthography" "Lak " t
- "Grant's simple rules to type SLO Lakota"
- nil t nil nil nil nil nil nil nil nil t)
-
-(quail-define-rules
- ;; accented vowels
- ("a'" ?á) ("A'" ?Á) 
- ("e'" ?é) ("E'" ?É)
- ("i'" ?í) ("I'" ?Í)
- ("o'" ?ó) ("O'" ?Ó)
- ("u'" ?ú) ("U'" ?Ú)
- ;; consonants with hacek (wedges)
- ("c" ?č) ("C" ?Č)
- ("j" ?ȟ) ("J" ?Ȟ)
- ("q" ?ǧ) ("Q" ?Ǧ)
- ("x" ?ž) ("X" ?Ž)
- ("r" ?š) ("R" ?Š)
- ;; nasal vowel n i.e. velar nasal
- ("f" ?ŋ)
- )
+(require 'lakota-input)
 #+END_SRC
+
 ** TODO Company Mode (complete anything)
 
 Learn more
@@ -440,15 +414,12 @@ be available in emacs.
    CLOSED: [2016-10-12 Wed 14:02]
 ** TODO Write article about making a Lakota input mode in emacs
 ** TODO Decide if the learning-to-write project is something with which to go ahead
-   
-** TODO make dotfiles git repo
+** DONE make dotfiles git repo
+   CLOSED: [2017-12-16 Sat 10:35]
    - maybe this home.org file can be in it and kinda generate dotfiles and keep my
      personal notes, etc. 
    - dotfiles can be tangled out and a script to symlink them to proper places
    - home.org + dotfiles should help me get a working portable granty environment 
-
-** DONE update .emacs for 24.4 ie cl-lib
-   CLOSED: [2017-04-24 Mon 09:09]
 
 
 * tlog (grant-log) 
@@ -1772,4 +1743,3 @@ because hitting delete in command mode sends the kill buffer command
 (global-set-key (kbd "<up>") 'five-prev)
 
 (global-set-key (kbd "<down>") 'five-next)
-
