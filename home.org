@@ -216,7 +216,7 @@ i lost my notes in a emacs key combo mistake somehow without noticing
 (global-set-key (kbd "C-c o")
                 (lambda () (interactive) (find-file "~/org/organizer.org")))
 (global-set-key (kbd "C-c c") 'org-capture)
-(setq org-default-notes-file "~/org/organizer.org")
+(setq org-default-notes-file "~/org/notes.org")
 (org-babel-do-load-languages
  'org-babel-load-languages
  '((ruby . t)
