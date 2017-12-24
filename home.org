@@ -7,31 +7,18 @@ local navigation
 
 the result of org-babel-tangle ->[[./.emacs][ .emacs file]]
 
-** backup of kraid .emacs
-
-#+BEGIN_SRC elisp
-(require 'package) ;; You might already have this line
-(let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
-                    (not (gnutls-available-p))))
-       (url (concat (if no-ssl "http" "https") "://melpa.org/packages/")))
-  (add-to-list 'package-archives (cons "melpa" url) t))
-(when (< emacs-major-version 24)
-  ;; For important compatibility libraries like cl-lib
-  (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
-(package-initialize) ;; You might already have this line
-
-(scroll-bar-mode 0)
-(tool-bar-mode 0)
-
-(require 'xah-fly-keys)
-(xah-fly-keys-set-layout "qwerty") ; required if you use qwerty
-(setq xah-fly-use-control-key nil)
-(xah-fly-keys 1)
-#+END_SRC
-
 ** Tangle
 Using org-babel-tangle I can organize various parts of my emacs configuration
-in this org-mode file
+in this org-mode file as feels natural.  Then this chunk of elisp and noweb
+references will form the structure of the actual source file.  The idea is
+that the code can be written in a "literate" style, as a document for humans.
+Then this one part puts it all together for the actual computer source code.
+Anywhere there is a <<name>> reference, there is a matching named source block
+(or multiple blocks with the same name) that will get expanded and placed into
+the source code that can be "tangled" from this org file.
+
+There are more examples of using org mode to do things with source block references
+throughout this file.
 
 #+name: .emacs-tangle
 #+BEGIN_SRC emacs-lisp :tangle .emacs :noweb yes
