@@ -1,0 +1,43 @@
+* tlog (grant-log)
+** Wed Oct 12 13:29:27 CDT 2016 	   :lakota:lisp:emacs:zine:education:
+
+I'd rather be working on Python code right now, but once again I've been called
+into work at Prairie Hill early.
+
+Feeling like if i am going to spend all kinds of time using the computer for
+computer work, I should also leverage its power to work in the 'real world'.
+Already I have used my esoteric knowledge of lisp and emacs (could just say
+emacs i guess... it is lisp after all) to give myself the power to enter Lakȟóta
+text into my documents.  (see todo list)
+
+I am once again feeling like I want to try and make a 'reachout' series of
+documents and articles to try and entice non-tech, non-coder folks into the
+land of emacs, free software, and alternative digital media.  The power offered
+by working with text in a lisp environment is so wonderful.  If (as seems to be
+the case) emacs configuration flavors are being designed to be setup and
+executed more and more easily, I can imagine this lisp environment being
+presented in a more friendly way to 'non-computery' folks.  Perhaps it still
+needs the extra helping hand of a friendly human encouraging them to be brave
+and learn something new and esoteric, BUT there is something strongly resonant
+in me about trying to teach this stuff in the same manner as literacy.  Which
+it truly is about.
+
+Lisp, to me, is the clearest path to computer literacy in terms of getting an
+intuitive understanding of how software environments work.  The fact that emacs
+is a live hunk of code that can be modified, while running, by the emacs
+user is kind of incredible.  If we are spending time teaching kids how to type
+and use computers and shit... why teach them proprietary software like word?
+Why not empower them to see that all of their computing needs can be met with
+a text editor?  To empower them to see text as not just a means of communication
+with other humans, but that the same document can also control things about their
+digital environment itself.
+
+For example, I can just type:
+
+  (set-cursor-color "orange")
+  (set-cursor-color "blue")
+
+And a user can execute it within the living org document I am writing in.  All
+you have to know is the proper key combo, kinda like playing a video game.
+
+But why do i even write this, and who is going to read it....

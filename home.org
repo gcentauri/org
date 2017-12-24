@@ -2,11 +2,10 @@ local navigation
 [[./notes.org]]
 [[./organizer.org]]
 [[./lakota.org]]
+[[./music.org]]
+[[./journal.org]]
 
 * Emacs Config file
-
-the result of org-babel-tangle ->[[./.emacs][ .emacs file]]
-
 ** Tangle
 Using org-babel-tangle I can organize various parts of my emacs configuration
 in this org-mode file as feels natural.  Then this chunk of elisp and noweb
@@ -16,6 +15,8 @@ Then this one part puts it all together for the actual computer source code.
 Anywhere there is a <<name>> reference, there is a matching named source block
 (or multiple blocks with the same name) that will get expanded and placed into
 the source code that can be "tangled" from this org file.
+
+the result of org-babel-tangle ->[[./.emacs][ .emacs file]]
 
 There are more examples of using org mode to do things with source block references
 throughout this file.
@@ -428,66 +429,254 @@ be available in emacs.
 (load custom-file 'noerror)
 #+END_SRC
 
-* TODO My TODO List (even though i dont like them)
-** DONE Make Lakota standard orthography input mode for emacs
-   CLOSED: [2016-10-12 Wed 14:02]
-** TODO Write article about making a Lakota input mode in emacs
-** TODO Decide if the learning-to-write project is something with which to go ahead
-** DONE make dotfiles git repo
-   CLOSED: [2017-12-16 Sat 10:35]
-   - maybe this home.org file can be in it and kinda generate dotfiles and keep my
-     personal notes, etc.
-   - dotfiles can be tangled out and a script to symlink them to proper places
-   - home.org + dotfiles should help me get a working portable granty environment
+* Emacs Notes
+** list current theme
+To know which theme is active ATM one could look in =custom-enabled-themes=,
+which is a list containing the theme name as a symbol.
 
-* tlog (grant-log)
+i.e - evaluate the following line (C-x C-e, or SPC-,-m in fly-keys)
+custom-enabled-themes
+** Registers
 
-** Wed Oct 12 13:29:27 CDT 2016 	   :lakota:lisp:emacs:zine:education:
+Emacs registers are compartmets for saving all kinds of things:
+text, rectangles, positions, numbers, window configurations, etc.
 
-I'd rather be working on Python code right now, but once again I've been called
-into work at Prairie Hill early.
+I believe registers are cleared at the end of an emacs session, so
+/bookmarks/ are used for persistent storage
 
-Feeling like if i am going to spend all kinds of time using the computer for
-computer work, I should also leverage its power to work in the 'real world'.
-Already I have used my esoteric knowledge of lisp and emacs (could just say
-emacs i guess... it is lisp after all) to give myself the power to enter Lakȟóta
-text into my documents.  (see todo list)
+[[https://www.gnu.org/software/emacs/manual/html_node/emacs/Registers.html][GNU Emacs Manual: Registers]]
+** PlantUML
 
-I am once again feeling like I want to try and make a 'reachout' series of
-documents and articles to try and entice non-tech, non-coder folks into the
-land of emacs, free software, and alternative digital media.  The power offered
-by working with text in a lisp environment is so wonderful.  If (as seems to be
-the case) emacs configuration flavors are being designed to be setup and
-executed more and more easily, I can imagine this lisp environment being
-presented in a more friendly way to 'non-computery' folks.  Perhaps it still
-needs the extra helping hand of a friendly human encouraging them to be brave
-and learn something new and esoteric, BUT there is something strongly resonant
-in me about trying to teach this stuff in the same manner as literacy.  Which
-it truly is about.
+  #+BEGIN_SRC plantuml :file tryout.png
+  Alice -> Bob: synchonous call
+  Alice ->> Bob: asynchronous call
+  Grant -> Ande: foo
+  #+END_SRC
 
-Lisp, to me, is the clearest path to computer literacy in terms of getting an
-intuitive understanding of how software environments work.  The fact that emacs
-is a live hunk of code that can be modified, while running, by the emacs
-user is kind of incredible.  If we are spending time teaching kids how to type
-and use computers and shit... why teach them proprietary software like word?
-Why not empower them to see that all of their computing needs can be met with
-a text editor?  To empower them to see text as not just a means of communication
-with other humans, but that the same document can also control things about their
-digital environment itself.
+  #+RESULTS:
+  [[file:tryout.png]]
 
-For example, I can just type:
+** Org Mode
+*** TODO Use Ruby to put payload into a table
 
-  (set-cursor-color "orange")
-  (set-cursor-color "blue")
+**** Fun with Org Tables and Source Blocks
 
-And a user can execute it within the living org document I am writing in.  All
-you have to know is the proper key combo, kinda like playing a video game.
+I believe if you execute code that returns a list in an org buffer
+it will produce a table row.  Let's see (press C-c C-c with the
+cursor in the source block to execute):
 
-But why do i even write this, and who is going to read it....
+#+BEGIN_SRC emacs-lisp :results value
+'(Name Age Profession)
+#+END_SRC
 
-* Emacs package info
+#+RESULTS:
+| Name | Age | Profession |
 
-** undo-tree help
+By the way, when we evaluate that Lisp code, we read the quote
+and say "the following is a chunk of data".  so we dont evaluate
+the following code, but the quote is removed and we return the
+expression (which is everything in between the parens).  The final
+part of REP Loop is Print, so that value is printed.  In this case
+we're actually doing a shorthand for =(list 'Name 'Age 'Profession)=,
+a list of symbols which is another use of the quote syntax.
+You could also do =(quote (Name Age Profession))=
+
+**** a table is just a list of lists.
+
+Lisp is all about lists, so its easy to make a list of lists
+Remember, C-c C-c with the cursor in the source block below
+
+#+BEGIN_SRC emacs-lisp :results value
+'((Name Age Profession) (grant 34 code_adept))
+#+END_SRC
+
+**** what about Ruby?
+
+Again, do the C-c C-c thing:
+
+#+BEGIN_SRC ruby
+[["Name", "Age", "Profession"], ["Bryan", "should I ask?", "pro coder"]]
+#+END_SRC
+
+**** You Can Also Pass a Table as an Argument to a Source Block
+
+Add your name to the table.  Position the cursor in the final row's
+"Profession" column, and hit TAB.  Enter strings for the Ruby block
+following.  TAB goes to the next column, SHIFT-TAB goes back.
+
+#+name: people
+| "Name"    | "Age" | "Profession"     |
+| "Grant"   | "34"  | "code adept"     |
+| "Frances" | "1/2" | "world absorber" |
+
+Now, position the cursor in the following block and press C-c C-c
+It will pass the table named =people= as an argument to the ruby
+source block named =reverser= which is designed to return a list
+of lists, i.e 2d matrix, or... an org table.
+
+#+name: reverser
+#+BEGIN_SRC ruby :var people=people
+  table = []
+
+  people.each do |person|
+    row = []
+
+    if person == people.first
+      row = person
+    else
+      row = person.map { |str| str.reverse }
+    end
+
+    table << row
+  end
+
+  return table
+#+END_SRC
+
+#+RESULTS: reverser
+| Name    | Age | Profession     |
+| tnarG   | 43  | tpeda edoc     |
+| secnarF | 2/1 | rebrosba dlrow |
+
+If you position the cursor in that table and do M-x org-table-export
+you can export it to a CSV file.
+
+#+BEGIN_SRC ruby :results value
+  require 'csv'
+
+  CSV.read("path/to/file.csv")
+#+END_SRC
+
+#+RESULTS:
+| Name    | Age | Profession     |
+| tnarG   | 43  | tpeda edoc     |
+| secnarF | 2/1 | rebrosba dlrow |
+** Copy Lines Matching Regex
+
+(defun copy-lines-matching-re (re)
+  "find all lines matching the regexp RE in the current buffer
+putting the matching lines in a buffer named *matching*"
+  (interactive "sRegexp to match: ")
+  (let ((result-buffer (get-buffer-create "*matching*")))
+    (with-current-buffer result-buffer
+      (erase-buffer))
+    (save-match-data
+      (save-excursion
+        (goto-char (point-min))
+        (while (re-search-forward re nil t)
+          (princ (buffer-substring-no-properties (line-beginning-position)
+                                                 (line-beginning-position 2))
+                 result-buffer))))
+    (pop-to-buffer result-buffer)))
+
+[[file:~/org/fdo.org::(defun%20copy-lines-matching-re%20(re)%0A%20"find%20all%20lines%20matching%20the%20regexp%20RE%20in%20the%20current%20buffer%0Aputting%20the%20matching%20lines%20in%20a%20buffer%20named%20*matching*"%0A%20(interactive%20"sRegexp%20to%20match:%20")%0A%20(let%20((result-buffer%20(get-buffer-create%20"*matching*")))%0A%20(with-current-buffer%20result-buffer%20%0A%20(erase-buffer))%0A%20(save-match-data%20%0A%20(save-excursion%0A%20(goto-char%20(point-min))%0A%20(while%20(re-search-forward%20re%20nil%20t)%0A%20(princ%20(buffer-substring-no-properties%20(line-beginning-position)%20%0A%20(line-beginning-position%202))%0A%20result-buffer))))%0A%20(pop-to-buffer%20result-buffer)))][Payloads and debug info]]
+** Awesome Regex Capture Using Occur
+
+from [[http://stackoverflow.com/questions/2289883/emacs-copy-matching-lines][stack overflow]]:
+
+C-u M-s o pattern will grab each chunk of a buffer that matches the pattern
+
+[[file:~/org/fdo.org::*Payloads%20and%20debug%20info][Payloads and debug info]]
+** Org swap paragraphs
+
+In Org mode when i pressed M-up it swapped the paragraph that the cursor was on
+with the one above it. It won't drag beyond heading boundaries, but i can freely
+move paragraph like chunks around easily
+** OSX eshell PATH env package
+
+[[help:exec-path-from-shell]]
+** watch-buffer package
+
+run rspec, make, copy, whatev.  could be nice if when tangling files i
+want them all copied into a working place or something
+[[help:watch-buffer]]
+** open-junk-file - alternate scratch buffer
+
+[[help:open-junk-file]]
+** Org file system tree package
+
+looks like this does something i've been wanting for a while.
+[[help:org-fstree]]
+Install and check it out !!
+** Perspective - xmonad like frame management			       :ande:
+Ande might appreciate this one
+
+[[help:perspective]]
+** perspeen - combo of perspective and elscreen
+
+[[help:perspeen]]
+** REST client
+
+maybe this can be used instead of postman?
+[[help:restclient]]
+** rspec mode
+
+some stuff in a readme that might be useful
+[[help:rspec-mode]]
+** Dired Hints
+
+Xah Lee's tips for better dired use.  Specifically I would like to enable hide-details,
+make dired use same buffer, and the dired jump features.
+[[http://ergoemacs.org/emacs/emacs_dired_tips.html][Emacs: Dired Customization]]
+** Eshell
+
+[[https://github.com/howardabrams/dot-files/blob/master/emacs-eshell.org][nice documentation of some eshell stuff]]
+
+** Displaying all Monospace Fonts installed
+Not sure how well this actually works
+
+#+name: compare-monospace-fonts
+#+BEGIN_SRC emacs-lisp :results none
+;; Display all the monospace fonts available to Emacs in a dedicated buffer
+
+(defun font-is-mono-p (font-family)
+  ;; with-selected-window
+  (let ((wind (selected-window))
+        m-width l-width)
+   (with-current-buffer "*Monospace Fonts*"
+     (set-window-buffer (selected-window) (current-buffer))
+     (text-scale-set 4)
+     (insert (propertize "l l l l l" 'face `((:family ,font-family))))
+     (goto-char (line-end-position))
+     (setq l-width (car (posn-x-y (posn-at-point))))
+     (newline)
+     (forward-line)
+     (insert (propertize "m m m m m" 'face `((:family ,font-family) italic)))
+     (goto-char (line-end-position))
+     (setq m-width (car (posn-x-y (posn-at-point))))
+     (eq l-width m-width))))
+
+(defun compare-monospace-fonts ()
+  "Display a list of all monospace font faces."
+  (interactive)
+  (pop-to-buffer "*Monospace Fonts*")
+
+  (erase-buffer)
+  (dolist (font-family (font-family-list))
+    (when (font-is-mono-p font-family)
+      (let ((str font-family))
+        (newline)
+        (insert
+         (propertize (concat "The quick brown fox jumps over the lazy dog 1 l; 0 O o ("
+                             font-family ")\n") 'face `((:family ,font-family)))
+         (propertize (concat "The quick brown fox jumps over the lazy dog 1 l; 0 O o ("
+font-family ")\n") 'face `((:family ,font-family) italic)))))))
+#+END_SRC
+
+** learning to use xah-fly-keys
+is not easy, but also not too hard.  so far, my main issue is forgetting i'm
+in command mode.  trying to press C-x a ends up selecting a big region to the top,
+so i'll just need to be careful about the keys i press.  also, the backspace key
+on the mac is labeled delete, and i think sends delete.  this is a little 'dangerous'
+because hitting delete in command mode sends the kill buffer command
+
+*** Stuff to integrate with xfk
+  - hook so w3m keymap overrides xah
+  - figure out how to map home to caps on mac?
+  - org mode stuff?
+
+** Emacs package info
+*** undo-tree help
 
 Emacs has a powerful undo system. Unlike the standard undo/redo system in
 most software, it allows you to recover *any* past state of a buffer
@@ -1166,7 +1355,7 @@ Note that undo-in-region and redo-in-region only ever add new changes to
 the undo tree, they *never* modify existing undo history. So you can always
 return to previous buffer states by switching to a previous branch of the
 tree.
-** pdf-tools
+*** pdf-tools
 
   - install pdf-tools package
   - brew install ghostscript
@@ -1189,552 +1378,11 @@ tree.
 (pdf-tools-install)
 
 * git tricks
-
 ** every file a user has touched in a directory
 
 given directory =  src
 
 git log --stat --committer=asciiascetic@gmail.com |  awk '/^ src/ {print $1}' | uniq
-
-* Emacs
-** list current theme
-To know which theme is active ATM one could look in =custom-enabled-themes=,
-which is a list containing the theme name as a symbol.
-
-i.e - evaluate the following line (C-x C-e, or SPC-,-m in fly-keys)
-custom-enabled-themes
-** Registers
-
-Emacs registers are compartmets for saving all kinds of things:
-text, rectangles, positions, numbers, window configurations, etc.
-
-I believe registers are cleared at the end of an emacs session, so
-/bookmarks/ are used for persistent storage
-
-[[https://www.gnu.org/software/emacs/manual/html_node/emacs/Registers.html][GNU Emacs Manual: Registers]]
-** PlantUML
-
-  #+BEGIN_SRC plantuml :file tryout.png
-  Alice -> Bob: synchonous call
-  Alice ->> Bob: asynchronous call
-  Grant -> Ande: foo
-  #+END_SRC
-
-  #+RESULTS:
-  [[file:tryout.png]]
-
-** Org Mode
-*** TODO Use Ruby to put payload into a table
-
-**** Fun with Org Tables and Source Blocks
-
-I believe if you execute code that returns a list in an org buffer
-it will produce a table row.  Let's see (press C-c C-c with the
-cursor in the source block to execute):
-
-#+BEGIN_SRC emacs-lisp :results value
-'(Name Age Profession)
-#+END_SRC
-
-#+RESULTS:
-| Name | Age | Profession |
-
-By the way, when we evaluate that Lisp code, we read the quote
-and say "the following is a chunk of data".  so we dont evaluate
-the following code, but the quote is removed and we return the
-expression (which is everything in between the parens).  The final
-part of REP Loop is Print, so that value is printed.  In this case
-we're actually doing a shorthand for =(list 'Name 'Age 'Profession)=,
-a list of symbols which is another use of the quote syntax.
-You could also do =(quote (Name Age Profession))=
-
-**** a table is just a list of lists.
-
-Lisp is all about lists, so its easy to make a list of lists
-Remember, C-c C-c with the cursor in the source block below
-
-#+BEGIN_SRC emacs-lisp :results value
-'((Name Age Profession) (grant 34 code_adept))
-#+END_SRC
-
-**** what about Ruby?
-
-Again, do the C-c C-c thing:
-
-#+BEGIN_SRC ruby
-[["Name", "Age", "Profession"], ["Bryan", "should I ask?", "pro coder"]]
-#+END_SRC
-
-**** You Can Also Pass a Table as an Argument to a Source Block
-
-Add your name to the table.  Position the cursor in the final row's
-"Profession" column, and hit TAB.  Enter strings for the Ruby block
-following.  TAB goes to the next column, SHIFT-TAB goes back.
-
-#+name: people
-| "Name"    | "Age" | "Profession"     |
-| "Grant"   | "34"  | "code adept"     |
-| "Frances" | "1/2" | "world absorber" |
-
-Now, position the cursor in the following block and press C-c C-c
-It will pass the table named =people= as an argument to the ruby
-source block named =reverser= which is designed to return a list
-of lists, i.e 2d matrix, or... an org table.
-
-#+name: reverser
-#+BEGIN_SRC ruby :var people=people
-  table = []
-
-  people.each do |person|
-    row = []
-
-    if person == people.first
-      row = person
-    else
-      row = person.map { |str| str.reverse }
-    end
-
-    table << row
-  end
-
-  return table
-#+END_SRC
-
-#+RESULTS: reverser
-| Name    | Age | Profession     |
-| tnarG   | 43  | tpeda edoc     |
-| secnarF | 2/1 | rebrosba dlrow |
-
-If you position the cursor in that table and do M-x org-table-export
-you can export it to a CSV file.
-
-#+BEGIN_SRC ruby :results value
-  require 'csv'
-
-  CSV.read("path/to/file.csv")
-#+END_SRC
-
-#+RESULTS:
-| Name    | Age | Profession     |
-| tnarG   | 43  | tpeda edoc     |
-| secnarF | 2/1 | rebrosba dlrow |
-** Copy Lines Matching Regex
-
-(defun copy-lines-matching-re (re)
-  "find all lines matching the regexp RE in the current buffer
-putting the matching lines in a buffer named *matching*"
-  (interactive "sRegexp to match: ")
-  (let ((result-buffer (get-buffer-create "*matching*")))
-    (with-current-buffer result-buffer
-      (erase-buffer))
-    (save-match-data
-      (save-excursion
-        (goto-char (point-min))
-        (while (re-search-forward re nil t)
-          (princ (buffer-substring-no-properties (line-beginning-position)
-                                                 (line-beginning-position 2))
-                 result-buffer))))
-    (pop-to-buffer result-buffer)))
-
-[[file:~/org/fdo.org::(defun%20copy-lines-matching-re%20(re)%0A%20"find%20all%20lines%20matching%20the%20regexp%20RE%20in%20the%20current%20buffer%0Aputting%20the%20matching%20lines%20in%20a%20buffer%20named%20*matching*"%0A%20(interactive%20"sRegexp%20to%20match:%20")%0A%20(let%20((result-buffer%20(get-buffer-create%20"*matching*")))%0A%20(with-current-buffer%20result-buffer%20%0A%20(erase-buffer))%0A%20(save-match-data%20%0A%20(save-excursion%0A%20(goto-char%20(point-min))%0A%20(while%20(re-search-forward%20re%20nil%20t)%0A%20(princ%20(buffer-substring-no-properties%20(line-beginning-position)%20%0A%20(line-beginning-position%202))%0A%20result-buffer))))%0A%20(pop-to-buffer%20result-buffer)))][Payloads and debug info]]
-** Awesome Regex Capture Using Occur
-
-from [[http://stackoverflow.com/questions/2289883/emacs-copy-matching-lines][stack overflow]]:
-
-C-u M-s o pattern will grab each chunk of a buffer that matches the pattern
-
-[[file:~/org/fdo.org::*Payloads%20and%20debug%20info][Payloads and debug info]]
-** Org swap paragraphs
-
-In Org mode when i pressed M-up it swapped the paragraph that the cursor was on
-with the one above it. It won't drag beyond heading boundaries, but i can freely
-move paragraph like chunks around easily
-** OSX eshell PATH env package
-
-[[help:exec-path-from-shell]]
-** watch-buffer package
-
-run rspec, make, copy, whatev.  could be nice if when tangling files i
-want them all copied into a working place or something
-[[help:watch-buffer]]
-** open-junk-file - alternate scratch buffer
-
-[[help:open-junk-file]]
-** Org file system tree package
-
-looks like this does something i've been wanting for a while.
-[[help:org-fstree]]
-Install and check it out !!
-** Perspective - xmonad like frame management			       :ande:
-Ande might appreciate this one
-
-[[help:perspective]]
-** perspeen - combo of perspective and elscreen
-
-[[help:perspeen]]
-** REST client
-
-maybe this can be used instead of postman?
-[[help:restclient]]
-** rspec mode
-
-some stuff in a readme that might be useful
-[[help:rspec-mode]]
-** Dired Hints
-
-Xah Lee's tips for better dired use.  Specifically I would like to enable hide-details,
-make dired use same buffer, and the dired jump features.
-[[http://ergoemacs.org/emacs/emacs_dired_tips.html][Emacs: Dired Customization]]
-** Eshell
-
-[[https://github.com/howardabrams/dot-files/blob/master/emacs-eshell.org][nice documentation of some eshell stuff]]
-
-** Displaying all Monospace Fonts installed
-Not sure how well this actually works
-
-#+name: compare-monospace-fonts
-#+BEGIN_SRC emacs-lisp :results none
-;; Display all the monospace fonts available to Emacs in a dedicated buffer
-
-(defun font-is-mono-p (font-family)
-  ;; with-selected-window
-  (let ((wind (selected-window))
-        m-width l-width)
-   (with-current-buffer "*Monospace Fonts*"
-     (set-window-buffer (selected-window) (current-buffer))
-     (text-scale-set 4)
-     (insert (propertize "l l l l l" 'face `((:family ,font-family))))
-     (goto-char (line-end-position))
-     (setq l-width (car (posn-x-y (posn-at-point))))
-     (newline)
-     (forward-line)
-     (insert (propertize "m m m m m" 'face `((:family ,font-family) italic)))
-     (goto-char (line-end-position))
-     (setq m-width (car (posn-x-y (posn-at-point))))
-     (eq l-width m-width))))
-
-(defun compare-monospace-fonts ()
-  "Display a list of all monospace font faces."
-  (interactive)
-  (pop-to-buffer "*Monospace Fonts*")
-
-  (erase-buffer)
-  (dolist (font-family (font-family-list))
-    (when (font-is-mono-p font-family)
-      (let ((str font-family))
-        (newline)
-        (insert
-         (propertize (concat "The quick brown fox jumps over the lazy dog 1 l; 0 O o ("
-                             font-family ")\n") 'face `((:family ,font-family)))
-         (propertize (concat "The quick brown fox jumps over the lazy dog 1 l; 0 O o ("
-font-family ")\n") 'face `((:family ,font-family) italic)))))))
-#+END_SRC
-
-* Churls
-** Boyfriend
-
- 1   2   3   4
-Oh whoa whoa little F
-baby............
-                  Bb 1 2
-..treating me so mean
-G
-...............making me feel so lonely
-even when you're with me
-and when my friends ask me
-why do you look so sad
-I have to tell them
-because my boyfriend is always smoking
-cuz my boyfriend is always smoking weed
-
-Oh whoa whoa Little Darlin
-you know I understand
-trying not to feel so lonely
-but you could hold my hand
-and when my friends ask me
-why do you look so sad
-I have to tell them
-because my boyfriend is always smoking
- cuz my boyfriend is always smoking weed
-
-** On The Beach
-On The Beach
-
-Are you going to the beach
-You can buy suntan lotion, you can buy some treats
-You can buy bermuda shorts, put them on my feet for you
-
-Swimming, surfing, playing frisbee
-We can build sand castles to the sound of the sea
-You can make your mind up to go with me to the beach
-
-M: And when we get there I’ll take you by the hand
-W: It’s a churlish moment on the sand
-M: The waves are crashing up against your legs
-W: The summer sun can give a golden tan
-
-We’ll stay there till the sun goes down
-Then we’ll hop in El Coache and we’ll drive into town
-All the people we pass wear a funny frown, yes they do.
-
-Parked outside of your 10th street flat
-I take a look in your eyes, I see you’re looking back
-And I really wanna kiss you baby if you weren’t so blue
-
-Churlin around and around this town, people really get you down
-Churlin around and around this town, people really get you down
-
-W: Shoobop Shoobop
-M: There was a lover who once hurt you bad
-W: (echo) There was a lover who once hurt you bad
-M: Stole away all the joy you ever had
-W: (echo) Stole away the joy you ever had
-M: I long to tell you, you are the only one
-W: (echo) I long to tell you you’re the only one
-
-So let’s go back to the beach, and we’ll have some fun
-
-Instruments cut out
-
-Are you going to the beach?
-All the people you love will be there to see
-I can bring a guitar and sing real sweetly to you (guitar comes back in)
-
-“Oh my baby!”
-Sit by the fire as the moon goes past
-We can stay up late docking till there’s dents in our ass
-Finally get up the nerve to kiss you at last
-
-On the beach
-On the beach
-On the beach
-On the beach.
-
-** Pacific Unknown
-D
-holes in my toes, and holes in my heels
-G
-holes in my heart, and holes in the boxcar
-D                               G           D
-ceiling…….
-
-stars are bright an’ my mind’s alight
-holdin’ back my tears with the thoughts of
-leaving….                          ‘cause I’m
-
-A                        G
- fliyin’ out on the high line,
-            D                              G
-where silver falls between evergreens
-A                               G
-Givin’ up my home for pacific unknown(org: rollin’ like a stone into)
- E                               G
-way out beyond Grand Couleeeeeeeeee
-
-            Bm?      A
-    Whooo-ooo a train whistle is all                  Almost had a progression and melody here/\
-    it takes to remind me who i am
-    i remember my friends like an old
-    favorite coat that needs a mend.
-
-    an as I look out onto the trees below
-            I see my face in the falling snow.
-
-I’ve got two cans of beans, one of sardines,
-and one paperback written by Dostoevsky.
-Suns comin’ up the ocean’s in view
-Time to snuggle up with the great ol’ greysea.
-
-buddies are far between, and smiles yet farther (example of text being worked on) colors
-____________________________________
-
-‘cause i’m flyin’ out on the high line,
-where silver falls between evergreens
-rollin’ like a stone into pacific unknown
-way out beyond Grand Couleeeeeeeeee.
-
-** People I Love
-People I Love
-
-I know you couldn’t understand
-Why I watched your shows and gave up mine
-But really you actually loved that I did that
-But I hated your shows so why did I do that?
-
-I overdid it so you didn’t have to, I guess?
-
-I do nice things for the people I love
-I do nice things for the people I love
-
-I said you were a handsome man
-“I know you think that,” is what you said.
-But all of my other friends just say thank you
-and sometimes they tell me that I’m lookin nice too.
-
-I guess I thought you loved me because of all those times that you said you loved me
-
-I say nice things to the people I love
-I say nice things to the people I love
-
-You couldn’t even live up to
-the time I wolfed my teamster sub for you
-it takes a devotion to do something like that
-the kind of devotion that you never had
-
-You think I’m weird? WELL…..I THINK YOU’RE WEIRD.
-
-I do weird things for the people I love
-I do weird things TO the people I love
-
-You’re always thinking of yourself
-I could really give and you could take
-You’re all that you see, you think that’s true for me
-You probably think that this song is about you
-
-Spoken: “WELL IT IS!”
-
-I’ll just be happy with the 7 other people I’m devoting my life to
-
-I give myself to the people I love
-I give myself to the people I looooooooOOOOOOVE
-
-** Pizza Store
-
-Pizza store
-He was working at the pizza store jeans were so tight just want to fun him all night
-are those jeggings or a dream
-so insanely beautiful banana between two columns from Greece
- I undressed him with my eyes
-said hey boy now don't be shy
-Then I asked him how much would you charge for extra sausage
-excuse me ma'am the pizzas Burnin big boss man said you'll never be returning
-what?
-guys do it too
-guys do it too
-guys do it too and they so dumb
-
-I was scoping out the laundromat when I saw him stripped down to tighties so white
- it's like he stepped out of the screen of the movie of my fantasy
- laundry day boy three
-squeezed his tushy and said hi
-said hey boy you can't deny
-I know you want me
-he threw a fit said you better quit it
-I still testify he was asking for it
-guys do it too
-guys do it too
-guys do it too and they so dumb
-
-Went downtown to see the corner of feminist
-what's wrong with these guys
-why don't they want me
-I'm a nice girl with lots of hobbies
-she said slow down grabby Gabby's doing it wrong
-you can't run around trying to ring all their Ding-A-Ling dongs
-then I asked her
-but what do I do about total hotties
-she turned away shaking her head I don't get it was It Something I Said
-Boys- yes it was
-
- guys do it too guys do it too guys do it to ya and they so dumb dumb dumb they so dumb dumb dumb
-
-** That Horse
-
-That Horse
-
-Out on the Range
-Good Ole’ Jerry by my side
-The Sunset in our eyes
-He told me he loved me, I was about to reciprocate
-When I heard the most beautiful Whinny
-
-Jerry said “Hey man, What’s up? You thinkin about them whores again?”
-I said “Jerry! You can leave them whores behind, it’s that horse that’s on my mind.
-That horse, I would have married that horse.”
-
-When I was a boy just yay high to the sage brush
-I saw her in the prairie
-her coat was white as snow
-her main was full of fire
-and I knew I would love her forever
-
-Back at school teacher caught me dreamin
-and she made me speak my shame
-“Teacher there are housewives, why can’t I be a horsewife? If that’s wrong I don’t want to be right.”
-
-Teacher said, “Hey boy! Listen up! The devil himself’s gonna snatch you up.”
-I said, “Teacher! You can leave your morals unsaid, it’s that horse I’m gonna wed.
-That horse, I’m gonna marry that horse.”
-
-From that day forth I’d go to see that horse
-And I’d tell her my hopes and my dreams
-She never said a word, but I could tell she’d heard
-Cause she’d make the most beautiful whinny
-
-Word back in town
-Was they were gonna put her down
-So I took that horse and ran
-
-I said “Hey Girl! Giddyup! If you give into fear it’ll eat you up. Ride on!”
-She shook her pretty head, I never took her to my bed
-And I’ll never see that horse again.
-
-No one could be blamed
-That horse should not be tamed
-That horse
-I’m still in love with that horse
-
-That horse
-I would have married that horse.
-
-** Oh Honey
-
-That Horse
-
-Out on the Range
-Good Ole’ Jerry by my side
-The Sunset in our eyes
-He told me he loved me, I was about to reciprocate
-When I heard the most beautiful Whinny
-
-Jerry said “Hey man, What’s up? You thinkin about them whores again?”
-I said “Jerry! You can leave them whores behind, it’s that horse that’s on my mind.
-That horse, I would have married that horse.”
-
-When I was a boy just yay high to the sage brush
-I saw her in the prairie
-her coat was white as snow
-her main was full of fire
-and I knew I would love her forever
-
-Back at school teacher caught me dreamin
-and she made me speak my shame
-“Teacher there are housewives, why can’t I be a horsewife? If that’s wrong I don’t want to be right.”
-
-Teacher said, “Hey boy! Listen up! The devil himself’s gonna snatch you up.”
-I said, “Teacher! You can leave your morals unsaid, it’s that horse I’m gonna wed.
-That horse, I’m gonna marry that horse.”
-
-From that day forth I’d go to see that horse
-And I’d tell her my hopes and my dreams
-She never said a word, but I could tell she’d heard
-Cause she’d make the most beautiful whinny
-
-Word back in town
-Was they were gonna put her down
-So I took that horse and ran
-
-I said “Hey Girl! Giddyup! If you give into fear it’ll eat you up. Ride on!”
-She shook her pretty head, I never took her to my bed
-And I’ll never see that horse again.
-
-No one could be blamed
-That horse should not be tamed
-That horse
-I’m still in love with that horse
-
-That horse
-I would have married that horse.
 
 * Notes
 ** Alda - music programming language
@@ -1745,18 +1393,6 @@ seems like a promising new project that might be fun to learn.  inspired by
 things like LilyPond which I always wanted to learn, and a language for writing
 NES style chiptunes.  Perhaps a good option for me to produce both electronic and
 traditional music with notation.
-
-** learning to use xah-fly-keys
-is not easy, but also not too hard.  so far, my main issue is forgetting i'm
-in command mode.  trying to press C-x a ends up selecting a big region to the top,
-so i'll just need to be careful about the keys i press.  also, the backspace key
-on the mac is labeled delete, and i think sends delete.  this is a little 'dangerous'
-because hitting delete in command mode sends the kill buffer command
-
-*** Stuff to integrate with xfk
-  - hook so w3m keymap overrides xah
-  - figure out how to map home to caps on mac?
-  - org mode stuff?
 
 * Scratch
 (progn (setq xah-fly-use-control-key nil)

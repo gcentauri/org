@@ -1,2 +1,6 @@
 * Org
-A collection of Emacs .org files including source for my .emacs configuraton.
+A collection of Emacs org-mode files including "literate" source for 
+my .emacs configuraton.  Org-mode's babel tangling features allow code blocks
+embedded in these files to become source files.
+
+Start here -> [[./home.org]] 
