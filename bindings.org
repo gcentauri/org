@@ -1,5 +1,6 @@
 * xah-fly-keys Minor Mode Bindings:
 ** Main Map
+#+BEGIN_EXAMPLE
 key             binding
 ---             -------
 
@@ -57,8 +58,10 @@ z		xah-comment-dwim
 <f8>		xah-fly-command-mode-activate-no-hook
 <home>		xah-fly-command-mode-activate
 <menu>		xah-fly-command-mode-activate
+#+END_EXAMPLE
 
 ** Leader Key (SPC) Map
+#+BEGIN_EXAMPLE
 key             binding
 ---             -------
 
@@ -100,8 +103,9 @@ SPC y		xah-search-current-word
 SPC DEL		xah-fly-insert-mode-activate
 
 M-SPC		xah-fly-command-mode-activate-no-hook
-
+#+END_EXAMPLE
 ** 【SPC ,】 - Eval, kill emacs
+#+BEGIN_EXAMPLE
 key             binding
 ---             -------
 
@@ -114,8 +118,9 @@ SPC , m		eval-last-sexp
 SPC , r		eval-expression
 SPC , x		save-buffers-kill-terminal
 SPC , DEL	xah-delete-current-file
-
+#+END_EXAMPLE
 ** 【SPC k】 - registers, replace, occur
+#+BEGIN_EXAMPLE
 SPC k TAB	move-to-column
 SPC k SPC	xah-clean-whitespace
 SPC k ,		xah-next-window-or-frame
@@ -142,8 +147,9 @@ SPC k t		delete-duplicate-lines
 SPC k v		insert-register
 SPC k w		sort-numeric-fields
 SPC k y		goto-line
-
+#+END_EXAMPLE
 ** 【SPC o】 - rectangles, macros, registers
+#+BEGIN_EXAMPLE
 SPC o SPC	rectangle-mark-mode
 SPC o 3		number-to-register
 SPC o 4		increment-register
@@ -162,8 +168,9 @@ SPC o s		open-rectangle
 SPC o t		delete-whitespace-rectangle
 SPC o u		kill-rectangle
 SPC o w		apply-macro-to-region-lines
-
+#+END_EXAMPLE
 ** 【SPC l】 - modes, view, windows
+#+BEGIN_EXAMPLE
 SPC l SPC	whitespace-mode
 SPC l ,		eww
 SPC l /		abort-recursive-edit
@@ -195,8 +202,9 @@ SPC l s		variable-pitch-mode
 SPC l v		menu-bar-open
 SPC l w		abbrev-mode
 SPC l z		window-configuration-to-register
-
+#+END_EXAMPLE
 ** 【SPC j】 - help, apropos, info
+#+BEGIN_EXAMPLE
 SPC j .		apropos-value
 SPC j /		describe-coding-system
 SPC j ;		describe-syntax
@@ -220,8 +228,9 @@ SPC j u		info-lookup-symbol
 SPC j v		describe-key
 SPC j y		describe-face
 SPC j z		Info-goto-emacs-command-node
-
+#+END_EXAMPLE
 ** 【SPC d】 - inserting chars, brackets, unicode
+#+BEGIN_EXAMPLE
 SPC d RET	insert-char
 SPC d SPC	xah-insert-unicode
 SPC d ,		xah-insert-angle-bracket〈〉
@@ -242,8 +251,9 @@ SPC d r		xah-insert-single-angle-quote‹›
 SPC d t		xah-insert-double-angle-quote«»
 SPC d u		xah-insert-ascii-double-quote
 SPC d y		xah-insert-emacs-quote
-
+#+END_EXAMPLE
 ** 【SPC i】 - files, bookmarks, external apps
+#+BEGIN_EXAMPLE
 SPC i ;		write-file
 SPC i d		ibuffer
 SPC i e		find-file
@@ -258,12 +268,14 @@ SPC i s		xah-show-in-desktop
 SPC i t		xah-list-recently-closed
 SPC i w		xah-open-in-external-app
 SPC i y		xah-open-recently-closed
-
+#+END_EXAMPLE
 ** 【SPC w】 - xref? find identifiers?
+#+BEGIN_EXAMPLE
 SPC w k		xref-find-definitions
 SPC w l		xref-pop-marker-stack
-
+#+END_EXAMPLE
 ** 【SPC e】 - search, highlight, fonts
+#+BEGIN_EXAMPLE
 SPC e ,		isearch-forward-word
 SPC e 1		hi-lock-find-patterns
 SPC e 2		highlight-lines-matching-regexp
@@ -283,8 +295,9 @@ SPC e p		facemenu-set-bold-italic
 SPC e r		center-paragraph
 SPC e s		facemenu-set-face
 SPC e y		font-lock-fontify-block
-
+#+END_EXAMPLE
 ** 【SPC TAB】 - indent, expand, abbrev
+#+BEGIN_EXAMPLE
 SPC TAB TAB	indent-for-tab-command
 SPC TAB 0	expand-jump-to-next-slot
 SPC TAB 1	abbrev-prefix-mark
@@ -301,15 +314,17 @@ SPC TAB ]	expand-jump-to-previous-slot
 SPC TAB g	complete-symbol
 SPC TAB o	indent-region
 SPC TAB u	indent-rigidly
-
+#+END_EXAMPLE
 * Personal
-C-c a		org-agenda
-C-c c		org-capture
-C-c h		??
-C-c l		org-store-link
-C-c o		??
-
+#+BEGIN_EXAMPLE
+  C-c a		org-agenda
+  C-c c		org-capture
+  C-c h		??
+  C-c l		org-store-link
+  C-c o		??
+#+END_EXAMPLE
 * Elscreen
+#+BEGIN_EXAMPLE
 C-z C-a		elscreen-toggle
 C-z C-c		elscreen-create
 C-z C-f		elscreen-find-file
@@ -349,7 +364,9 @@ C-z w		elscreen-display-screen-name-list
 
 C-z M-k		elscreen-kill-screen-and-buffers
 C-z M-x		elscreen-execute-extended-command
+#+END_EXAMPLE
 * Org Mode bindings
+#+BEGIN_EXAMPLE
 key             binding
 ---             -------
 
@@ -590,3 +607,4 @@ C-c C-x M-w	org-copy-special
 
 C-c C-x RET g	org-mobile-pull
 C-c C-x RET p	org-mobile-push
+#+END_EXAMPLE
