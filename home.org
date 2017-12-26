@@ -669,11 +669,21 @@ in command mode.  trying to press C-x a ends up selecting a big region to the to
 so i'll just need to be careful about the keys i press.  also, the backspace key
 on the mac is labeled delete, and i think sends delete.  this is a little 'dangerous'
 because hitting delete in command mode sends the kill buffer command
-
 *** Stuff to integrate with xfk
   - hook so w3m keymap overrides xah
   - figure out how to map home to caps on mac?
   - org mode stuff?
+
+*** describe-bindings
+=which-key= is nice, but i also like knowing about this emacs help function.
+both helpful for xah and vanilla emacs, this emacs function will bring up a buffer
+with all currently mapped keybindings.
+
+(describe-bindings)
+
+with xah-fly-keys it is 【SPC j n】
+
+[[./bindings.org][-> annotated output]] of bindings with xah-fly-key
 
 ** Emacs package info
 *** undo-tree help

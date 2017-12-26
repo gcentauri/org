@@ -1,0 +1,592 @@
+* xah-fly-keys Minor Mode Bindings:
+** Main Map
+key             binding
+---             -------
+
+ESC		Prefix Command
+SPC		xah-fly-leader-key-map
+'		xah-cycle-hyphen-underscore-space
+,		xah-next-window-or-frame
+-		xah-backward-punct
+.		xah-forward-right-bracket
+/		xah-goto-matching-bracket
+1		pop-global-mark
+2		xah-pop-local-mark-ring
+3		delete-other-windows
+4		split-window-below
+5		delete-char
+6		xah-select-block
+7		xah-select-line
+8		xah-extend-selection
+9		xah-select-text-in-quote
+;		xah-end-of-line-or-block
+=		xah-forward-punct
+[		hippie-expand
+]		xah-forward-equal-sign
+`		other-frame
+a		execute-extended-command
+b		xah-toggle-letter-case
+c		xah-copy-line-or-region
+d		xah-delete-backward-char-or-bracket-text
+e		backward-kill-word
+f		xah-fly-insert-mode-activate
+g		xah-delete-current-text-block
+h		xah-beginning-of-line-or-block
+i		previous-line
+j		backward-char
+k		next-line
+l		forward-char
+m		xah-backward-left-bracket
+n		isearch-forward
+o		forward-word
+p		xah-fly-insert-mode-activate-space-before
+q		xah-reformat-lines
+r		kill-word
+s		open-line
+t		set-mark-command
+u		backward-word
+v		xah-paste-or-paste-previous
+w		xah-shrink-whitespaces
+x		xah-cut-line-or-region
+y		undo
+z		xah-comment-dwim
+<C-f11>		xah-previous-emacs-buffer
+<C-f12>		xah-next-emacs-buffer
+<f11>		xah-previous-user-buffer
+<f12>		xah-next-user-buffer
+<f8>		xah-fly-command-mode-activate-no-hook
+<home>		xah-fly-command-mode-activate
+<menu>		xah-fly-command-mode-activate
+
+** Leader Key (SPC) Map
+key             binding
+---             -------
+
+SPC TAB		xah-fly--tab-key-map
+SPC RET		execute-extended-command
+SPC SPC		xah-fly-insert-mode-activate
+SPC '		xah-display-form-feed-as-line
+SPC ,		xah-fly-w-keymap
+SPC 3		delete-window
+SPC 4		split-window-right
+SPC 5		balance-windows
+SPC 9		ispell-word
+SPC ;		save-buffer
+SPC \		toggle-input-method
+SPC a		mark-whole-buffer
+SPC c		xah-copy-all-or-region
+SPC d		xah-fly-e-keymap
+SPC e		xah-fly-dot-keymap
+SPC f		switch-to-buffer
+SPC g		xah-copy-file-path
+SPC h		beginning-of-buffer
+SPC i		xah-fly-c-keymap
+SPC j		xah-fly-h-keymap
+SPC k		xah-fly-t-keymap
+SPC l		xah-fly-n-keymap
+SPC m		dired-jump
+SPC n		end-of-buffer
+SPC o		xah-fly-r-keymap
+SPC p		recenter-top-bottom
+SPC q		xah-fill-or-unfill
+SPC r		query-replace
+SPC s		exchange-point-and-mark
+SPC t		xah-show-kill-ring
+SPC u		isearch-forward
+SPC v		xah-paste-or-paste-previous
+SPC w		xah-fly-comma-keymap
+SPC x		xah-cut-all-or-region
+SPC y		xah-search-current-word
+SPC DEL		xah-fly-insert-mode-activate
+
+M-SPC		xah-fly-command-mode-activate-no-hook
+
+** 【SPC ,】 - Eval, kill emacs
+key             binding
+---             -------
+
+SPC , ,		delete-frame
+SPC , c		xah-run-current-file
+SPC , d		eval-defun
+SPC , e		eval-buffer
+SPC , f		eval-region
+SPC , m		eval-last-sexp
+SPC , r		eval-expression
+SPC , x		save-buffers-kill-terminal
+SPC , DEL	xah-delete-current-file
+
+** 【SPC k】 - registers, replace, occur
+SPC k TAB	move-to-column
+SPC k SPC	xah-clean-whitespace
+SPC k ,		xah-next-window-or-frame
+SPC k 1		xah-clear-register-1
+SPC k 2		xah-append-to-register-1
+SPC k 3		xah-copy-to-register-1
+SPC k 4		xah-paste-from-register-1
+SPC k c		copy-to-register
+SPC k d		list-matching-lines
+SPC k e		sort-lines
+SPC k f		delete-matching-lines
+SPC k g		delete-non-matching-lines
+SPC k h		mark-defun
+SPC k i		goto-char
+SPC k j		xah-close-current-buffer
+SPC k k		repeat
+SPC k l		repeat-complex-command
+SPC k m		xah-make-backup-and-save
+SPC k o		copy-rectangle-to-register
+SPC k p		xah-escape-quotes
+SPC k q		reverse-region
+SPC k r		query-replace-regexp
+SPC k t		delete-duplicate-lines
+SPC k v		insert-register
+SPC k w		sort-numeric-fields
+SPC k y		goto-line
+
+** 【SPC o】 - rectangles, macros, registers
+SPC o SPC	rectangle-mark-mode
+SPC o 3		number-to-register
+SPC o 4		increment-register
+SPC o a		xah-upcase-sentence
+SPC o d		call-last-kbd-macro
+SPC o e		kmacro-start-macro
+SPC o f		xah-quote-lines
+SPC o g		xah-space-to-newline
+SPC o h		delete-rectangle
+SPC o i		replace-rectangle
+SPC o l		rectangle-number-lines
+SPC o o		yank-rectangle
+SPC o p		clear-rectangle
+SPC o r		kmacro-end-macro
+SPC o s		open-rectangle
+SPC o t		delete-whitespace-rectangle
+SPC o u		kill-rectangle
+SPC o w		apply-macro-to-region-lines
+
+** 【SPC l】 - modes, view, windows
+SPC l SPC	whitespace-mode
+SPC l ,		eww
+SPC l /		abort-recursive-edit
+SPC l 0		shell-command-on-region
+SPC l 1		set-input-method
+SPC l 2		global-hl-line-mode
+SPC l 4		global-display-line-numbers-mode
+SPC l 5		visual-line-mode
+SPC l 6		calendar
+SPC l 7		calc
+SPC l 9		shell-command
+SPC l a		text-scale-adjust
+SPC l b		save-some-buffers
+SPC l c		flyspell-buffer
+SPC l d		eshell
+SPC l e		toggle-frame-fullscreen
+SPC l f		shell
+SPC l g		make-frame-command
+SPC l h		narrow-to-page
+SPC l i		toggle-case-fold-search
+SPC l j		widen
+SPC l k		narrow-to-defun
+SPC l l		narrow-to-region
+SPC l n		toggle-debug-on-error
+SPC l p		toggle-word-wrap
+SPC l q		frame-configuration-to-register
+SPC l r		read-only-mode
+SPC l s		variable-pitch-mode
+SPC l v		menu-bar-open
+SPC l w		abbrev-mode
+SPC l z		window-configuration-to-register
+
+** 【SPC j】 - help, apropos, info
+SPC j .		apropos-value
+SPC j /		describe-coding-system
+SPC j ;		describe-syntax
+SPC j K		Info-goto-emacs-key-command-node
+SPC j a		apropos-command
+SPC j c		man
+SPC j d		view-echo-area-messages
+SPC j f		elisp-index-search
+SPC j g		info
+SPC j h		apropos-documentation
+SPC j i		describe-char
+SPC j j		describe-function
+SPC j l		describe-variable
+SPC j m		xah-describe-major-mode
+SPC j n		describe-bindings
+SPC j o		apropos-variable
+SPC j p		view-lossage
+SPC j r		finder-by-keyword
+SPC j s		describe-language-environment
+SPC j u		info-lookup-symbol
+SPC j v		describe-key
+SPC j y		describe-face
+SPC j z		Info-goto-emacs-command-node
+
+** 【SPC d】 - inserting chars, brackets, unicode
+SPC d RET	insert-char
+SPC d SPC	xah-insert-unicode
+SPC d ,		xah-insert-angle-bracket〈〉
+SPC d ;		xah-insert-string-assignment
+SPC d W		xah-insert-double-angle-bracket《》
+SPC d f		xah-insert-date
+SPC d g		xah-insert-curly-single-quote‘’
+SPC d h		xah-insert-double-curly-quote“”
+SPC d i		xah-insert-ascii-single-quote
+SPC d j		xah-insert-brace
+SPC d k		xah-insert-paren
+SPC d l		xah-insert-square-bracket
+SPC d m		xah-insert-corner-bracket「」
+SPC d n		xah-insert-black-lenticular-bracket【】
+SPC d o		xah-insert-tortoise-shell-bracket〔〕
+SPC d p		xah-insert-form-feed
+SPC d r		xah-insert-single-angle-quote‹›
+SPC d t		xah-insert-double-angle-quote«»
+SPC d u		xah-insert-ascii-double-quote
+SPC d y		xah-insert-emacs-quote
+
+** 【SPC i】 - files, bookmarks, external apps
+SPC i ;		write-file
+SPC i d		ibuffer
+SPC i e		find-file
+SPC i f		xah-open-file-at-cursor
+SPC i i		bookmark-bmenu-list
+SPC i j		recentf-open-files
+SPC i l		xah-new-empty-buffer
+SPC i o		xah-open-file-fast
+SPC i p		bookmark-set
+SPC i r		xah-open-last-closed
+SPC i s		xah-show-in-desktop
+SPC i t		xah-list-recently-closed
+SPC i w		xah-open-in-external-app
+SPC i y		xah-open-recently-closed
+
+** 【SPC w】 - xref? find identifiers?
+SPC w k		xref-find-definitions
+SPC w l		xref-pop-marker-stack
+
+** 【SPC e】 - search, highlight, fonts
+SPC e ,		isearch-forward-word
+SPC e 1		hi-lock-find-patterns
+SPC e 2		highlight-lines-matching-regexp
+SPC e 3		highlight-phrase
+SPC e 4		highlight-regexp
+SPC e 5		unhighlight-regexp
+SPC e 6		hi-lock-write-interactive-patterns
+SPC e ;		isearch-forward-symbol
+SPC e e		isearch-forward-symbol-at-point
+SPC e f		facemenu-set-underline
+SPC e g		facemenu-set-italic
+SPC e h		facemenu-set-default
+SPC e i		center-line
+SPC e j		highlight-symbol-at-point
+SPC e n		facemenu-set-bold
+SPC e p		facemenu-set-bold-italic
+SPC e r		center-paragraph
+SPC e s		facemenu-set-face
+SPC e y		font-lock-fontify-block
+
+** 【SPC TAB】 - indent, expand, abbrev
+SPC TAB TAB	indent-for-tab-command
+SPC TAB 0	expand-jump-to-next-slot
+SPC TAB 1	abbrev-prefix-mark
+SPC TAB 2	edit-abbrevs
+SPC TAB 3	expand-abbrev
+SPC TAB 4	expand-region-abbrevs
+SPC TAB 5	unexpand-abbrev
+SPC TAB 6	add-global-abbrev
+SPC TAB 7	add-mode-abbrev
+SPC TAB 8	inverse-add-global-abbrev
+SPC TAB 9	inverse-add-mode-abbrev
+SPC TAB ;	indent-sexp
+SPC TAB ]	expand-jump-to-previous-slot
+SPC TAB g	complete-symbol
+SPC TAB o	indent-region
+SPC TAB u	indent-rigidly
+
+* Personal
+C-c a		org-agenda
+C-c c		org-capture
+C-c h		??
+C-c l		org-store-link
+C-c o		??
+
+* Elscreen
+C-z C-a		elscreen-toggle
+C-z C-c		elscreen-create
+C-z C-f		elscreen-find-file
+C-z C-k		elscreen-kill
+C-z RET		elscreen-display-last-message
+C-z C-n		elscreen-next
+C-z C-p		elscreen-previous
+C-z C-r		elscreen-find-file-read-only
+C-z C-s		elscreen-swap
+C-z C-t		elscreen-display-time
+C-z C-w		elscreen-display-screen-name-list
+C-z ESC		Prefix Command
+C-z "		elscreen-select-and-goto
+C-z '		elscreen-goto
+C-z 0		elscreen-jump-0
+C-z 1 .. C-z 8	elscreen-jump
+C-z 9		elscreen-jump-9
+C-z ?		elscreen-help
+C-z A		elscreen-screen-nickname
+C-z C		elscreen-clone
+C-z K		elscreen-kill-others
+C-z T		elscreen-toggle-display-tab
+C-z a		elscreen-toggle
+C-z b		elscreen-find-and-goto-by-buffer
+C-z c		elscreen-create
+C-z d		elscreen-dired
+C-z i		elscreen-toggle-display-screen-number
+C-z j		elscreen-link
+C-z k		elscreen-kill
+C-z m		elscreen-display-last-message
+C-z n		elscreen-next
+C-z p		elscreen-previous
+C-z s		elscreen-split
+C-z t		elscreen-display-time
+C-z v		elscreen-display-version
+C-z w		elscreen-display-screen-name-list
+
+C-z M-k		elscreen-kill-screen-and-buffers
+C-z M-x		elscreen-execute-extended-command
+* Org Mode bindings
+key             binding
+---             -------
+
+C-a		org-beginning-of-line
+C-c		Prefix Command
+C-e		org-end-of-line
+TAB		org-cycle
+C-j		org-return-indent
+C-k		org-kill-line
+RET		org-return
+C-y		org-yank
+ESC		Prefix Command
+|		org-force-self-insert
+C-#		org-table-rotate-recalc-marks
+C-'		org-cycle-agenda-files
+C-,		org-cycle-agenda-files
+<C-S-down>	org-shiftcontroldown
+<C-S-left>	org-shiftcontrolleft
+<C-S-return>	org-insert-todo-heading-respect-content
+<C-S-right>	org-shiftcontrolright
+<C-S-up>	org-shiftcontrolup
+<C-return>	org-insert-heading-respect-content
+<C-tab>		org-force-cycle-archived
+<M-S-down>	org-shiftmetadown
+<M-S-left>	org-shiftmetaleft
+<M-S-return>	org-insert-todo-heading
+<M-S-right>	org-shiftmetaright
+<M-S-up>	org-shiftmetaup
+<M-down>	org-metadown
+<M-left>	org-metaleft
+<M-return>	org-meta-return
+<M-right>	org-metaright
+<M-up>		org-metaup
+<S-down>	org-shiftdown
+<S-iso-lefttab>			org-shifttab
+<S-left>	org-shiftleft
+<S-return>	org-table-copy-down
+<S-right>	org-shiftright
+<S-tab>		org-shifttab
+<S-up>		org-shiftup
+<backtab>	org-shifttab
+<remap>		Prefix Command
+<tab>		org-cycle
+
+C-M-i		pcomplete
+M-RET		org-insert-heading
+C-M-t		org-transpose-element
+M-a		org-backward-sentence
+M-e		org-forward-sentence
+M-h		org-mark-element
+M-{		org-backward-element
+M-}		org-forward-element
+
+C-c C-a		org-attach
+C-c C-b		org-backward-heading-same-level
+C-c C-c		org-ctrl-c-ctrl-c
+C-c C-d		org-deadline
+C-c C-e		org-export-dispatch
+C-c C-f		org-forward-heading-same-level
+C-c C-j		org-goto
+C-c C-k		org-kill-note-or-show-branches
+C-c C-l		org-insert-link
+C-c RET		org-ctrl-c-ret
+C-c C-o		org-open-at-point
+C-c C-q		org-set-tags-command
+C-c C-r		org-reveal
+C-c C-s		org-schedule
+C-c C-t		org-todo
+C-c C-v		Prefix Command
+C-c C-w		org-refile
+C-c C-x		Prefix Command
+C-c C-y		org-evaluate-time-range
+C-c C-z		org-add-note
+C-c ESC		Prefix Command
+C-c C-^		org-up-element
+C-c C-_		org-down-element
+C-c SPC		org-table-blank-field
+C-c !		org-time-stamp-inactive
+C-c #		org-update-statistics-cookies
+C-c $		org-archive-subtree
+C-c %		org-mark-ring-push
+C-c &		org-mark-ring-goto
+C-c '		org-edit-special
+C-c *		org-ctrl-c-star
+C-c +		org-table-sum
+C-c ,		org-priority
+C-c -		org-ctrl-c-minus
+C-c .		org-time-stamp
+C-c /		org-sparse-tree
+C-c :		org-toggle-fixed-width-section
+C-c ;		org-toggle-comment
+C-c <		org-date-from-calendar
+C-c =		org-table-eval-formula
+C-c >		org-goto-calendar
+C-c ?		org-table-field-info
+C-c @		org-mark-subtree
+C-c [		org-agenda-file-to-front
+C-c \		org-match-sparse-tree
+C-c ]		org-remove-file
+C-c ^		org-sort
+C-c `		org-table-edit-field
+C-c {		org-table-toggle-formula-debugger
+C-c |		org-table-create-or-convert-from-region
+C-c }		org-table-toggle-coordinate-overlays
+C-c ~		org-table-create-with-table.el
+C-c C-*		org-list-make-subtree
+
+<remap> <backward-paragraph>	org-backward-paragraph
+<remap> <delete-backward-char>	org-delete-backward-char
+<remap> <delete-char>		org-delete-char
+<remap> <forward-paragraph>	org-forward-paragraph
+<remap> <open-line>		org-open-line
+<remap> <outline-backward-same-level>
+				org-backward-heading-same-level
+<remap> <outline-demote>	org-demote-subtree
+<remap> <outline-forward-same-level>
+				org-forward-heading-same-level
+<remap> <outline-insert-heading>
+				org-ctrl-c-ret
+<remap> <outline-mark-subtree>	org-mark-subtree
+<remap> <outline-promote>	org-promote-subtree
+<remap> <self-insert-command>	org-self-insert-command
+<remap> <show-branches>		org-kill-note-or-show-branches
+<remap> <show-subtree>		org-show-subtree
+<remap> <transpose-words>	org-transpose-words
+
+C-c TAB		outline-show-children
+C-c C-n		outline-next-visible-heading
+C-c C-p		outline-previous-visible-heading
+C-c C-u		outline-up-heading
+C-c C-<		outline-promote
+C-c C->		outline-demote
+
+C-c C-M-l	org-insert-all-links
+C-c M-b		org-previous-block
+C-c M-f		org-next-block
+C-c M-w		org-copy
+
+C-c C-v C-a	org-babel-sha1-hash
+C-c C-v C-b	org-babel-execute-buffer
+C-c C-v C-c	org-babel-check-src-block
+C-c C-v C-d	org-babel-demarcate-block
+C-c C-v C-e	org-babel-execute-maybe
+C-c C-v C-f	org-babel-tangle-file
+C-c C-v TAB	org-babel-view-src-block-info
+C-c C-v C-j	org-babel-insert-header-arg
+C-c C-v C-l	org-babel-load-in-session
+C-c C-v C-n	org-babel-next-src-block
+C-c C-v C-o	org-babel-open-src-block-result
+C-c C-v C-p	org-babel-previous-src-block
+C-c C-v C-r	org-babel-goto-named-result
+C-c C-v C-s	org-babel-execute-subtree
+C-c C-v C-t	org-babel-tangle
+C-c C-v C-u	org-babel-goto-src-block-head
+C-c C-v C-v	org-babel-expand-src-block
+C-c C-v C-x	org-babel-do-key-sequence-in-edit-buffer
+C-c C-v C-z	org-babel-switch-to-session
+C-c C-v ESC	Prefix Command
+C-c C-v I	org-babel-view-src-block-info
+C-c C-v a	org-babel-sha1-hash
+C-c C-v b	org-babel-execute-buffer
+C-c C-v c	org-babel-check-src-block
+C-c C-v d	org-babel-demarcate-block
+C-c C-v e	org-babel-execute-maybe
+C-c C-v f	org-babel-tangle-file
+C-c C-v g	org-babel-goto-named-src-block
+C-c C-v h	org-babel-describe-bindings
+C-c C-v i	org-babel-lob-ingest
+C-c C-v j	org-babel-insert-header-arg
+C-c C-v l	org-babel-load-in-session
+C-c C-v n	org-babel-next-src-block
+C-c C-v o	org-babel-open-src-block-result
+C-c C-v p	org-babel-previous-src-block
+C-c C-v r	org-babel-goto-named-result
+C-c C-v s	org-babel-execute-subtree
+C-c C-v t	org-babel-tangle
+C-c C-v u	org-babel-goto-src-block-head
+C-c C-v v	org-babel-expand-src-block
+C-c C-v x	org-babel-do-key-sequence-in-edit-buffer
+C-c C-v z	org-babel-switch-to-session-with-code
+
+C-c C-x C-a	org-archive-subtree-default
+C-c C-x C-b	org-toggle-checkbox
+C-c C-x C-c	org-columns
+C-c C-x C-d	org-clock-display
+C-c C-x C-f	org-emphasize
+C-c C-x TAB	org-clock-in
+C-c C-x C-j	org-clock-goto
+C-c C-x C-l	org-preview-latex-fragment
+C-c C-x RET	Prefix Command
+C-c C-x C-n	org-next-link
+C-c C-x C-o	org-clock-out
+C-c C-x C-p	org-previous-link
+C-c C-x C-q	org-clock-cancel
+C-c C-x C-r	org-clock-report
+C-c C-x C-s	org-archive-subtree
+C-c C-x C-t	org-toggle-time-stamp-overlays
+C-c C-x C-u	org-dblock-update
+C-c C-x C-v	org-toggle-inline-images
+C-c C-x C-w	org-cut-special
+C-c C-x C-x	org-clock-in-last
+C-c C-x C-y	org-paste-special
+C-c C-x C-z	org-resolve-clocks
+C-c C-x ESC	Prefix Command
+C-c C-x !	org-reload
+C-c C-x ,	org-timer-pause-or-continue
+C-c C-x -	org-timer-item
+C-c C-x .	org-timer
+C-c C-x 0	org-timer-start
+C-c C-x :	org-timer-cancel-timer
+C-c C-x ;	org-timer-set-timer
+C-c C-x <	org-agenda-set-restriction-lock
+C-c C-x >	org-agenda-remove-restriction-lock
+C-c C-x A	org-archive-to-archive-sibling
+C-c C-x E	org-inc-effort
+C-c C-x G	org-feed-goto-inbox
+C-c C-x P	org-set-property-and-value
+C-c C-x [	org-reftex-citation
+C-c C-x \	org-toggle-pretty-entities
+C-c C-x _	org-timer-stop
+C-c C-x a	org-toggle-archive-tag
+C-c C-x b	org-tree-to-indirect-buffer
+C-c C-x c	org-clone-subtree-with-time-shift
+C-c C-x d	org-insert-drawer
+C-c C-x e	org-set-effort
+C-c C-x f	org-footnote-action
+C-c C-x g	org-feed-update-all
+C-c C-x i	org-insert-columns-dblock
+C-c C-x o	org-toggle-ordered-property
+C-c C-x p	org-set-property
+C-c C-x q	org-toggle-tags-groups
+C-c C-x v	org-copy-visible
+
+C-c C-v C-M-h	org-babel-mark-block
+
+C-c C-x C-M-v	org-redisplay-inline-images
+C-c C-x M-w	org-copy-special
+
+C-c C-x RET g	org-mobile-pull
+C-c C-x RET p	org-mobile-push
