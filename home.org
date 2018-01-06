@@ -1,9 +1,10 @@
-local navigation
-[[./notes.org]]
-[[./organizer.org]]
-[[./lakota.org]]
-[[./music.org]]
-[[./journal.org]]
+* navigation
+  - [[./notes.org]]
+  - [[./organizer.org]]
+  - [[./lakota.org]]
+  - [[./music.org]]
+  - [[./journal.org]]
+  - [[./games/dominions4.org]]
 
 * Emacs Config file
 ** Tangle

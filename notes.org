@@ -98,3 +98,18 @@ like
 
 then we can turn debug info on and off, by writing wrappers in the prepended module and then 
 calling =super=
+* GNU/Linux
+** Writing a bootable ISO
+Colin told me of this method that /always/ works to write a bootable ISO.
+First mount the iso on the loopback device
+#+BEGIN_SRC sh
+mount -t iso9660 -o loop file.iso /mnt
+#+END_SRC
+
+/then/ use =dd= to write the iso to the disk.
+#+BEGIN_SRC sh
+dd if=/dev/loopX of=/dev/sdb 
+#+END_SRC
+
+I'm trying it out with AV Linux which is asking me to use an installer tool
+to do it.  We'll see if it works!  it did!
