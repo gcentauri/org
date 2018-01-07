@@ -148,7 +148,7 @@ SPC k v		insert-register
 SPC k w		sort-numeric-fields
 SPC k y		goto-line
 #+END_EXAMPLE
-** 【SPC o】 - rectangles, macros, registers
+** 【SPC o】 - rectangles, macros, number registers
 #+BEGIN_EXAMPLE
 SPC o SPC	rectangle-mark-mode
 SPC o 3		number-to-register
@@ -315,6 +315,7 @@ SPC TAB g	complete-symbol
 SPC TAB o	indent-region
 SPC TAB u	indent-rigidly
 #+END_EXAMPLE
+** SPC z - elscreen 					    :personal:keymap:
 * Personal
 #+BEGIN_EXAMPLE
   C-c a		org-agenda

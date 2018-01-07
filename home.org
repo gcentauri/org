@@ -17,13 +17,12 @@ Anywhere there is a <<name>> reference, there is a matching named source block
 (or multiple blocks with the same name) that will get expanded and placed into
 the source code that can be "tangled" from this org file.
 
-the result of org-babel-tangle ->[[./.emacs][ .emacs file]]
-
+the result of org-babel-tangle ->[[./dot-emacs-tangle.el][ emacs config file]]
 There are more examples of using org mode to do things with source block references
 throughout this file.
 
-#+name: .emacs-tangle
-#+BEGIN_SRC emacs-lisp :tangle .emacs :noweb yes
+#+name: dot-emacs-tangle
+#+BEGIN_SRC emacs-lisp :tangle dot-emacs-tangle.el :noweb yes
   (require 'cl-lib) ;; common lisp primitives added to emacs-lisp
   (setq initial-buffer-choice "~/org/home.org")
   
@@ -245,6 +244,12 @@ i lost my notes in a emacs key combo mistake somehow without noticing
    (python . t)))
 #+END_SRC
 
+*** Enabling inline image display on startup
+#+name: org
+#+BEGIN_SRC elisp
+(setq org-startup-with-inline-images t)
+#+END_SRC
+
 ** w3m
 #+name: w3m
 #+BEGIN_SRC elisp
@@ -288,15 +293,96 @@ now what i really want is to map it to Xah-fly-keys...
 #+BEGIN_SRC elisp
   (elscreen-start)
 #+END_SRC
+** TODO Xah Fly Keys
+I started using Xah's =xah-fly-keys= package after developing a serious case
+of "Emacs Pinky".  Xah writes about RSI and deciding on "modal ways" and 
+ergonomic keymapping for this.  I still suffer from hand strain and occasional
+pain, but it seems manageable mostly due to this new keymap.  Thanks to Xah!
+And thanks to GNU Emacs for enabling a solution to the problem caused by you!
+A bit recursive, isn't it? 
 
-** Xah Fly Keys
+*** Initializing
+This is for initializing 「xfk」for my preferences.  I don't want 「xfk」to use
+the control key.  By default it offers standard =C-z= undo, =C-x= cut, 
+=C-c= copy, and =C-v= paste, as well as other familar key combos.  I prefer to
+have no change to the control key, and that way standard Emacs mappings are
+still avaialable.
+
 #+name: flykeys
 #+BEGIN_SRC elisp
   (setq xah-fly-use-control-key nil)
+#+END_SRC
+
+Then require the package, use the QWERTY layout, and start 「xfk」 mode.
+#+name: flykeys
+#+BEGIN_SRC elisp
   (require 'xah-fly-keys)
   (xah-fly-keys-set-layout "qwerty") ; required if you use qwerty
   (xah-fly-keys 1)
 #+END_SRC
+
+*** Learning
+Xah recommends the package =which-key=, it displays available completions
+of a keybinding sequence and their commands in the minibuffer.  Very helpful
+
+#+name: flykeys
+#+BEGIN_SRC elisp
+  (which-key-mode)
+#+END_SRC
+
+Also want to try a way to help indicate which mode i'm currently in
+#+name: flykeys
+#+BEGIN_SRC elisp
+  (defun hl-line-mode-on () (global-hl-line-mode 1))
+  (defun hl-line-mode-off () (global-hl-line-mode 0))
+
+  (add-hook 'xah-fly-command-mode-activate-hook 'hl-line-mode-on)
+  (add-hook 'xah-fly-insert-mode-activate-hook  'hl-line-mode-off)
+#+END_SRC
+
+*** TODO Custom Keymaps
+Xah uses dvorak, so all of the keymapping is done with dvorak key locations.
+The qwerty mode translator will handle it, but it must be defined in dvorak.
+
+here's a simple map of the keyboard layouts i found:
+
+#+BEGIN_EXAMPLE
+qwerty =
+  {"-", "=",
+   "q", "w", "e", "r", "t", "y", "u", "i", "o", "p", "[", "]", "\\",
+   "a", "s", "d", "f", "g", "h", "j", "k", "l", ";", "'",
+   "z", "x", "c", "v", "b", "n", "m", ",", ".", "/"};
+dvorak =
+  {"[", "]",
+   "'", ",", ".", "p", "y", "f", "g", "c", "r", "l", "/", "=", "\\",
+   "a", "o", "e", "u", "i", "d", "h", "t", "n", "s", "-",
+   ";", "q", "j", "k", "x", "b", "m", "w", "v", "z"};
+#+END_EXAMPLE
+
+**** Elscreen
+【SPC z】 will call a new keymap i will define with 「xfk」
+here is where I have to use the dvorak mappings:
+#+name: flykeys
+#+BEGIN_SRC elisp
+  (xah-fly--define-keys
+   (define-prefix-command 'xah-fly-elscreen-key-map)
+   '(                                      ; qwerty
+     ("j" . elscreen-create)               ; c
+     ("t" . elscreen-kill)                 ; k
+     ("b" . elscreen-next)                 ; n
+     ("l" . elscreen-previous)             ; p
+     ("p" . elscreen-screen-nickname)      ; r
+     ))
+#+END_SRC
+
+I'll use the standard emacs way of adding a binding to a keymap.
+I know I want to define a keymap called =xah-fly-elscreen-key-map= onto
+the =xah-fly-leader-key-map= so I can go:
+#+name: flykeys
+#+BEGIN_SRC elisp
+  (define-key xah-fly-leader-key-map (kbd "z") xah-fly-elscreen-key-map)
+#+END_SRC
+
 ** Lakota Input
 [[file:lakota.org::*Lakota%20Input%20Mode%20for%20Emacs][Lakota Input Mode for Emacs]] <-see this file for the definition
 #+name: lakota-input

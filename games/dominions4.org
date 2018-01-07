@@ -3,7 +3,7 @@
   is awesome.  there is too much to write about it and my pinky hurts.
 
 * Multiplayer
-** MA Nazca - January 2018
+** MA Nazca - January 2018 - Jedinja's "NewCornerSuperRumble"
 *** TODO Prelude
 **** Pretender
   I have decided to go with an awake Earth Snake with level 6 earth magic.
@@ -18,7 +18,7 @@
 
   The [[./dom4-icons/Path_E.png]]6 Earth Snake is one of the easiest pretenders to use for expansion.  Having
   earth 6 gives extra protection (a side benefit of earth magic paths) and reinvigoration
-  to the all sacred troops (great_for_mages_and_armored_troops_like_Nazca's!).  This
+  to the all sacred troops (great for mages and armored troops like Nazca's!).  This
   snake should be able to scare off indie troops on its own (it has Fear too!) and allow
   for a much quicker expansion in the first year.  Nazca needs lots of gold to support
   the mummified elders, and taking territory will be the best way to ensure that.
@@ -79,7 +79,58 @@
   worth of human spearmen and maybe some more archers while the commander is away
   and then maybe I can have a solo snake and one expansion army by turn 3.
 
-* Document	 Notes 						   :noexport:
+*** Year 1 - Late Spring
+The Earth Snake succeeds, while my human troops die.  The cave I invaded had an army
+of Zotz in it.  They are quite weak, but strong enough to swarm my human warriors and
+kill half of them and the human commander before they ran off.
+
+[[./turn2-losses.png]]
+
+Surprisingly, I am surrounded by unique indie troops.  There's Zotz, Lavaborn, Amazons,
+plus more common Wolf Tribe and Barbarians.  This province "The Hole" has a summonable
+death mage, the Camazotz.
+
+[[./camazotz.png]]
+
+The exciting thing about this is the combination of flying, stealth, and magic on this
+unit.  Also it can lead 40 troops.  I'm thinking this will be a great asset in this MP
+game.  With the right magic, perhaps a few of these leading the stealthy Zotz from the
+same province could make a suprise attack against weak PD, or a Fort or Palisades.
+
+Unfortunately right now, I'd prefer having taken a human province so I could recruit
+a cheap commander for my armies.  I want to keep recruiting mages in my capitol.
+Zuzu the Earth Serpent heads for the Wolf Tribe with the rest of the starting archers.
+I had an Earth Mother ripped apart by Wolf Tribe testing pretender builds for this game.
+The Earth Serpent's protection is much, much, higher so I think he'll be alright.
+
+*** Year 1 - Early Summer
+[[./turn3-losses.png]]
+
+Once again, I lose half of my forces, this time its my Archers which I was hoping to build
+up into a mass at some point.  Oh well.  Instead, I am recruiting the flying lancer units.
+It seems like one of Nazca's strategies is to hit as hard as possible on the first turn.
+The pre-emptive strike of a large mass of lance hits could knock down the total HP of a
+squad so hard, they'll begin routing immediately.  This allows them to be killed off much
+more easily.  If the lancers take a few casualties and their squat routes, hopefully its
+no big deal.  They will fly away, and my guarded mages can blast away with fireballs and
+lightning bolts or sit behind a horde of skeletons to finish the job.  The idea with a
+lancer army though is to only go up against smaller armies, hit big, hit hard, and route
+them.  I hope to have commanders lead lancer squads that can break away, kill PD and hit
+the enemy economy hard all in one turn.  Stay on the move, converge on obvious targets,
+and provide seige support when needed.
+
+I need to figure out the other type of army I want to lead, probably mages with sun guards
+and summons.  We'll get back to this.
+
+**** Going for the Amazons
+My immediate inclination is to circle Zuzu around the capitol to capture the Amazon
+province.  Then I'll need a lab and temple there to begin hiring the astral mages.
+With this in mind, I think I will go for the Earthquake strategy and the Earth/Death
+mages, the Coya and Hurin Priest.
+
+[[./amazons.png]]
+
+* Document Notes 						   :noexport:
 ** TODO unicode or some kind of link for displaying the dominions icons
   [[./dom4-icons/Path_F.png]] [[./dom4-icons/Path_A.png]] [[./dom4-icons/Path_W.png]] [[./dom4-icons/Path_E.png]] [[./dom4-icons/Path_D.png]] [[./dom4-icons/Path_N.png]] [[./dom4-icons/Path_B.png]]
 

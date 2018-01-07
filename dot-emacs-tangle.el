@@ -105,6 +105,7 @@
  '((ruby . t)
    (plantuml . t)
    (python . t)))
+(setq org-startup-with-inline-images t)
 (global-set-key (kbd "C-x g") 'magit-status)
 ;;;; override osx default opening directories in finder
 ;;(add-to-list 'org-file-apps '(directory . emacs))
@@ -162,7 +163,6 @@
 
 (add-hook 'xah-fly-command-mode-activate-hook 'hl-line-mode-on)
 (add-hook 'xah-fly-insert-mode-activate-hook  'hl-line-mode-off)
-(define-key xah-fly-leader-key-map (kbd "z") xah-fly-elscreen-key-map)
 (xah-fly--define-keys
  (define-prefix-command 'xah-fly-elscreen-key-map)
  '(                                      ; qwerty
@@ -170,5 +170,6 @@
    ("t" . elscreen-kill)                 ; k
    ("b" . elscreen-next)                 ; n
    ("l" . elscreen-previous)             ; p
-   ("p" . elscreen-screen-nickname)      ; r「xfk」
+   ("p" . elscreen-screen-nickname)      ; r
    ))
+(define-key xah-fly-leader-key-map (kbd "z") xah-fly-elscreen-key-map)
