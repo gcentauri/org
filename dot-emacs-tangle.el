@@ -104,7 +104,8 @@
  'org-babel-load-languages
  '((ruby . t)
    (plantuml . t)
-   (python . t)))
+   (python . t)
+   (sh . t)))
 (setq org-startup-with-inline-images t)
 (global-set-key (kbd "C-x g") 'magit-status)
 ;;;; override osx default opening directories in finder
@@ -132,6 +133,10 @@
 (eshell)
 
 (elscreen-start)
+(require 'emms-setup)
+(emms-all)
+(emms-default-players)
+(setq emms-source-file-default-directory "~/Music/")
 (require 'lakota-input)
 (add-hook 'after-init-hook 'global-company-mode)
 (ido-mode 1)
@@ -157,6 +162,7 @@
 (require 'xah-fly-keys)
 (xah-fly-keys-set-layout "qwerty") ; required if you use qwerty
 (xah-fly-keys 1)
+(require 'which-key)
 (which-key-mode)
 (defun hl-line-mode-on () (global-hl-line-mode 1))
 (defun hl-line-mode-off () (global-hl-line-mode 0))

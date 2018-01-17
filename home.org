@@ -41,6 +41,7 @@ throughout this file.
   <<w3m>>
   <<eshell>>
   <<elscreen>>
+  <<emms>>
   <<lakota-input>>
   <<company-mode>>
   <<ido>>
@@ -241,7 +242,8 @@ i lost my notes in a emacs key combo mistake somehow without noticing
  'org-babel-load-languages
  '((ruby . t)
    (plantuml . t)
-   (python . t)))
+   (python . t)
+   (sh . t)))
 #+END_SRC
 
 *** Enabling inline image display on startup
@@ -327,6 +329,7 @@ of a keybinding sequence and their commands in the minibuffer.  Very helpful
 
 #+name: flykeys
 #+BEGIN_SRC elisp
+  (require 'which-key)
   (which-key-mode)
 #+END_SRC
 
@@ -383,8 +386,63 @@ the =xah-fly-leader-key-map= so I can go:
   (define-key xah-fly-leader-key-map (kbd "z") xah-fly-elscreen-key-map)
 #+END_SRC
 
+** EMMS - multimedia system
+*** 2 Quickstart Guide
+You’ll then want to load Emms into Emacs. To achieve this you invoke the
+emms-all setup function by adding the following three lines to your .emacs.
+
+#+name: emms
+#+BEGIN_SRC elisp
+(require 'emms-setup)
+(emms-all)
+(emms-default-players)
+#+END_SRC
+
+The function emms-default-players in the last line sets up the list of
+default players. The list contains lightweight specialized players like
+ogg123 or mpg321 and we-play-everything-players such as mplayer, vlc, etc..
+To be sure that emms can play all your music you should check that your
+preferred players are installed on the machine.
+
+More detail about setting up Emms can be found in the setup chapter, See
+Setup.
+
+Emms tries to display the tags (the name of the song, as opposed to the
+name of the file) of the music you listen to. Emms can use libtag, see
+See Using TagLib, or a combination of ‘mp3info’ and ‘ogginfo’ (make sure
+that they are installed if you want Emms to use them.)
+
+The last thing to do is to tell Emms where your music is; the root directory
+of our music collection. Let’s say all your music is in ~/Music or in subdirectories
+thereof.
+
+#+name: emms
+#+BEGIN_SRC elisp
+(setq emms-source-file-default-directory "~/Music/")
+#+END_SRC
+
+OK, now we’ve set up Emms. Reload your .emacs or restart Emacs to let the
+changes have an effect.
+
+Now we will add all our music to a playlist by invoking M-x emms-add-directory-tree
+RET ~/Music/ RET. We do this because then Emms will read the tags of all
+your music files and caches them (this is also required for the Emms browser,
+See The Browser.)
+
+To switch to the playlist buffer, invoke M-x emms-playlist-mode-go or simply
+M-x emms. You may see that some tracks are displayed with their file name,
+but as Emms populates its tag cahe, track by track, the filenames get replaced
+with the artist and track name of the file’s tag.
+
+Go ahead and navigate to a track and hit RET on it to start playback.
+
+Now you can start exploring Emms. It’s probably best to begin with the
+basic commands (see Basic Commands), the interactive playlists (see Interactive
+Playlists), and the browser (see The Browser). 
+
 ** Lakota Input
-[[file:lakota.org::*Lakota%20Input%20Mode%20for%20Emacs][Lakota Input Mode for Emacs]] <-see this file for the definition
+[[file:lakota.org::*Lakota%20Input%20Mode%20for%20Emacs][Lakota Input Mode
+for Emacs]] <-see this file for the definition
 #+name: lakota-input
 #+BEGIN_SRC emacs-lisp
 (require 'lakota-input)
