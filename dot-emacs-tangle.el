@@ -151,6 +151,16 @@
 ;;  '(push 'company-robe company-backends))
 ;;(rvm-use-default)
 ;;(setq rspec-use-rvm t)
+;-- begin racer config
+(add-hook 'rust-mode-hook #'racer-mode)
+(add-hook 'racer-mode-hook #'eldoc-mode)
+(add-hook 'racer-mode-hook #'company-mode)
+
+(require 'rust-mode)
+(define-key rust-mode-map (kbd "TAB") #'company-indent-or-complete-common)
+(setq company-tooltip-align-annotations t)
+
+ ;-- end racer config
 (setq auto-mode-alist (append '(("\\.p8?$" . lua-mode))
                               auto-mode-alist))
 ;;(require 'funda-haxe-mode "~/.emacs.d/funda-haxe-mode/funda-haxe-mode.el")

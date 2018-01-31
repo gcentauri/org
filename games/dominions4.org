@@ -66,7 +66,206 @@
 ***** Vanarus
 ***** Bandar Log
 ***** Pythium
-*** Year 1 - Spring
+***** Vanheim
+*** Turn 1 - Spring - Fate Against Me
+[[./fateful-first-move.png]]
+
+Zuzu the Earth Serpent is boldy moving out into the neighboring province under our
+dominion's control.  Generally, this is a good thing because it means the pretender
+will have more hit points.  Ideally, Zuzu will scare away the indies without getting
+hurt, and I will get a lead in the expansion game.  Afterall, I built my pretender
+specifically for this purpose.
+
+*** Turns 2-7 - Disaster and Despair
+Unfortunately, in this instance, the blind rush into a province ended up being 
+a major failure due to a large group of heavy cavalry.  I watched as Zuzu futiley
+threw some flying shards at the heavily armed troops which shrugged it off.  They
+had a priest encouraging them.  There was about 30 of them rather than 10-15 as
+is usually seen.  Everything was wrong.  Zuzu held her ground for a while, but
+eventually it seems like the fatigue must have hit a point that allowed several
+big hits to land in a single turn.  Zuzu took perhaps 50-60 points of damage all
+at once and began to flee.  The morale of the cavalry never broke and they were
+able to finish off the snake as it tried to run away.  This brought me straight
+back to my first experiences with Dominions when I didn't know exactly how strong
+a god actually is.  Even the Earth Serpent can be killed by a foolish rush into
+an indie province.
+
+In despair, I send a message to the whole world letting them know my bid for the
+thrones of ascension has died along with my pretender.  However, I troop along
+intending to at least be someone's ally in a dramatic battle later in the game.
+
+My only hope for expansion now is to start pumping out lancer units.  A large
+enough group of them along with my prophet or another H3 priest should be able
+to quickly do enough damage to indie troops to rout them.  The problem is, I needed
+a turn to make a prophet (I was waiting until I bought my most expensive mage to
+do that), and a few turns to build up an army that can clear indies without taking
+many losses.
+
+I also decided to forego research and instead Call God, to try and revive my snake
+before his usefulness is entirely gone.  Another good use for powerful priests.
+It takes ~50 priest levels of Call God to finish the task.  So an H2 and H3 could
+revive the god in about 10 turns.
+
+Thankfully, after spending the two turns to build up, I was able to take a village
+province which significantly boosted my income.  So even though I only had four 
+provinces after the 7th turn (fall), my gold income was still decent enough that
+I could afford troops and expensive mages.  Lets pick up the strategy again
+at turn 8.
+
+*** Turn 8 - Late fall
+[[./late-fall.png]]
+
+I decided that by recruiting a Royal Mallaqui, some lancers, and a bunch of human
+chaff I could start a second expansion group.  Strong priests are quite valuable
+for many reasons.  In this instance, the Sermon of Courage keeps my human warriors
+on the field and Smite generally kills one unit per cast.  All I need to do is 
+outlast the enemy morale, not destroy them.  So my prophet and the royal mallaqui
+are both out there smiting dudes and hopefully i can catch up on the expansion game
+a little bit.
+
+*** Turn 11 - Late Winter - Return of the Snake
+[[./Turn11.png]]
+**** Mercenary Lesson
+[[./mercenary-lesson.png]]
+*** Turn 12 - Finally Rolling
+**** Snake v Barbarians
+[[./second-snake.png]]
+
+[[./barbarian-runaway.png]]
+**** Throne Scouting
+I'm sending in my current Prophet to scout the throne and die so that I
+can prophetize my Royal Mallaqui and save some gold.
+
+*** Turn 13 - Cramped by Van, Van, and Pan
+[[./Turn13.png]]
+
+My prophet turned into a mummy, so i have to send her to die again.
+*** Turn 14 - the end of expansion
+I have met my neighbors on all sides.  I have negotiated with Vanheim and
+Vanarus to take some mountain provinces.  My previous start was much better in
+terms of terrain.  I am expecting to hunker down with a ring of forts and try
+to mass lance strike forces and then armies of chaff plus archers.  I need the
+mountains in order to have access for easy recruitment of lots of my human
+warriors.  Thankfully, I have access to Amazons, and I hope to settle and make
+a longterm strategy here.
+*** Turn 15 - transitioning towards war
+There are still a few provinces to try to take.  I have sent messages to most of
+my neighbors, trying to pick a fight that makes the most sense.  honestly I think
+I would want to expand either south into Pythium or west into Vanarus.  I'd rather
+know Pangaea and Vanheim were fighting than pick a battle with either of them.
+
+One of my commanders died and is now a mummy that can capture slaves.  Upkeep goes
+up, but I can begin generating hordes of chaff to fill the field so my mages can 
+have time to do the work.  Now is the time to begin accumulating these freespawn,
+organizing archer and lancer forces, and focusing my research based on which
+neighbor I go to war with.  Which brings me to...
+
+**** Researching my opponents
+As the rule of war says, knowing your enemy and yourself, never lose a battle.
+Nazca's units are flexible, but I need to know who I'm up against to decide 
+what to send into battle.  Its time to research my opponents:
+
+***** Pangaea
+***** Vanarus
+***** Pythium
+***** Vanheim
+
+*** Turn 16
+*** Turn 17
+*** Turn 18
+
+*** Turn 19 - Scouting
+
+*** Turn 20 - Stale
+I found Pangaea's army but ended up staling the turn
+
+*** Turn 21 - Alliance with Vanheim - Border Control
+[[./Turn21-VanheimAlliance.png]]
+**** Border With Pangaea
+[[./Turn21-PangaeaBorder.png]]
+
+**** Border With Vanarus
+[[./Turn21-VanarusBorder.png]]
+
+Vanarus and I had agreed to exchange provinces a while back and they
+finally came to take mine.  I had invested 15 PD in it which bought
+me some time while he built a raiding party, but cost me a bunch of
+gold.  At least I get to look at some of his troops in battle.
+
+[[./Turn21-VanarusHirdman.png]]
+[[./Turn21-VanarusRaid.png]]
+
+*** Turn 22 - Bandar Log Becomes the Target - I go for a Throne
+I received a message from Vanheim that the Bandar have declared war.  It feels
+useful to have at least one neighbor as an ally during the first war, and the
+Bandar seem like as good a target as any.  We'll have to see what else happens
+with my other neighbors to see if I can actually deal with a full scale war
+against them.  Having a small border with Bandar is helpful, but if they recruit
+Vanarus to be on their side, I will have trouble dealing with both.  I am not
+going to attack them this turn, I will wait to see where they go... meanwhile
+I am going to take my neighboring throne.
+
+**** Throne attack
+[[./Turn22-moving-to-throne.png]]
+[[./Turn22-army.png]]
+This may not be the best idea since war is looming, but I have only committed to
+attacking Bandar with Vanheim.  And my plan is to move west against them anyhow so...
+I want to take the throne that neighbors my capital.  I have armies all in position,
+and lots of archers with flaming arrows.  I'm hoping the arrows will discourage the
+foot troops, and my flying warriors can attack rear and kill the mages quick.
+
+I should probably script some of my priests to cast banish, now that I think of it,
+there are death mages there that can hurt me.
+
+In prepping for the battle, I realized my research has left me void of decent combat 
+spells.  I have blindly gone for flaming arrows and horde of skeletons, and have no
+evocations that my Acalas can cast in battle.  I also have not researched communion,
+so my plan to use the amazons as slaves to my Coya is moot.  Next turn I will get
+communion, and then I'll have to be more purposeful about research for the war.
+
+**** Bandar Against Van, Pan Against Abysia
+[[./Turn22-message-from-bandar.png]]
+[[./Turn22-pangaeas-army.png]]
+
+
+*** Turn 23 - Guardians of the Golden Throne defeated!
+*/Late Winter Year 2/*
+
+My army took the throne with only 30 losses.  I'm glad because I 
+have news that makes me feel that is time to attack.
+
+
+**** Committing to Attack Pangaea
+I decide to attack Pan's fort on my border.  I can mass Hatun Runas that I don't
+mind dying in the castle fight.  I can crack the fort quick and swarm the smaller
+contingent of white centaurs already there before reinforcements come.  Hope
+Vanheim will see the same thing I do.
+
+Bandar Log successfully convinced me not to attack him.  His dominion is death.
+Pangaea land is much more attractive, and now I know Pan has gotten a good
+expansion and a Running start on killing of Abysia.  @jedinja and i kindof
+started our MP experience together, and i feel somewhat compelled to attack
+his attacker and keep him in the game.  If Pan can't kill Abysia without taking
+too many losses, and I'm taking his lands, maybe he will talk.  I'd be fine 
+if Pan and Abysia exhausted each other.  Someone else would pick up the scraps
+of Abysia though....
+
+
+*** Turn 24 - Golden Throne Claimed - Flying to Pans Border
+
+
+
+*** Turn 25 - Wish that Castle had Cracked
+I didn't bring enough fliers to crack the fort in a single turn.
+I should have possibly delayed one more turn, but I'm in it now.
+Hopefully, the walls will fall within a season and I can storm the
+fort before reinforcements arrive.  I have backups already coming
+and feel pretty safe, unless Pythium suprises me.  I should get 
+some more scouts.  Vanarus could suprise me as well.  We shall see!
+
+
+*** False start
+**** Year 1 - Spring
    [[./Turn1.png]]
 
   I am pleased with my start position.  For now I have limited access to capitol,
@@ -79,7 +278,7 @@
   worth of human spearmen and maybe some more archers while the commander is away
   and then maybe I can have a solo snake and one expansion army by turn 3.
 
-*** Year 1 - Late Spring
+**** Year 1 - Late Spring
 The Earth Snake succeeds, while my human troops die.  The cave I invaded had an army
 of Zotz in it.  They are quite weak, but strong enough to swarm my human warriors and
 kill half of them and the human commander before they ran off.
@@ -103,7 +302,7 @@ Zuzu the Earth Serpent heads for the Wolf Tribe with the rest of the starting ar
 I had an Earth Mother ripped apart by Wolf Tribe testing pretender builds for this game.
 The Earth Serpent's protection is much, much, higher so I think he'll be alright.
 
-*** Year 1 - Early Summer
+**** Year 1 - Early Summer
 [[./turn3-losses.png]]
 
 Once again, I lose half of my forces, this time its my Archers which I was hoping to build
@@ -122,7 +321,7 @@ and provide seige support when needed.
 I need to figure out the other type of army I want to lead, probably mages with sun guards
 and summons.  We'll get back to this.
 
-**** Going for the Amazons
+***** Going for the Amazons
 My immediate inclination is to circle Zuzu around the capitol to capture the Amazon
 province.  Then I'll need a lab and temple there to begin hiring the astral mages.
 With this in mind, I think I will go for the Earthquake strategy and the Earth/Death
