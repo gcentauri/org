@@ -25,7 +25,7 @@ throughout this file.
 #+BEGIN_SRC emacs-lisp :tangle dot-emacs-tangle.el :noweb yes
   (require 'cl-lib) ;; common lisp primitives added to emacs-lisp
   (setq initial-buffer-choice "~/org/home.org")
-  
+
   (global-set-key (kbd "C-c h")
                   (lambda () (interactive) (find-file "~/org/home.org")))
 
@@ -208,11 +208,11 @@ This takes a whitelist and/or a blacklist of unwanted themes.
 
 *** Setting the default font
   #+name: style
-  #+BEGIN_SRC elisp 
+  #+BEGIN_SRC elisp
     (set-face-attribute 'default t :font <<FONT>>)
     (set-frame-font <<FONT>> nil t)
   #+END_SRC
-  
+
   Font currently in use on Thinkpad
   #+name: FONT
   #+BEGIN_SRC elisp
@@ -298,15 +298,15 @@ now what i really want is to map it to Xah-fly-keys...
 #+END_SRC
 ** TODO Xah Fly Keys
 I started using Xah's =xah-fly-keys= package after developing a serious case
-of "Emacs Pinky".  Xah writes about RSI and deciding on "modal ways" and 
+of "Emacs Pinky".  Xah writes about RSI and deciding on "modal ways" and
 ergonomic keymapping for this.  I still suffer from hand strain and occasional
 pain, but it seems manageable mostly due to this new keymap.  Thanks to Xah!
 And thanks to GNU Emacs for enabling a solution to the problem caused by you!
-A bit recursive, isn't it? 
+A bit recursive, isn't it?
 
 *** Initializing
 This is for initializing 「xfk」for my preferences.  I don't want 「xfk」to use
-the control key.  By default it offers standard =C-z= undo, =C-x= cut, 
+the control key.  By default it offers standard =C-z= undo, =C-x= cut,
 =C-c= copy, and =C-v= paste, as well as other familar key combos.  I prefer to
 have no change to the control key, and that way standard Emacs mappings are
 still avaialable.
@@ -439,7 +439,7 @@ Go ahead and navigate to a track and hit RET on it to start playback.
 
 Now you can start exploring Emms. It’s probably best to begin with the
 basic commands (see Basic Commands), the interactive playlists (see Interactive
-Playlists), and the browser (see The Browser). 
+Playlists), and the browser (see The Browser).
 
 ** Lakota Input
 [[file:lakota.org::*Lakota%20Input%20Mode%20for%20Emacs][Lakota Input Mode
@@ -532,7 +532,7 @@ for spec validation.  Rspec mode is great by the way!
  Install Racer and download the source code of Rust:
  $ rustup component add rust-src
  $ cargo install racer
- 
+
  Configure Emacs to activate racer when rust-mode starts:
 
 #+name: rust
@@ -541,7 +541,7 @@ for spec validation.  Rspec mode is great by the way!
  (add-hook 'rust-mode-hook #'racer-mode)
  (add-hook 'racer-mode-hook #'eldoc-mode)
 #+END_SRC
- 
+
 For completions, install company with M-x package-install RET company RET. A sample configuration:
 
 #+name: rust

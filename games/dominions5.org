@@ -1,0 +1,14 @@
+* Panic, Terror, Fear, Morale
+** Asphodel vs Oceania 2018-02-10
+  | Unit         | Original Morale | Terror |
+  |--------------+-----------------+--------|
+  | Triton       |               9 |      4 |
+  | Aphroi       |              14 |        |
+  | Icthycentaur |              15 |        |
+  | Sea Dog      |              10 |        |
+  | Icthysatyr   |               7 |        |
+
+  It appears that Terror reduces morale by 5, but temporarily.  At some point
+  it looked like units morale went back up to 7, unless the 5 units got killed 
+  and i missed it.  Regardless, units routed very quickly, even with just a 
+  small portion of their line being hit with terror.

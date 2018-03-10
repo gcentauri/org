@@ -1,0 +1,14 @@
+* Dominions 4
+  is awesome.  there is too much to write about it and my pinky hurts.
+* Multiplayer
+[[./NewCornerSuperRumble/aar.org][MA Nazca - January 2018 - Jedinja's "NewCornerSuperRumble"]]
+
+* Document Notes 						   :noexport:
+** TODO unicode or some kind of link for displaying the dominions icons
+  [[./dom4-icons/Path_F.png]] [[./dom4-icons/Path_A.png]] [[./dom4-icons/Path_W.png]] [[./dom4-icons/Path_E.png]] [[./dom4-icons/Path_D.png]] [[./dom4-icons/Path_N.png]] [[./dom4-icons/Path_B.png]]
+
+  it would be cool to have [[./dom4-icons/Path_E.png]]6 instead of E6 for magic somehow.
+  some kind of unicode support or something?  If i'm thinking about publishing with this,
+  i just have to ensure that it displays in a reasonable way.  For now i suppose I can
+  copy and paste from these and view it in emacs.
+
