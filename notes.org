@@ -1,5 +1,4 @@
 * Programming
-
 ** ruby default hash value 					       :ruby:
 
 The first nice thing that jumped out to me about Ruby hashes while doing the
@@ -98,6 +97,58 @@ like
 
 then we can turn debug info on and off, by writing wrappers in the prepended module and then 
 calling =super=
+** builder pattern in Ruby
+https://ieftimov.com/refactoring-builder-pattern
+
+long story short, a nice pattern exists for building objects that require
+extra configuration or validation on setup. i am interested in using the
+=yield= to create block style
+
+#+BEGIN_SRC ruby
+class SmartphoneBuilder
+  def self.build
+    builder = new
+    yield(builder)
+    builder.smartphone
+  end
+
+  def initialize
+    @smartphone = Smartphone.new
+  end
+
+  def set_model(model)
+    @smartphone.model = model
+  end
+
+  def add_processor(speed)
+    @smartphone.cpu = CPU.new(speed)
+  end
+
+  def add_touchscreen(size)
+    @smartphone.screen = Touchscreen.new(size)
+  end
+
+  def add_ram(amount)
+    @smartphone.ram = RAM.new(amount)
+  end
+
+  def add_memory(amount)
+    @smartphone.memory = amount
+  end
+
+  def set_os(os)
+    @smartphone.os = os
+  end
+
+  def smartphone
+    obj = @smartphone.dup
+    @smartphone = Smartphone.new
+    return obj
+  end
+end
+#+END_SRC
+
+
 * GNU/Linux
 ** Writing a bootable ISO
 Colin told me of this method that /always/ works to write a bootable ISO.

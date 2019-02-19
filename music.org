@@ -264,3 +264,16 @@ I would have married that horse.
 
 ** Oh Honey
 
+* Making Music with Code
+** Intro - Why bother?
+*** Working with data streams
+** Brief History of Computer Music
+** Representing Sound - Digital Audio 101
+*** Waves
+*** Samples
+** Survey of Music Programming Languages
+*** Csound
+*** Pd
+*** SonicPi
+*** And more...
+** Conclusion
