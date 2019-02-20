@@ -46,3 +46,13 @@ a postfix input for Indic languages: [[https://www.bysatish.in/1/][Custom input 
 
   (provide 'lakota-input)
 #+END_SRC
+
+* A song (churls song)
+
+Im a Lakota, but i didnt know it
+and now my daughter is 2 years old
+you know i want to tell her
+that i lo-o-ve her
+just like her great grandmother would
+
+wasicu un

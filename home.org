@@ -4,7 +4,7 @@
   - [[./lakota.org]]
   - [[./music.org]]
   - [[./journal.org]]
-  - [[./games/dominions4.org]]
+  - 
 
 * Emacs Config file
 ** Tangle
@@ -606,6 +606,46 @@ be available in emacs.
 #+END_SRC
 
 * Emacs Notes
+** SPACEMACS
+*** TODO help integrate xfk
+*** Layouts/Workspaces
+**** Layouts    
+    *Layouts* are a collection of buffers.  I'm laying out all these buffers to work with.
+    Layouts is driving an emacs package called =perspective=
+
+    #######
+    Summary: switch between named "perspectives" of the editor
+    Requires: cl-lib-0.5
+    Homepage: http://github.com/nex3/perspective-el
+    Keywords: workspace convenience frames 
+
+    This package provides tagged workspaces in Emacs, similar to
+    workspaces in windows managers such as Awesome and XMonad (and
+    somewhat similar to multiple desktops in Gnome or Spaces in OS X).
+
+    perspective.el provides multiple workspaces (or "perspectives") for
+    each Emacs frame.  This makes it easy to work on many separate projects
+    without getting lost in all the buffers.
+
+    Each perspective is composed of a window configuration and a set of
+    buffers.  Switching to a perspective activates its window
+    configuration, and when in a perspective only its buffers are
+    available by default.
+    #######
+
+    one consequence of this for me was trying to open =eshell= in a new layout.
+    =M-x eshell= ended up taking me back across layouts to one i already had
+    an opened eshell buffer in.
+    
+    i learned that =C-2 M-x eshell= would start a new eshell buffer for me.
+    
+**** Workspaces
+    *Workspaces* are arrangements of those buffers in different windows/frames.
+    Workspaces is driving an emacs package called =eyebrowse=
+
+
+** open second eshell
+   
 ** edit file as root
 http://emacsredux.com/blog/2013/04/21/edit-files-as-root/
 
@@ -1574,6 +1614,7 @@ tree.
   (setq pdf-info-epdfinfo-program "/usr/local/bin/epdfinfo")
 )
 (pdf-tools-install)
+
 
 * git tricks
 ** every file a user has touched in a directory

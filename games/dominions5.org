@@ -12,3 +12,108 @@
   it looked like units morale went back up to 7, unless the 5 units got killed 
   and i missed it.  Regardless, units routed very quickly, even with just a 
   small portion of their line being hit with terror.
+* Scripting turn saving with version control
+** Start a Server
+*** Use --preexec and --postexec commands to make git commits
+*** 
+** Command line interface launcher
+*** start game at specific turn
+*** or possibly generate directories for all turns?
+
+* Diplomacy
+** Message to the world against Atlantis
+
+#+BEGIN_SRC markdown
+  _a crazed Fir Bolg warrior, glowing with an aura of the god touched, appears before
+  you in a dream_
+
+  I, Fortchern, prophet of Twrch Tyrwyth, the Foundation, the King of Forgiving bring
+  the prohpecies of the sea, and knowledge of the great Fomorian Kings.
+
+  While we thank the Atlantean Terror of the Deep for putting the tortured souls of
+  Therodos to rest, we must warn the world that they now bring disease and death to
+  us all! King Crosson spied, with his giant eye, a plague from the sea rise and march
+  across the land, as if carried. Could it be that some charm of venom has been forged
+  in the deeps?
+
+   We keep the Throne of Pestilence under control and can not allow this disease from
+  the sea to exist on land. Join us if you will, or cower in your castles, pretenders
+  of Urraparrand. But remember, there is a nobility and power in the Deep Ones, the
+  Kings of Basalt, the Queens of Terror, the black Monolith of the deep. Tread with
+  respect within the domain of the sea! 
+#+END_SRC
+
+* Notes
+** Trading chat
+BloaxYesterday at 11:41 PM
+you don't really push dominion in this game in my experience
+unless you have a very specific reason for doing so
+such as killing a monument
+(which is the immobile immobile with 500 base hp and 30+earth prot)
+or you're hellscales ea/la mictlan
+and so you can both churn out much more dominion than usually by blood saccing
+alongside actually having the unusual opportunity to cripple people by spreading your cancerous dominion onto their lands
+as usually your dominion wouldn't really be that much worse than whatever your enemy has
+but if it's turmoil 3 sloth 3 death 3 misf 3 drain 3
+it's probably worse
+an important tidbit, especially in MA
+is possibly to strike a good deal with a forging nation on some utility items
+such as having MA Ulm crank out a metric fuckload of fires in a jar for a fire nation
+with a price that satisfies both parts of the ordeal
+usually it's not a huge deal, but if you're a nation with good things to put items on while also being terrible at actually making those items - let alone for cheap - it may be worthwhile to secure a deal
+an EA example of this would probably be something like fomoria and therodos
+Therodos would actually probably be more willing than EA Ulm to do this for Fomoria, as long as you give them a pinky promise not to stomp them out of their waters.
+SenshiYesterday at 11:49 PM
+It's fun being a trade mogul as MA Ulm.
+Get all the gems.
+BloaxYesterday at 11:50 PM
+it's pretty important to secure good deals as MA Ulm
+like say
+5 fire and 2 astral and 70 gold for 3 fires in a jar per turn
+that's 43 net income after upkeep, alongside +2 fire/astral per turn
+like a magically conjured province straight inside a fort of yours that gives 43 income and +2 fire/astral income
+for a startup price of 35 earth gems
+(subsequent startups are 33 earth gems)
+SenshiYesterday at 11:52 PM
+You're quite the Jew Financier, Bloax.
+BloaxYesterday at 11:52 PM
+I'm just a humble strategist.
+SenshiYesterday at 11:52 PM
+How do you calculate the value of your mage turns, though?
+BloaxYesterday at 11:52 PM
+upkeep is in the morale tab of unit stats
+master smiths are 108 gold a year, or 9 per turn
+SenshiYesterday at 11:52 PM
+Well a mage turn's gonna be worth more than just its upkeep.
+You have to account for all of the other things they could be doing.
+unimaginable23Yesterday at 11:53 PM
+doesnt really matter tbh
+SenshiYesterday at 11:53 PM
+Like, with a Master Smith, you have to account for the 13 research points your losing per turn.
+unimaginable23Yesterday at 11:53 PM
+since you are comparing it to other mages
+SenshiYesterday at 11:53 PM
+Or site searching.
+BloaxYesterday at 11:53 PM
+the exact value is entirely down to the two parties
+you could give an exceptionally good deal for what really just accounts to brownie points
+because brownie points can potentially have their own value
+you can also give exceptionally nice deals just to let someone have fun
+literally nothing preventing you from technically sending someone a whole lotta light thug gear for just the forging costs after all the forging bonuses
+in exchange for seeing what happens
+GrekToday at 12:02 AM
+I would actually say the 'value' doesn't depend very much on who you're trading with. It's always a comparison to your best alternative, which is spending all your disposable gem income on yourself. As long as you're getting a profit in gems and still have enough mage turns to forge everything you want to forge for yourself... why not trade?
+BloaxToday at 12:03 AM
+most of your trade production as ma would consititute something like -99 RP at most
+for a significant increase in gem income
+GrekToday at 12:03 AM
+which you then turn into lightless lanterns to make up for the research opportunity cost
+BloaxToday at 12:03 AM
+well or say
+owl quills as therodos
+since fomoria has air gems, but few earth gems
+and as therodos you'd really like those sweet-ass air gems for more research
+so you're spending mage turns to actually increase your research output
+(as you'd otherwise just be forging for yourself with those mages)
+GrekToday at 12:05 AM
+yeah, investing mage turns into research is like summoning 1-2 research mages per turn

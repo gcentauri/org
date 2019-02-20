@@ -1,0 +1,18 @@
+#+TITLE: Report on First Open Source Session
+
+* Work Accomplished
+** Participating in Live Chat
+*** x people helped
+*** learned about the stack exchange
+*** learned about upcoming release
+** Emacs Stack Exchange
+*** x reputation earned
+*** x answers
+*** x upvotes
+*** anectode tarsius
+** Spacemacs Codebase
+*** flykeys layer
+*** documentation update
+*** release notes issue
+* What I Learned
+* Where to Go Next

@@ -736,7 +736,7 @@ total disaster, but it could have gone better.  If only my intercepting army
 plan had worked :/ ... Vanarus has had a lot of gold to buy elite troops, so
 I will have to find a way to win with magic.
 
-* Turn 46 Preparing the Second Wave
+* Turn 46 - Preparing the Second Wave
 /Winter, Year 4/
 
 All is looking well, despite the loss.  I am moving more troops into position, 
@@ -844,18 +844,22 @@ Looked like a pretty weak army.  I also had a scout attacked and was able to see
 of Pythium's angels... I really need to get my anti-thugs together.
 
 * Turn 52 - Ending the Siege Once and For All!
-Zuzu is in place to join the battle, and some extra troops to die and exhaust the enemy.
+Zuzu is in place to join the battle, and some extra troops to die and exhaust
+the enemy.
 
-** Being Friendly with Pythium
-I am sending a message to Pythium expressing my desire to move against Bandar Log.
-If the Apes remain friendly with the Centaurs, I could have a real fight on my hands.
-It would be nice not to have all three of them against me.
+** Being Friendly with Pythium 
+
+I am sending a message to Pythium expressing my desire to move against
+Bandar Log. If the Apes remain friendly with the Centaurs, I could have
+a real fight on my hands. It would be nice not to have all three of them
+against me.
 
 * Turn 53 - Vanarus Crumbles, Nazca Soars On
-The battle was won handily this time, but the victory feels somewhat hollow.  Pangaea is
-on the rise with Mother Oak cast, and is moving in on the territory of Vanarus as well now 
-that the work has been done.  I must keep up the momentum and organize the throne strike
-as soon as possible.
+
+The battle was won handily this time, but the victory feels somewhat hollow.
+Pangaea is on the rise with Mother Oak cast, and is moving in on the territory
+of Vanarus as well now that the work has been done. I must keep up the
+momentum and organize the throne strike as soon as possible.
 
   - Anti-angels moving toward Pythium throne
   - archers and undead moving toward bandar
@@ -967,6 +971,383 @@ and hope to draw them back.
 * Turn 59 - Minor Victory Disperses Pythium
 /Early Spring, Year 6/
 
+** Doing a little cleanup
+I'm marching some troops out at retreated troops, hopefully it goes ok.  Ugh,
+whoops i think i forgot to script them :(
+
+** Threatening Pythium's Capitol 
+I'm going to siege Pythium and hope they will fall back to defend.  Otherwise,
+I'll take it and then go back for the throne.  I am also sending a message to
+the world to try and imply that Bandar and Pan manipulated Pythium, and I'm 
+doing the work so they can come eat the scraps.
+
+* Turn 60 - Rain of Stones
+
+Foolishly, I marched right into a situation that caused much more pain than 
+expected.  The pretender of Pythium is a Great Sage that was able to drop
+Rain of Stones on the battlefield, killing hundreds of my poorly armored troops.
+Now some dozen mages have died and become mummies, increasing my upkeep.  I
+may still be able to finish him off, but I lost over 300 troops to the battle
+and now the fort is still standing.  Nothing is as easy as it seems in Dominions.
+
+** Oh my, the Great Sage is in the Open!
+
+I just noticed that becaues Pythium came out of the fort for battle, the 
+pretender is not holed up in the castle, but is in a province alone, with 
+no defenders.  Now... to find a sure fire way to take him out?
+
+I am teleporting in some Royal Mallaquis, including the First Couple and casting
+Bane Fire which at best will kill the Great Sage outright avoiding a loss of
+good mages, and at least hopefully will cause decay on him and we all die.
+I am very excited to see Nazca's powerful mages in a mage battle with this
+pretender.  I'm hoping he won't be expecting it, because he could potentially
+use Magic Duel and win with his superior astral power.  However, the mallaquis
+have innate caster, so i hope i can get off a few spells in one round to make
+sure he dies.  We shall see...
+
+** Military moves
+
+I'm moving to siege the throne province and to relieve the siege on mine.  I
+am finally putting my Crystal Sorceresses to use in a communion, hoping to use
+Wailing Winds again to chase the army away and deal some damage as well.
+All of my new Mallaqi priests are now summoning longdead... I hope that with
+a horde of longdead and an astral mage to cast Anti-magic I can survive long
+enough against Bandar Log to win a throne from him as well.  Although....
+Now that I think of it, Pythium's other throne may be an easier target.
+
+* Turn 61 - Continued Frustration
+
+The Sage ran away, Fog Warriors beat my siege army once again, we missed the
+battle at our own besieged fort as Pythium's army moved away.  Now we have a
+dillema.  The Sage and a decent backup force are one step away from engaging
+my 'main' army now, which has been whittled down.  I could retreat and try
+ONCE MORE to take Pythium's throne, but it feels weak.  But... to withstand 
+another battle may make the capitol siege impossible again.  It feels very bad
+to have the pretender and the capitol slip through my fingers this way, but
+I must remind myself that the throne is our main goal.
+
+I forgot to recruit last turn so I have tons of gold, but am feeling short
+on troops.  Strong troops that is... I have hordes of chaff, but I'm possibly
+not playing the magic game correctly.  I think it is time to field more of the
+Royal Mallaqis and really bring the magic into play.  Ugh.  Everything is so
+difficult, even when you seem in the lead!
+
+** Lucky Lab Leads to Decisive Decisions
+
+I realized that the province in which I chased away the Great Sage has a
+laboratory!!!  This means I can leapfrog-teleport my Mallaquis again!  SO...
+I've decided to send the hero First Couple against Pythium's army that is
+coming to relieve the siege.  I'll cast Wailing Winds and Wind of Death to
+try and scare and kill the whole thing.  Maybe it will run away.  Maybe the
+First Couple will become dust.  But so be it.  Now is the time to ensure
+that my sieging army will be successful.  I'm sending the other Royal Mallaqui
+to teleport in on the Sage again and run him off further if he's still scripted
+to retreat.  Otherwise we'll try and get off a Bane Fire and kill him.
+
+* Turn 62 - Sacrifices and Superiority
+/Late Spring, Year 6/
+
+** The First Couple Falls
+** Pythium's Relief Force Destroyed! 
+** blacksmith the Great Sage Escapes to a Throne Fort.
+How unfortunate!  The biggest threat to my troops and mages has escaped to
+a fort I'd prefer over his capitol.  If I must face him again, I need lots of
+marble warriors casters.  I should do that anyways.  Time to crank out Earth
+Boots.
+** Need to Work on Troop Buffs
+I've been failing to concentrate on figuring out how to buff my weak troops
+into greater effectiveness.  Extra strength and armor would really help elite
+troops stay in the battle.  Send in the first wave of chaff, hold and attack
+with elites, and bombard with mages.
+
+*** Earth
+E2 mages can cast Marble Warriors with Earth Boots and a gem.  Or two gems.
+It says area of effect 25, so that is a 5x5 box.  3 warriors per square is
+75 lancers or pikemen.  Heck, even chaff would be good on that.  I will try
+making squads of 75 with one mage to buff them with Marble.  Strength of
+Giants works the same way.  My Pretender can cast Weapons of Sharpness on
+a squad of 75.  Marble Warriors combined with Iron Bane might be good, lower
+enemy armor while my marble skin is unaffected (still could lower protection)
+
+*** Astral
+**** Anti-magic
+**** Luck, Will of The Fates
+
+* Turn 63 - Wrath of God
+
+/Early Summer, Year 6 of the Ascension wars/
+/...as the walls of Pythium crumbled, the pretender Great Sage/
+/called the Wrath of God down upon the heathen Nazcan warriors.../
+
+blacksmith the Great Sage is killing our troops with holy lightning.  he has
+reached a safe province and has an army of 160-200.  He could potentially 
+cast gateway and teleport an army into Pythium as I storm the castle.  Perhaps
+I should wait a turn and see.  But with Wrath of God killing the troops...
+
+I have decided. I will preach down the dominion a bit, move the elite troops
+away back to attack the throne next turn, reanimate the corpses, and continue
+the siege rather than storming the castle.  I don't want to jump into something,
+and keeping the capitol under siege is a victory in itself.
+
+* Turn 64 - Arrrrrggh... stupid stale
+
+I spent an hour at least doing the next turn, arranging my army just so for 
+storming the throne fort and... never sent the turn in
+
+* Turn 65 - Trying Again
+
+Sending backup chaff to the siege in Pythium and sending the elite army 
+to take out the throne province.  Probably some overkill but hey... gotta
+get this done this time around.  Too frustrated to do notes.  I'm trying
+Marble Warriors the first time... a box of 75 lancers with buffs.
+
+* Turn 66 - Going Slightly Well
+
+Both forts have cracked again, and Pythium seems to be out of steam.  I have
+the pearls to over-cast Wrath of God, but not the Astral levels at the moment.
+I need to forge another crystal coin and star helm or whatever to get my AS mage
+up to the right level.  I almost want to ask Bandar to cancel it, and then cast
+it over again.
+
+* Turn 67 - The Beginning of the End
+/Fall, Year 6/
+** Pythium Falls and Nazca Gains the Throne of Knowledge
+
+** Pangaea Marches to War
+
+*** Skirmishing on the Borders
+
+I'd like to just keep Pan busy until I know I can finish of Pythium and take 
+the other throne.  I can lose some battles here, and try to keep the fight 
+centered on areas I don't really care about (like Vanarus, where Pan's main
+army is)... Put undead and slaves on the ground, use mages to do the heavy
+lifting.  Look for a decisive battle where I can drop some Earthquakes.
+** Nazca's Own Wrath Of God
+
+I'm sinking 85 astral pearls into my own Wrath of God to try and over cast
+Pythium's global ritual.  
+
+* Turn 68 - Patience, Patience
+/Late Fall, Year 6/
+Wrath of God failed, Pan is winning battles and destroying temples.  It seems
+like the clearest path to victory is to finish of Pythium, destroy the Great Sage
+and somehow maintain against Pangaea as well.  Mages will be the key to killing
+off Pan's armies.  I have plenty of chaff to counter the Maenads, but they turn
+into manikins when they die thanks to one of Pan's three globals currently 
+running.  Blade Wind, Nether Darts, Pillar of Fire, I dunno... perhaps some 
+Summon Lammashtas and Fire Storm possibly?  Hmm... maybe an Inca and those fire
+drakes?  It would be nice to take one invading army toward the capitol and see
+if I can draw them back, win by attrition.  Ugh.
+
+There are a lot of things to manage at the moment.  The challenge of administering
+a war of ascension is weighing on me.  I decided to forge a bunch of Bows of War
+for my Acallas to weild against the maenad hordes.  We'll see.  Summoning a 
+Sea King.  Trying to avoid a direct confrontation with the Great Sage until I 
+am sure of it.  But I'm afraid I might be too indecisive.  I should probably rush 
+everything to the Pythium throne.  But I must also guard the ones I currently
+have Dx  Given a known win against Pythiums god, I can probably capture the
+province in two turns, so I must be ready to send in the army, then send on
+the turn I storm the fort an army to Pan's throne.
+
+* Turn 69 - Fatigue...
+
+I'm running out of ability to take decisive actions.  My troops are somewhat
+dispersed and I don't feel ready for anything.  I'm mostly stalling this turn,
+letting Pangaea siege me, casting mage killing spells against Pythium's last 
+stronghold... I need to concentrate forces but I need to defend as well.  I'm
+concerned Bandar Log is moving toward one of my throne provinces, and Pan's
+Main army is not far away from another one.  The focus needs to remain Pythium's
+last stand, and being able to go take Pan's throne.  There's a Treelord guarding
+it, so I'm going to bring a bunch of fire mages and archers to burn it down.
+
+Still very bummed about losing all those astral pearls.  I should have waited
+a turn and cast Ether Gate to get some shock troops to help in the endgame.
+Nazca really lacks the elite troops I feel I need, at least without a bless for
+the Huacas and Supayas.
+
+* Turn 70 - Pushing Back
+
+** murderous winter
+** attack pepper plains
+** attack the siegers
+** hope for the best
+
+* Turn 71 - Can We Weather the Storm?
+
+Murderous winter killed almos 70 troops, but thats hardly more than 1 per gem,
+and they were most likely all maenads.  I lost the siege battle because the whole
+army was berserk and the centaurs never routed at the end.  They still have an
+army of 40 centaurs plus 4 pans to keep bugging me, and plenty more on the way
+I'm sure.  Pan has had the middle game too easy, I should have finished them off
+and then gone after Vanarus instead of switching targets mid game.  It seems like
+I am going to lose out through attrition of being at war for so long.  Pan got to
+swallow up Abysia and A bunch of Vanarus without too much fight.  He's had nice
+globals up for a while and no one has contested him.  Bandar/Pan will wear me
+down and then settle the thrones issue themselves.  I have lost the advantage
+of mobility even, because my hitting power is too low to get the thrones as
+hoped for.
+
+Attrition, specifically on my gems, is hurting.  I've lost a lot of useful items
+as my mages have become mummified.  Thankfully, the mummies gain me the ability
+to churn out lots of chaff that cost nothing.  What I really need is to organize
+my lance and axe troops into buffing blocks so they can actually kill effectively.
+These hordes of maenads that berserk are no joke, especially when backed by Pans
+and white centaurs waiting to finish the job.
+
+I have a few thoughts.  I really want to use Earthquake, but I really ought to 
+have a few casters at once cast it, with my snake to stay in the battle.  I don't
+think it will be enough to kill off regenerating centaurs either.  I can also use
+communions to get Fire Storm, if i load up a mage to cast it and survive somehow...
+I could potentially wipe out an army of Maenads that way too.  I really need 
+some tricks like that, but I lost my best teleporting mage bomb against Pythium.
+
+The fatigue of endgame dominions on a 24 hour clock is getting to me as well.
+I only get about an hour+ each day to actually play my turn.  Scripting for a
+battle is time consuming, and I need to know that the battle I have will be 
+decisive.  So this turn I am regrouping, delaying again, waiting for the
+opportunity to strike when most effective.  I'm hoping to preach down Pythium,
+but that will probably trigger a suicide strike by his god anyway, so... maybe
+I should just siege.  If Bandar goes ahead and attacks my sieging force... well
+then, I'm afraid this game is going to drag out even longer as I slowly get 
+eaten by the apes and the centaurs :/
+
+I'm too nervous to use my Incas and Coyas because I need them for the final 
+throne claiming.  That damn treelord is going to be an issue too.  AAAAAAAHHH!
+
+* Turn 72 - Backing Down
+
+I don't want to face Bandar and Pan at the same time, and try to finish off
+the great sage.  I'm backing down this turn in hopes that Bandar Log will live
+up to his words (even though i changed the bargain) Pangaea has veered off course,
+I think he should have kept pressing in, but it looks like we may have a chance 
+to shift gears and find a battle we can win decisively.
+
+* Turn 73 - Turning Forces Toward Pan
+* Turn 74 - Counter Attack Pan, Open Path to Throne
+(backup made, refer for pics and notes
+ [[/home/grant/dominions4/backups/new-corner/turn74]])
+
+* Turn 75 - Watching My Enemies Win
+** Great Sage Gutted
+** Vanarus Taken by Pan's Prophet Pan
+** How to Counter?
+*** Fires Upon Pan
+**** Fire Storm / Fire Fend
+Fire storm worked great, and I realized that I've been forgetting that
+I can use a Crystal Matrix on an Inca for communion, and that fatigue is
+shared.  My plan would have been perfect, had I already researched Fire Fend.
+Flame Ward targeted poorly, and all my communion slaves died.  So I wasted
+Fire Storm on some maenads and missed the group.  
+**** Earthquake
+Earthquake will be good with a flying army, but maybe not enough.  Perhaps I
+should try multiple quakes in one turn.  I need to get past the regen and high
+HP of the centaurs.  Earthquake plus buffed lances and fire magic maybe.
+Flame ward will help a ton, my recent win against PD lost many troops because of 
+friendly fire. 
+** Note on Logistics
+Since I expected to fight PD against Pan, i should have stashed gems on a non-mage.
+scripted good spells for the fort fight, bound them to hot-keys, then switched 
+the script to something generic for the pd fight.  i keep blowing the timing on
+spell casting, intercepting armies etc....
+
+I'd like to bring back the teleport strat, but it seems like now i need to make
+communioned teleports to do good.
+
+* Turn 76 - Pan Responds to the Counter Siege
+** Sieging army is not that strong
+** Trying Another Teleport Attack
+I realized that with a Crystal Matrix and Cloud Trapeze, an Inca can fly in and
+cast fire storm at the head of a communion.  I'm using an Inca so I can save one
+teleporting astral mage for a communion slave.  I have two amazon sorceresses that
+spawned with S2, wearing a starshine skullcap teleporting in, and the fire mage
+from the last Fire Storm attack casting Fire Fend then Control, in case of Golem.
+Fingers crossed!  Hopefully a Golem will be scripted for two turns at least Fire
+Storm should get a round or two in.  Its supposed to hit 50% of the units on the
+field.  I'm targeting an army of near 1000.
+** Staying Defensive
+I'm doing fine right now, and have the opportunity to get off some global rituals
+if I can stay patient.  Nothing seems like big enough of a threat to finish me
+off, since Pangaea is not attacking successfully.  It seems the defender has a
+bit of an advantage in Dom4, especially by way of moving first in battle.  If
+I can manage to wear down Pan with precise strikes while not losing too much,
+I think I can win.  I should not risk anything big or valuable at the moment...
+Like my Mind Hunt last turn was a waste.  Now i have an expensive mummy to send
+off to die.
+
+* Turn 77 - Gem Spending
+Cast ritual for extra 5 astral pearls per turn, though its gonna take 6 turns
+to pay off.  Mostly, I want to start getting more rituals in to try and push one
+of Pangaea's off.  I could cast Wrath of God again, but I don't want Bandar to
+have an excuse to start fighting just yet.  Ether Gate looks promising, it 
+summons ethereal elite warriors who have moon blades, good for killing the 
+magic beings from bandar, and maybe countering golems.  
+
+I need to spend wisely for pulling off communion victories.  I can leverage
+the wind of death by using crystal matrixes, and i have a steady supply of slaves.
+I should really consider though that we may only have 20 or so turns remaining, I'm
+really not sure though.  Hoping my undead troops going toward Pangaea capitol are
+going to at least accomplish something worthwhile.  I dropped off my siege because
+I didn't want to fight a battle there with two armies.  If i would have had a 
+communion set up, it would have been perfect... alas, I did not prepare my mages
+well, or bring in backup as i should have.  I wasted the fire storm on a bad move.
+A group of harpies ruined my plans.  i should have summoned hawks into the province
+as a screen.  i knew it, and just didn't do it.
+
+* Turn 78 - More Fatigue
+
+I should have known not to use Wailing Winds against the berserkers.  I need
+to get a good Earthquake Fire Storm to wipe out Pan's reserve.  I keep failing
+to kill many white centaurs, and I lose battle after battle.  He's wearing
+down but so am I.  I'm too tired to go for the decisive battle, even though I 
+think I could do it.  He cast Earthquake in a recent battle, which is no good
+against my flying armies, but will ravage my undead.   The Pans are proving
+to be very effective battle mages when supported by the hordes of maenads.  These
+stacks could have taken out at least one fort if Pangaea had stayed focused.
+Also, he could have done way more with his white centaurs and stealth.  Crippling
+my economy would be a big problem for me.  Sneaking in, destroying all my 
+temples and harassing me all over would be better strategically than the stacks
+coming at me.
+
+I have vaguely set up a situation where maybe i pull of Rigor Mortis and Fire
+Storm at the same time.  But only if he attacks the right province and only
+if earthquake doesn't wipe me out first.  ugh.  what will be will be.
+
+* Turn 79 - umm
+* Turn 80 - skip
+* Turn 81 - Float like a butterfly
+trying to avoid pangaea's army because i can't seem to win against them even tho
+they are wearing down.  i have made it back to siege the fort near the throne, 
+which is what i really want.
+
+* Turn 82 - quick turn
+
+I had like 10 minutes to do this turn, so i mostly recruited and moved troops out
+of danger.  I did manage to get an Earth Attack against Pan's prophet, but he
+has too many good items equipped and i couldn't hurt him at all.  bummer.  many
+of those items look like things my commanders have dropped too.  ugh.
+
+* Turn 83 - No Time to Think
+
+* Turn 84 - Positioning
+
+Mostly just moving troops up to the borders.  Cast eyes of god again to override
+one of pangaea's globals.  i have 25 astral pearls per turn, i'll save up one more
+time and get wrath of god up too.
+
+* Turn 85 - More Positioning
+
+managed to knock out earth blood deep well on Pan.  looks like bandar probably has
+crazy gem reserves though.  probably just waiting to rain all matter of nonsense
+down on me once i'm through.  the fight with pan feels like it will never end...
+one of us needs to get serious about destroying the other's economy and recruitment.
+
+bandar's dominion is pressing in everywhere, so i think i will need to organize all
+kinds of raiding parties to go smash up the temples, perhaps i can get him to waste
+resources chasing me down.  he's winning on provinces and gems for sure.  i don't
+know what that means in the grand scheme, my troop level is still high, but like
+he already knows, they're paper men.  need to get more organized with my marble
+warriors, but i'm so short on earth gems all the time. really wish i hadn't lost
+that earth king to frog prince :/
 
 * False start
 ** Year 1 - Spring
