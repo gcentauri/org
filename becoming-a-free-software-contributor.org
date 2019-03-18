@@ -1,0 +1,36 @@
+#+TITLE: Becoming a Free Software Contributor
+#+AUTHOR: Grant Shangreaux
+
+* Why Free Software?
+** I Owe My Living to Emacs
+*** joining the church of emacs
+    - i chose emacs as my editor when i first began to code
+    - initial learning curve paid off
+    - org, magit, spacemacs and beyond
+*** learning how to lisp
+    - John McCarthy
+    - Structure and Interpretation of Computer Programs
+    - How to Design Programs
+    - Teaching
+** Working for the Greater Good
+*** Help Your Neighbors
+    - Software impacts increasing amount of our lives
+    - GNU/Linux keeps old hardware relevant
+*** Knowledge Sharing
+    - Software is knowledge
+    - Software is communication
+*** Authors, Users, Owners
+    - rms and the FSF
+    - creators == users -> true
+
+* Ways You Can Participate
+** Contributions
+*** Code
+*** Documentation
+*** Issue Triage
+** Connections
+*** Help the Neighbors
+*** Share the Knowledge
+*** Manage and Maintain
+
+* Takeaways

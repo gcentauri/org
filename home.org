@@ -4,7 +4,7 @@
   - [[./lakota.org]]
   - [[./music.org]]
   - [[./journal.org]]
-  - 
+  -[[ ./becoming-a-free-software-contributor.org]]
 
 * Emacs Config file
 ** Tangle
