@@ -2,16 +2,27 @@
 #+AUTHOR: Grant Shangreaux
 
 * Why Free Software?
-** I Owe My Living to Emacs
+** I Owe My Living to Emacs   
+                         [[file:I%20Owe%20My%20Living%20to%20Emacs/768px-EmacsIcon.svg_2019-03-19_23-35-32.png]]
+
 *** joining the church of emacs
     - i chose emacs as my editor when i first began to code
     - initial learning curve paid off
     - org, magit, spacemacs and beyond
-*** learning how to lisp
-    - John McCarthy
+
+                           [[file:joining%20the%20church%20of%20emacs/16914999852_995b77a811_z_2019-03-19_23-53-43.jpg]]
+
+
+*** learning how to lisp  
+    - John McCarthy 
     - Structure and Interpretation of Computer Programs
     - How to Design Programs
     - Teaching
+    [[file:learning%20how%20to%20lisp/4581d08c5401be09b8875ed95281ce40_2019-03-20_00-00-30.jpg]] [[file:learning%20how%20to%20lisp/SICP_cover_2019-03-20_00-03-04.jpg]] [[file:learning%20how%20to%20lisp/51u%252BCa4yW8L._SX373_BO1,204,203,200__2019-03-20_00-05-21.jpg]] [[file:learning%20how%20to%20lisp/racket-logo_2019-03-20_00-06-40.svg]]
+
+
+
+    
 ** Working for the Greater Good
 *** Help Your Neighbors
     - Software impacts increasing amount of our lives
