@@ -1,0 +1,41 @@
+I'm Grant Shangreaux, a software engineer at Cardflight.
+
+Today, I want to tell you my story about becoming a free software contributor. I'll
+talk about the hurdles of getting to that first pull request and some of the other
+ways you can contribute besides code. I hope you'll come away from this talk inspired
+to go make your first contribution, or if you're already doing it, to be energized 
+in your efforts!
+
+There are many reasons to participate with the free software communtity. Personally,
+you can learn a lot from other developers and users, expand your knowledge of programming
+patterns, testing, project management, and collaboration with others. You can build
+your resume by making trackable public contributions, whether it is code or answers on
+Stack Overflow. Maybe you're a rockstar programmer doing it for eternal glory. But in
+my opinion, the most compelling reason is to work for something good. I'd like to share
+how the philosophy of free software allowed me to go from a user to professional programmer
+and why I want to give back.
+
+I've been a free software enthusiast since I first booted GNU/Linux nearly 15 years ago. 
+I didn't have a laptop, and was trying to learn how to play the game go. Some online
+resource pointed me to a bootable disc image I could burn on a CD and turn any machine
+into my own personal go studying workstation. 
+
+I was astonished. As a broke, cynical, college drop-out this experience of freedom
+excited me. Not just that it didn't cost anything, I could suddenly turn some random
+windows machine on campus into something entirely different, an operating system tuned 
+to a niche purpose, packed with free, shareable information, created by someone on the
+internet. This led me to learn about the Free Software Foundation, GNU/Linux, and Emacs.
+
+So what is Free Software? (quote) 
+
+That commitment to learn and share what is learned with others had a direct impact 
+on my ability to become a programmer. There's a more specific definiton of free software
+but it can get political, so I want to boil it down to this: Be a Good Neighbor.
+Software impacts an ever increasing scope of our lives these days, and a lot of it
+is not visible to users. Free software treats programmers and users as equals.
+
+If you were here last month, the CTO of CardFlight Peter Wagener, gave a talk on
+the economic reasons for companies to support free software projects. I was very
+excited when he created CardFlight's OSS contribution program,  Even though I
+had participated in online free software communities, it wasn't until 10 months
+ago that I made my first pull request to a project on GitHub.
