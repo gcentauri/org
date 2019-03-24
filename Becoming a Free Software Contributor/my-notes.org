@@ -2,9 +2,15 @@ I'm Grant Shangreaux, a software engineer at Cardflight.
 
 Today, I want to tell you my story about becoming a free software contributor. I'll
 talk about the hurdles of getting to that first pull request and some of the other
-ways you can contribute besides code. I hope you'll come away from this talk inspired
-to go make your first contribution, or if you're already doing it, to be energized 
-in your efforts!
+ways you can participate besides code contributions. I hope you'll come away from this
+talk inspired to go make your first contribution, or if you're already doing it, to be
+energized in your efforts!
+
+If you were here last month, the CTO of CardFlight Peter Wagener, gave a talk on
+the economic reasons for companies to support free software projects. I was very
+excited when he created CardFlight's OSS contribution program,  even though I
+had participated in online free software communities, it wasn't until 10 months
+ago that I made my first pull request to a project on GitHub.
 
 There are many reasons to participate with the free software communtity. Personally,
 you can learn a lot from other developers and users, expand your knowledge of programming
@@ -12,30 +18,43 @@ patterns, testing, project management, and collaboration with others. You can bu
 your resume by making trackable public contributions, whether it is code or answers on
 Stack Overflow. Maybe you're a rockstar programmer doing it for eternal glory. But in
 my opinion, the most compelling reason is to work for something good. I'd like to share
-how the philosophy of free software allowed me to go from a user to professional programmer
-and why I want to give back.
+how the philosophy of free software allowed me to go from user to professional programmer
+and why I choose to give back.
 
 I've been a free software enthusiast since I first booted GNU/Linux nearly 15 years ago. 
-I didn't have a laptop, and was trying to learn how to play the game go. Some online
-resource pointed me to a bootable disc image I could burn on a CD and turn any machine
-into my own personal go studying workstation. 
+I didn't have a laptop, I was broke, and in the process of dropping out of school the 
+second or third time. I decided it would be a good idea to teach myself how to play Go,
+the ancient Chinese strategy game. Surfing the web, I found this thing called Hikarunix,
+a bootable disc image I could burn on a CD and turn any computer into my own personal go studying 
+workstation. I figured out how to use a campus computer to do that, and proceeded to 
+reboot it after sticking this purple CD-R into the drive. This strange new desktop
+appeared on the screen.
 
 I was astonished. As a broke, cynical, college drop-out this experience of freedom
-excited me. Not just that it didn't cost anything, I could suddenly turn some random
+excited me. Not just that it didn't cost anything, but that I could suddenly turn some random
 windows machine on campus into something entirely different, an operating system tuned 
-to a niche purpose, packed with free, shareable information, created by someone on the
-internet. This led me to learn about the Free Software Foundation, GNU/Linux, and Emacs.
+to a niche purpose, packed with free, shareable information, created by one person and shared
+on internet. I needed to know more. This led me to learn about the Free Software Foundation, 
+GNU/Linux, and Emacs.
 
-So what is Free Software? (quote) 
+So what is Free Software? I'm not going to give the official definition here, because I
+would end up going on a tangent and taking up my whold talk. I found this quote on one
+of the FSF campaign pages. (quote) 
 
 That commitment to learn and share what is learned with others had a direct impact 
-on my ability to become a programmer. There's a more specific definiton of free software
-but it can get political, so I want to boil it down to this: Be a Good Neighbor.
-Software impacts an ever increasing scope of our lives these days, and a lot of it
-is not visible to users. Free software treats programmers and users as equals.
+on my ability to become a programmer. Joining a global community of people willing to share
+allowed me to ask questions and get answers when I was stuck. And underneath it all,
+I had access to the source code, it was just up to me to dive into it.
 
-If you were here last month, the CTO of CardFlight Peter Wagener, gave a talk on
-the economic reasons for companies to support free software projects. I was very
-excited when he created CardFlight's OSS contribution program,  Even though I
-had participated in online free software communities, it wasn't until 10 months
-ago that I made my first pull request to a project on GitHub.
+So I had become a GNU/Linux user and done a bit of shell scripting, and heard about this
+thing called Emacs. If you don't know, Emacs is a text editor, IDE, organizer, version control
+front-end, psychotherapist, and more! And you can play Tetris. Once I started using it,
+the rest of my free software story has been influenced by Emacs step of the way. I have
+a tool that grows along with me. I will go so far to say that without Emacs, I would not have
+a career as a programmer today.
+
+0:11:50 
+
+Emacs is a lot of things, but the key piece of that acted as my springboard is Emacs-Lisp.
+Emacs itself is a Lisp interpreter. While learning how to configure my editor, I realized
+I could execute arbitrary lisp code and see an immediate effect, like (set-cursor-color "orange")

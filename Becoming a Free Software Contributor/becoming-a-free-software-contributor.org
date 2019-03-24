@@ -2,12 +2,24 @@
 #+AUTHOR: Grant Shangreaux
 
 * Introduction
-* My first GNU/Linux
- 
-            [[file:Hikarunix_2_2019-03-20_22-58-12.jpg]]
 
+   - Software Engineer at CardFlight
+   - First applicant to CardFlight's Open Source Software program
+   - Contributor to Spacemacs
+   - I wouldn't be a professional programmer without Free Software
+   - Even so, my first PR wasn't until 10 months ago!
+
+                   [[file:images/firstPR.png]]
 * Why Free Software?
 
+    - Self Improvement
+    - Connections and Public Contributions 
+    - Eternal Glory
+    - Doing Good
+
+                       [[file:Why%20Free%20Software?/charac-more_2019-03-20_19-50-45.png]]
+
+** What is Free Software?
     #+BEGIN_QUOTE
     Free software is simply software that respects our freedom -
     our freedom to learn and understand the software we are using. 
@@ -16,9 +28,54 @@
     who assert our rights to learn and to share what we learn with others.
     #+END_QUOTE  
 
-                       [[file:Why%20Free%20Software?/charac-more_2019-03-20_19-50-45.png]]
+    - Freedom 0 : I can /run/ the program how I choose.
+    - Freedom 1 : I can study the source code of the program.
+    - Freedom 2 : I am free to help my neighbor and distribute the program.
+    - Freedom 3 : I am free to contribute to my community and share modified copies
 
-** Be a Good Neighbor 
+
+** Freedom 0 - My first GNU/Linux Experience
+ 
+            [[file:Hikarunix_2_2019-03-20_22-58-12.jpg]]
+
+
+** Freedom 1 - I Owe My Living to Emacs   
+                         [[file:I%20Owe%20My%20Living%20to%20Emacs/768px-EmacsIcon.svg_2019-03-19_23-35-32.png]]
+
+*** REPLs and Recursion
+    (set-cursor-color "orange")
+    (zone) (tetris)
+                           [[file:joining%20the%20church%20of%20emacs/16914999852_995b77a811_z_2019-03-19_23-53-43.jpg]]
+
+
+*** learning how to lisp  
+    - Structure and Interpretation of Computer Programs
+    - How to Design Programs taught me how to teach
+     [[file:learning%20how%20to%20lisp/SICP_cover_2019-03-20_00-03-04.jpg]] [[file:learning%20how%20to%20lisp/51u%252BCa4yW8L._SX373_BO1,204,203,200__2019-03-20_00-05-21.jpg]] [[file:learning%20how%20to%20lisp/racket-logo_2019-03-20_00-06-40.svg]]
+
+* Ways You Can Participate
+** Contributions
+*** Documentation
+
+    - Often needs more help than code
+
+    - You can do it while you're learning something new
+
+    - Non-official docs like blog posts and tutorials can really help a project
+
+    - Very easy to get approved
+*** Issue Triage
+    - It is hard for maintainers to keep up [2000+ issues on Spacemacs]
+    - Identify non-issues, ask the poster to close it
+    - Labeling, categorizing, notifying
+    - Reproducing the issue is helpful
+*** Code
+    - Don't put extra barriers in the way
+    - Software you use you already have familiarity with
+    - Pay attention to the community
+    - Small incremental changes do add up
+** Connections
+*** Help Your Neighbors - Freedom 2
    - Software impacts an ever increasing scope of our lives. 
    - There will always be something you know that could help someone else
    - Software is knowledge
@@ -26,38 +83,15 @@
 
                           [[file:Help%20Your%20Neighbors/27655336_10155425407407169_6445338402893105737_n_2019-03-20_20-05-40.jpeg]]
 
-  
-
-** I Owe My Living to Emacs   
-                         [[file:I%20Owe%20My%20Living%20to%20Emacs/768px-EmacsIcon.svg_2019-03-19_23-35-32.png]]
-
-*** joining the church of emacs
-    - i chose emacs as my editor when i first began to code
-    - initial learning curve paid off, after some time
-    - learning more and more with org, magit, spacemacs and beyond
-
-                           [[file:joining%20the%20church%20of%20emacs/16914999852_995b77a811_z_2019-03-19_23-53-43.jpg]]
-
-
-*** learning how to lisp  
-    - John McCarthy defines complete programming language 
-      using only 5 primitive operations 
-    - Structure and Interpretation of Computer Programs
-    - How to Design Programs taught me how to teach
-    [[file:learning%20how%20to%20lisp/4581d08c5401be09b8875ed95281ce40_2019-03-20_00-00-30.jpg]] [[file:learning%20how%20to%20lisp/SICP_cover_2019-03-20_00-03-04.jpg]] [[file:learning%20how%20to%20lisp/51u%252BCa4yW8L._SX373_BO1,204,203,200__2019-03-20_00-05-21.jpg]] [[file:learning%20how%20to%20lisp/racket-logo_2019-03-20_00-06-40.svg]]
-
-
-
-    
-
-* Ways You Can Participate
-** Contributions
-*** Code
-*** Documentation
-*** Issue Triage
-** Connections
-*** Help the Neighbors
 *** Share the Knowledge
 *** Manage and Maintain
 
 * Takeaways
+  - Free Software respects users and lets us learn and share what we learn
+  - Community participation counts
+  - You don't have to be a rockstar
+  - Consistently spending time on one project adds up
+  - Easy ways to make your first code contribution
+
+#+DOWNLOADED: https://media.giphy.com/media/jtSfepCcey8r6/giphy.gif @ 2019-03-23 15:48:35
+[[file:Takeaways/giphy_2019-03-23_15-48-35.gif]]
