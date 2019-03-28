@@ -8,7 +8,7 @@
    - I wouldn't be a professional programmer without Free Software
    - Even so, my first PR wasn't until 10 months ago!
 
-                                     [[file:images/firstPR.png]]
+                            [[file:images/firstPR.png]]
 ** Why Become a Free Software Contributor?
 
     - Self Improvement
@@ -16,13 +16,17 @@
     - Eternal Glory
     - Doing Good
 
-                            [[file:Why%20Free%20Software?/charac-more_2019-03-20_19-50-45.png]]
+
+         [[file:Why%20Free%20Software?/charac-more_2019-03-20_19-50-45.png]]
 
 
 
 
 * How Free Software Changed my Life
+
 ** What is Free Software?
+
+
     #+BEGIN_QUOTE
     Free software is simply software that respects our freedom -
     our freedom to learn and understand the software we are using. 
@@ -36,6 +40,7 @@
     - Freedom 2 : I am free to help my neighbor and distribute the program.
     - Freedom 3 : I am free to contribute to my community and share modified programs.
 
+
 ** Freedom 0 : Running programs how I wish
 *** My first GNU/Linux
                         [[file:Hikarunix_2_2019-03-20_22-58-12.jpg]] 
@@ -43,16 +48,17 @@
                         [[file:How%20Free%20Software%20Changed%20my%20Life/mathomatic-ds_2019-03-25_11-44-38.jpg]]
 
 
+
 ** Freedom 1 : Studying and Changing Code
 *** I Owe my Job to Emacs
-                                 [[file:I%20Owe%20My%20Living%20to%20Emacs/768px-EmacsIcon.svg_2019-03-19_23-35-32.png]]
+                             [[file:I%20Owe%20My%20Living%20to%20Emacs/768px-EmacsIcon.svg_2019-03-19_23-35-32.png]]
 
 *** Emacs provides an end-user programming environment
     (set-cursor-color "orange")
     (set-cursor-color "purple")
     (spacemacs/cycle-spacemacs-theme)
     (tetris)
-                                   [[file:joining%20the%20church%20of%20emacs/16914999852_995b77a811_z_2019-03-19_23-53-43.jpg]]
+                                 [[file:joining%20the%20church%20of%20emacs/16914999852_995b77a811_z_2019-03-19_23-53-43.jpg]]
 
 *** REPLs and Recursion - learning how to lisp  
     - Structure and Interpretation of Computer Programs
@@ -64,14 +70,20 @@
 ** Freedom 2 : Helping Your Neighbor
    - Software impacts an ever increasing scope of our lives. 
    - Simply helping others successfully use free software counts
+   - Revive out of date hardware and software with GNU/Linux
 
                                    [[file:Help%20Your%20Neighbors/27655336_10155425407407169_6445338402893105737_n_2019-03-20_20-05-40.jpeg]]
 *** Share the Knowledge
    - There will always be something you know that could help someone else
    - Chat rooms, forums, mailing lists, Stack Exchanges
    
+           [[file:images/chat%20thanks.png]]
 
-*** Manage and Maintain
+          [[file:images/more%20thanks.png]]
+
+                [[file:images/impact.png]]       [[file:images/reputation.png]]
+
+      
 ** Freedom 3 : Contributing to Your Community
 *** Documentation
 
@@ -83,11 +95,13 @@
 
                [[file:images/minor%20pr_2019-02-07_11-56-59.png]]   [[file:images/release%20notes_2019-02-07_12-00-54.png]]
 *** Issue Triage
-    - It is hard for maintainers to keep up [2000+ issues on Spacemacs]
-    - Identify non-issues, ask the poster to close it
+    - It is hard for maintainers to keep up [[https://github.com/syl20bnr/spacemacs/issues][2000+ issues on Spacemacs]]
+    - Identify non-issues, ask the poster to close it 
+                          [[file:images/closed%20issue.png]]
+    
     - Labeling, categorizing, notifying
     - Reproducing the issue is helpful
-    - Sometimes it is coordinating with project dependencies
+    - Sometimes it is coordinating with other project maintainers
       https://github.com/syl20bnr/spacemacs/issues/12008
 
 
@@ -95,8 +109,11 @@
     - Don't put extra barriers in the way
     - Software you use you already have familiarity with
     - Pay attention to the community
+    - Build your reputation
     - Small incremental changes do add up
 
+
+  [[file:images/future%20release.png]]
 * Takeaways
   - Free Software respects users and lets us learn and share what we learn
   - Community participation counts
